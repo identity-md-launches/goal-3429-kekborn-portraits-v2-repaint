@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-front.knight-armour",
+      "slot": "attire-front",
+      "path": "layers/attire/knight/attire-front.knight-armour.png",
+      "category": "knight"
+    },
+    {
+      "id": "prop-front.knight-gauntlet",
+      "slot": "prop-front",
+      "path": "layers/attire/knight/prop-front.knight-gauntlet.png",
+      "category": "knight"
+    }
+  ]
+}

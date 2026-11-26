@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-06",
+  "tier": "common",
+  "genetics": {
+    "skin": "skin.moss",
+    "eyes": "eyes.silver"
+  },
+  "traits": {
+    "category": "council",
+    "expression": "expression.resolute",
+    "background": "background.umber-hall",
+    "banner": "banner.ochre-gonfalon"
+  },
+  "artSeed": "sitting-06"
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-back.scholar-folded-hood",
+      "slot": "attire-back",
+      "path": "layers/attire/scholar/attire-back.scholar-folded-hood.png",
+      "category": "scholar"
+    },
+    {
+      "id": "attire-front.scholar-robe",
+      "slot": "attire-front",
+      "path": "layers/attire/scholar/attire-front.scholar-robe.png",
+      "category": "scholar"
+    },
+    {
+      "id": "accessory.scholar-spectacles",
+      "slot": "accessory",
+      "path": "layers/attire/scholar/accessory.scholar-spectacles.png",
+      "category": "scholar"
+    }
+  ]
+}

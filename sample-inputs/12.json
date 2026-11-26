@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-12",
+  "tier": "epic",
+  "genetics": {
+    "skin": "skin.oxblood",
+    "eyes": "eyes.olive"
+  },
+  "traits": {
+    "category": "council",
+    "expression": "expression.smug",
+    "background": "background.green-arras",
+    "banner": "banner.ochre-gonfalon"
+  },
+  "artSeed": "sitting-12"
+}

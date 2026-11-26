@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-02",
+  "tier": "uncommon",
+  "genetics": {
+    "skin": "skin.lichen",
+    "eyes": "eyes.side-eye"
+  },
+  "traits": {
+    "category": "antiquary",
+    "expression": "expression.paranoid-side-eye",
+    "background": "background.green-arras",
+    "banner": "banner.oxblood-standard"
+  },
+  "artSeed": "sitting-02"
+}

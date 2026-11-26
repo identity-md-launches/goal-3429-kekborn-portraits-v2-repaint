@@ -1,0 +1,11 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "skin.ivory",
+      "slot": "skin",
+      "path": "layers/skins/ivory.png",
+      "rarity": "rare"
+    }
+  ]
+}

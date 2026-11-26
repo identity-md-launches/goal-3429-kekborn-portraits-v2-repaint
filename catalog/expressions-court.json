@@ -1,0 +1,35 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "expression.resolute",
+      "slot": "expression",
+      "path": "layers/expressions/resolute.png",
+      "selectors": {"expression": "resolute"}
+    },
+    {
+      "id": "expression.dubious",
+      "slot": "expression",
+      "path": "layers/expressions/dubious.png",
+      "selectors": {"expression": "dubious"}
+    },
+    {
+      "id": "expression.startled",
+      "slot": "expression",
+      "path": "layers/expressions/startled.png",
+      "selectors": {"expression": "startled"}
+    },
+    {
+      "id": "expression.wistful",
+      "slot": "expression",
+      "path": "layers/expressions/wistful.png",
+      "selectors": {"expression": "wistful"}
+    },
+    {
+      "id": "expression.amused",
+      "slot": "expression",
+      "path": "layers/expressions/amused.png",
+      "selectors": {"expression": "amused"}
+    }
+  ]
+}

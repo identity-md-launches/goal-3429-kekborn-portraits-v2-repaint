@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-08",
+  "tier": "rare",
+  "genetics": {
+    "skin": "skin.oxblood",
+    "eyes": "eyes.umber"
+  },
+  "traits": {
+    "category": "antiquary",
+    "expression": "expression.startled",
+    "background": "background.oxblood-chamber",
+    "banner": "banner.oxblood-standard"
+  },
+  "artSeed": "sitting-08"
+}

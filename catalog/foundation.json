@@ -1,0 +1,168 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "skin.moss",
+      "slot": "skin",
+      "path": "layers/skins/moss.png",
+      "rarity": "common"
+    },
+    {
+      "id": "frame.common",
+      "slot": "frame",
+      "path": "layers/frames/common.png",
+      "tier": "common"
+    }
+  ],
+  "schemaVersion": 1,
+  "scope": "Accepted foundation masters and registration; the remaining collection is delivered by other library items.",
+  "guide": "style-guide.md",
+  "template": "template/bust.svg",
+  "registrationMetadataId": "kekborn-registration",
+  "registrationVersion": 2,
+  "canvas": {
+    "width": 2048,
+    "height": 2560,
+    "aspect": "4:5",
+    "format": "straight RGBA8 sRGB"
+  },
+  "frameAperture": {
+    "x": 144,
+    "y": 144,
+    "width": 1760,
+    "height": 2224
+  },
+  "layers": [
+    {
+      "id": "moss",
+      "kind": "skin",
+      "path": "layers/skins/moss.png",
+      "sha256": "98b4c9283db6896b61642a6b7cbb43645aaa644858d8e1fbc550b2c5a44b44bd",
+      "alpha": "Transparent outside the painted bust; opaque umber eye beds, not holes.",
+      "finishBakedIn": false
+    },
+    {
+      "id": "common",
+      "kind": "frame",
+      "tier": "Common",
+      "material": "plain wood",
+      "path": "layers/frames/common.png",
+      "sha256": "404d25da53192d2205211365bf3309b15004b6beba8e4c5924b9f1f5ea24d62a",
+      "alpha": "Transparent aperture; opaque rails, including the arms reserve and its clear space.",
+      "finishBakedIn": false
+    }
+  ],
+  "registration": {
+    "farEye": {
+      "x": 680,
+      "y": 936,
+      "irisW": 60
+    },
+    "nearEye": {
+      "x": 1040,
+      "y": 912,
+      "irisW": 90
+    },
+    "eyeLine": {
+      "slope": "-1/15",
+      "apertureLeftY": 971.7333333333333,
+      "apertureRightY": 854.4
+    },
+    "eyeBeds": {
+      "far": {
+        "cx": 680,
+        "cy": 936,
+        "rx": 44,
+        "ry": 48,
+        "approximate": true,
+        "alpha": 255
+      },
+      "near": {
+        "cx": 1040,
+        "cy": 912,
+        "rx": 68,
+        "ry": 68,
+        "approximate": true,
+        "alpha": 255
+      }
+    },
+    "tympanum": {
+      "x": 1238,
+      "y": 1046,
+      "rx": 56,
+      "ry": 62,
+      "approximate": true
+    },
+    "crownSeat": {
+      "x": 969,
+      "y": 680
+    },
+    "crownOverlap": {
+      "centralBand": {
+        "x0": 900,
+        "y0": 700,
+        "x1": 1060,
+        "y1": 748,
+        "x1y1": "exclusive"
+      },
+      "minimumPaintOverlap": 20,
+      "note": "Seat is a nominal anchor near the dome silhouette; band and side returns must overlap actual skin, not hover at y680."
+    }
+  },
+  "reserves": {
+    "bannerArms": {
+      "x0": 1500,
+      "y0": 340,
+      "x1": 1740,
+      "y1": 628,
+      "x1y1": "exclusive",
+      "clearSpace": 24,
+      "substrate": "opaque banner cloth"
+    },
+    "railArms": {
+      "x0": 974,
+      "y0": 2404,
+      "x1": 1074,
+      "y1": 2524,
+      "x1y1": "exclusive",
+      "clearSpace": 12,
+      "substrate": "opaque frame rail"
+    },
+    "note": "Reserves exclude decoration, not substrate paint. Arms composite over quiet opaque cloth/wood; do not erase rectangular holes."
+  },
+  "finish": {
+    "source": "src/raster/index.cjs",
+    "api": "finish(image, nonemptySeedBytes) -> same image, synchronous",
+    "order": [
+      "varnish",
+      "craquelure",
+      "inward frame shadow"
+    ],
+    "preserveAlpha": true,
+    "preserveTransparentRGB": true,
+    "colourMath": "stored sRGB display values; original luminance L=(0.2126R+0.7152G+0.0722B)/255; round only on RGB write",
+    "varnish": {
+      "tint": "#E0B870",
+      "mode": "multiply",
+      "opacity": "0.06 + 0.01*L^2"
+    },
+    "craquelure": {
+      "tint": "#2A1E17",
+      "mode": "normal pigment blend",
+      "seedDomain": "kekborn/craquelure/v1\u0000",
+      "opacity": "seeded antialiased mask / 255 * (1-L)^2",
+      "maximumMask": 24,
+      "intersection": "maximum coverage, no accumulation"
+    },
+    "shadow": {
+      "edges": [
+        "top",
+        "left"
+      ],
+      "insideApertureOnly": true,
+      "fadeMasterPixels": 44,
+      "maximumDarkening": 0.23,
+      "falloff": "smoothstep; nearest casting edge, no corner accumulation"
+    }
+  }
+}

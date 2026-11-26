@@ -1,0 +1,11 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "frame.uncommon",
+      "slot": "frame",
+      "path": "layers/frames/uncommon.png",
+      "tier": "uncommon"
+    }
+  ]
+}

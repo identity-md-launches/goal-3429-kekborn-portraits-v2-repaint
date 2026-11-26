@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "headwear.common",
+      "slot": "headwear",
+      "path": "layers/headwear/common.png",
+      "tier": "common"
+    },
+    {
+      "id": "regalia.common",
+      "slot": "regalia",
+      "path": "layers/regalia/common.png",
+      "tier": "common"
+    }
+  ]
+}

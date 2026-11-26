@@ -1,0 +1,11 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "skin.peat",
+      "slot": "skin",
+      "path": "layers/skins/peat.png",
+      "rarity": "common"
+    }
+  ]
+}

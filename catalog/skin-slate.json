@@ -1,0 +1,11 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "skin.slate",
+      "slot": "skin",
+      "path": "layers/skins/slate.png",
+      "rarity": "common"
+    }
+  ]
+}

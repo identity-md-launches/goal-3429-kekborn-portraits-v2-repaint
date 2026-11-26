@@ -1,0 +1,23 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "banner.vert-pennon",
+      "slot": "banner",
+      "path": "layers/banners/vert-pennon.png",
+      "selectors": { "banner": "vert-pennon" }
+    },
+    {
+      "id": "banner.oxblood-standard",
+      "slot": "banner",
+      "path": "layers/banners/oxblood-standard.png",
+      "selectors": { "banner": "oxblood-standard" }
+    },
+    {
+      "id": "banner.ochre-gonfalon",
+      "slot": "banner",
+      "path": "layers/banners/ochre-gonfalon.png",
+      "selectors": { "banner": "ochre-gonfalon" }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "frame.legendary",
+      "slot": "frame",
+      "name": "legendary",
+      "path": "layers/frames/legendary.png",
+      "tier": "legendary"
+    }
+  ]
+}

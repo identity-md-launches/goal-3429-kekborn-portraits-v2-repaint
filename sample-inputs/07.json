@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-07",
+  "tier": "uncommon",
+  "genetics": {
+    "skin": "skin.peat",
+    "eyes": "eyes.sienna"
+  },
+  "traits": {
+    "category": "scholar",
+    "expression": "expression.dubious",
+    "background": "background.green-arras",
+    "banner": "banner.vert-pennon"
+  },
+  "artSeed": "sitting-07"
+}

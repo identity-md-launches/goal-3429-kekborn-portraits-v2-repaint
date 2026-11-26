@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-05",
+  "tier": "legendary",
+  "genetics": {
+    "skin": "skin.ivory",
+    "eyes": "eyes.brass"
+  },
+  "traits": {
+    "category": "seer",
+    "expression": "expression.dim-grin",
+    "background": "background.oak-gallery",
+    "banner": "banner.oxblood-standard"
+  },
+  "artSeed": "sitting-05"
+}

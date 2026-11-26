@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-01",
+  "tier": "common",
+  "genetics": {
+    "skin": "skin.moss",
+    "eyes": "eyes.amber"
+  },
+  "traits": {
+    "category": "scholar",
+    "expression": "expression.smug",
+    "background": "background.umber-hall",
+    "banner": "banner.vert-pennon"
+  },
+  "artSeed": "sitting-01"
+}

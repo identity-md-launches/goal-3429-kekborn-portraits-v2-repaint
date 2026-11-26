@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     width="2048" height="2560" viewBox="0 0 2048 2560"
+     id="kekborn-bust-template" data-grid="2048x2560" data-origin="top-left" data-axes="x-right,y-down">
+  <title>Kekborn bust template — master registration grid 2048×2560 (4:5)</title>
+  <desc>Registration template for every Kekborn portrait layer. One master grid, origin top left, x right, y down,
+units are master pixels. The frog noble faces the viewer's left in three-quarter view. All painted layers
+(skins, eyes, expressions, attire, headwear, props, backgrounds, banners, arms, frames) are drawn on this
+grid at 2048×2560 and must hit the landmarks below. This file is a guide, never composited into a portrait.</desc>
+  <metadata id="kekborn-registration">{
+  "version": 2,
+  "skinReference": "layers/skins/moss.png",
+  "canvas": {"w": 2048, "h": 2560, "aspect": "4:5", "origin": "top-left", "x": "right", "y": "down"},
+  "frameAperture": {"x0": 144, "y0": 144, "x1": 1904, "y1": 2368, "x1y1": "exclusive"},
+  "aperture45Crop": {"x0": 144, "y0": 156, "x1": 1904, "y1": 2356, "x1y1": "exclusive"},
+  "facing": "viewer-left, three-quarter",
+  "landmarks": {
+    "farEye":        {"x": 680,  "y": 936,  "irisW": 60},
+    "nearEye":       {"x": 1040, "y": 912,  "irisW": 90},
+    "crownSeat":     {"x": 969,  "y": 680},
+    "tympanum":      {"x": 1238, "y": 1046, "rx": 56, "ry": 62, "approximate": true},
+    "snoutTip":      {"x": 422,  "y": 1120},
+    "mouthFar":      {"x": 495,  "y": 1190},
+    "mouthNear":     {"x": 1060, "y": 1220},
+    "throat":        {"x": 978,  "y": 1536},
+    "shoulderFar":   {"x": 365,  "y": 1760},
+    "shoulderNear":  {"x": 1575, "y": 1712}
+  },
+  "eyeBeds": {
+    "far": {"cx": 680, "cy": 936, "rx": 44, "ry": 48, "approximate": true, "alpha": 255},
+    "near": {"cx": 1040, "cy": 912, "rx": 68, "ry": 68, "approximate": true, "alpha": 255},
+    "use": "Opaque painted umber beds, not holes. Eye paint covers beds under raised lids; iris size is not the layer footprint."
+  },
+  "crownOverlap": {
+    "centralBand": {"x0": 900, "y0": 700, "x1": 1060, "y1": 748, "x1y1": "exclusive"},
+    "minimumPaintOverlap": 20,
+    "use": "Crown seat is an anchor, not a cut edge. Extend the front band and side returns into the actual moss dome; check for seams."
+  },
+  "reserves": {
+    "bannerArms":    {"x0": 1500, "y0": 340,  "x1": 1740, "y1": 628,  "x1y1": "exclusive", "clearSpace": 24, "substrate": "opaque banner cloth"},
+    "railArms":      {"x0": 974,  "y0": 2404, "x1": 1074, "y1": 2524, "x1y1": "exclusive", "clearSpace": 12, "substrate": "opaque frame rail"},
+    "use": "Reserve decoration, not alpha: quiet substrate remains beneath arms and clear space; no folds, carving or other ornaments."
+  },
+  "light": "upper-left, key from (-1,-1)",
+  "palette": {"umber": "#32251F", "forest": "#253E32", "moss": "#657044", "oxblood": "#682F38",
+              "ochre": "#B48A47", "goldLeaf": "#C9A45A", "warmBone": "#D7C7A3"}
+}</metadata>
+  <defs>
+    <style>
+      .lbl   { font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif; font-size: 22px; fill: #F3E9D2; }
+      .lblS  { font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif; font-size: 18px; fill: #D7C7A3; }
+      .lblD  { font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif; font-size: 20px; fill: #32251F; }
+      .ttl   { font-family: 'DejaVu Serif', Georgia, 'Times New Roman', serif; font-size: 44px; fill: #C9A45A; }
+      .sub   { font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif; font-size: 22px; fill: #D7C7A3; }
+      .guide { fill: none; stroke: #4FC3F7; stroke-width: 3; stroke-dasharray: 18 10; }
+      .eyeln { fill: none; stroke: #FF5A5A; stroke-width: 4; stroke-dasharray: 26 10; }
+      .crop  { fill: none; stroke: #F4D35E; stroke-width: 3; stroke-dasharray: 6 8; }
+      .resv  { fill: #B48A47; fill-opacity: 0.18; stroke: #F4D35E; stroke-width: 4; }
+      .clear { fill: none; stroke: #F4D35E; stroke-width: 2; stroke-dasharray: 10 8; }
+      .form  { fill: none; stroke: #D7C7A3; stroke-width: 6; stroke-linejoin: round; stroke-linecap: round; }
+      .formT { fill: none; stroke: #D7C7A3; stroke-width: 3; stroke-linecap: round; }
+      .pleat { fill: none; stroke: #B48A47; stroke-width: 3; stroke-linecap: round; }
+      .mark  { fill: none; stroke: #FF5A5A; stroke-width: 3; }
+      .dot   { fill: #FF5A5A; }
+      .light { fill: none; stroke: #F4D35E; stroke-width: 5; }
+      .stroke{ fill: none; stroke: #D7C7A3; stroke-width: 3; stroke-opacity: 0.55; stroke-linecap: round; }
+    </style>
+    <pattern id="grid64" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0 H0 V64" fill="none" stroke="#D7C7A3" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <pattern id="grid256" x="0" y="0" width="256" height="256" patternUnits="userSpaceOnUse">
+      <rect width="256" height="256" fill="url(#grid64)"/>
+      <path d="M256 0 H0 V256" fill="none" stroke="#D7C7A3" stroke-opacity="0.28" stroke-width="2"/>
+    </pattern>
+    <radialGradient id="backdrop" cx="0.32" cy="0.28" r="0.85">
+      <stop offset="0" stop-color="#3A2D25"/>
+      <stop offset="0.6" stop-color="#241B17"/>
+      <stop offset="1" stop-color="#14100D"/>
+    </radialGradient>
+    <linearGradient id="skinTone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8E9A5C"/>
+      <stop offset="0.45" stop-color="#657044"/>
+      <stop offset="1" stop-color="#253E32"/>
+    </linearGradient>
+    <linearGradient id="clothTone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8A4450"/>
+      <stop offset="0.5" stop-color="#682F38"/>
+      <stop offset="1" stop-color="#3A1A20"/>
+    </linearGradient>
+    <linearGradient id="railTone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7A5A3A"/>
+      <stop offset="1" stop-color="#32251F"/>
+    </linearGradient>
+    <g id="crosshair">
+      <circle r="14" class="mark"/>
+      <path d="M-28 0 H28 M0 -28 V28" class="mark"/>
+      <circle r="4" class="dot"/>
+    </g>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#F4D35E"/>
+    </marker>
+  </defs>
+
+  <!-- ===== L0 canvas: frame rail zone (outside the aperture) ===== -->
+  <g id="frame-rail">
+    <rect x="0" y="0" width="2048" height="2560" fill="url(#railTone)"/>
+    <rect x="72" y="72" width="1904" height="2368" fill="none" stroke="#C9A45A" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="4 6"/>
+  </g>
+
+  <!-- ===== L1 aperture with backdrop + registered grid ===== -->
+  <g id="aperture">
+    <rect id="frame-aperture" x="144" y="144" width="1760" height="2224" fill="url(#backdrop)"/>
+    <rect x="144" y="144" width="1760" height="2224" fill="url(#grid256)"/>
+    <rect x="144" y="144" width="1760" height="2224" fill="none" stroke="#C9A45A" stroke-width="4"/>
+  </g>
+
+  <!-- ===== L2 heraldic banner silhouette (backdrop layer) ===== -->
+  <g id="banner-guide" opacity="0.9">
+    <path d="M1430 200 H1810 V860 L1620 760 L1430 860 Z" fill="#682F38" fill-opacity="0.35" stroke="#B48A47" stroke-width="3" stroke-dasharray="12 8"/>
+    <path d="M1400 200 H1840" stroke="#C9A45A" stroke-width="10" stroke-linecap="round"/>
+    <text x="1446" y="244" class="lblS">banner (backdrop layer)</text>
+  </g>
+
+  <!-- ===== L3 bust silhouette: shoulders + neck opening ===== -->
+  <g id="bust-shoulders">
+    <path id="shoulder-mass" d="M768 1600 C 640 1640 470 1690 365 1760 C 270 1830 210 1960 190 2120 L 176 2368 L 1872 2368 L 1856 2140 C 1830 1930 1730 1770 1575 1712 C 1440 1662 1290 1622 1188 1600 Z"
+          fill="url(#clothTone)" fill-opacity="0.55" stroke="#D7C7A3" stroke-width="6" stroke-linejoin="round"/>
+    <ellipse id="neck-opening" cx="978" cy="1600" rx="210" ry="64" fill="#14100D" fill-opacity="0.65" stroke="#D7C7A3" stroke-width="5" stroke-dasharray="14 8"/>
+    <path id="shoulder-slope" d="M365 1760 L1575 1712" class="guide"/>
+    <!-- cloth fold guides: diagonal, falling away from the light -->
+    <path d="M560 1720 C 600 1900 640 2100 620 2330 M760 1680 C 820 1880 860 2100 880 2330 M1320 1660 C 1340 1900 1360 2120 1400 2330 M1520 1720 C 1600 1900 1660 2100 1700 2330" class="stroke"/>
+  </g>
+
+  <!-- ===== L4 head silhouette ===== -->
+  <g id="head">
+    <path id="head-outline"
+          d="M422 1120 C 440 1040 520 960 590 905 C 590 858 630 836 680 836 C 735 836 775 860 785 890 C 820 780 880 700 969 682 C 1060 664 1160 716 1220 820 C 1272 904 1292 1010 1272 1110 C 1254 1220 1190 1300 1130 1350 C 1160 1420 1180 1520 1188 1600 L 768 1600 C 700 1500 600 1400 540 1300 C 512 1254 494 1222 495 1190 C 460 1176 430 1154 422 1120 Z"
+          class="form" style="fill:url(#skinTone);fill-opacity:0.8"/>
+    <!-- near eye turret (inside silhouette, larger: asymmetric) -->
+    <path id="near-eye-turret" d="M905 930 C 900 820 960 770 1040 770 C 1130 770 1180 830 1176 930 C 1160 1000 1110 1030 1040 1030 C 970 1030 915 1000 905 930 Z" class="formT" style="fill:#8E9A5C;fill-opacity:0.45"/>
+    <!-- far eye turret (breaks the silhouette, smaller, foreshortened) -->
+    <path id="far-eye-turret" d="M598 940 C 592 875 630 842 680 842 C 735 842 770 880 764 940 C 756 990 722 1010 680 1010 C 640 1010 604 990 598 940 Z" class="formT" style="fill:#8E9A5C;fill-opacity:0.35"/>
+    <!-- eye sockets -->
+    <ellipse id="far-eye-socket" cx="680" cy="936" rx="52" ry="48" fill="#14100D" fill-opacity="0.55" stroke="#D7C7A3" stroke-width="4"/>
+    <ellipse id="near-eye-socket" cx="1040" cy="912" rx="78" ry="72" fill="#14100D" fill-opacity="0.55" stroke="#D7C7A3" stroke-width="4"/>
+    <!-- Actual moss master beds: opaque umber paint, not transparent cutouts.
+         Approximate dark cores; eye layers must blend out beneath the lids. -->
+    <ellipse id="far-eye-bed" cx="680" cy="936" rx="44" ry="48" fill="#32251F" stroke="#B48A47" stroke-width="2"/>
+    <ellipse id="near-eye-bed" cx="1040" cy="912" rx="68" ry="68" fill="#32251F" stroke="#B48A47" stroke-width="2"/>
+    <!-- iris diameters: far 60, near 90 -->
+    <circle id="far-iris" cx="680" cy="936" r="30" fill="#B48A47" fill-opacity="0.7" stroke="#F3E9D2" stroke-width="2"/>
+    <circle id="near-iris" cx="1040" cy="912" r="45" fill="#B48A47" fill-opacity="0.7" stroke="#F3E9D2" stroke-width="2"/>
+    <!-- horizontal-bar pupils (original frog anatomy, not round cartoon pupils) -->
+    <rect x="664" y="930" width="32" height="12" rx="6" fill="#120D0B"/>
+    <rect x="1016" y="903" width="48" height="18" rx="9" fill="#120D0B"/>
+    <!-- wedge snout ridge, nostril, mouth line, tympanum -->
+    <path id="snout-ridge" d="M430 1100 C 500 1020 560 975 610 960" class="formT"/>
+    <path id="nostril" d="M474 1058 c 10 -8 22 -8 28 0" class="formT"/>
+    <path id="mouth-line" d="M495 1190 C 620 1236 860 1254 1060 1220" fill="none" stroke="#682F38" stroke-width="6" stroke-linecap="round"/>
+    <ellipse id="tympanum" cx="1238" cy="1046" rx="56" ry="62" class="formT" style="fill:#253E32;fill-opacity:0.5"/>
+    <!-- pleated throat: 5 stacked folds, widening toward the neck opening -->
+    <g id="throat-pleats">
+      <path d="M560 1290 C 700 1320 880 1326 1110 1300" class="pleat"/>
+      <path d="M610 1360 C 740 1392 900 1398 1120 1372" class="pleat"/>
+      <path d="M660 1426 C 780 1456 920 1460 1140 1440" class="pleat"/>
+      <path d="M712 1488 C 820 1512 940 1514 1162 1500" class="pleat"/>
+      <path d="M760 1546 C 850 1564 950 1566 1180 1556" class="pleat"/>
+    </g>
+    <!-- crown seat ellipse (headwear base) -->
+    <ellipse id="crown-seat" cx="969" cy="680" rx="150" ry="34" fill="none" stroke="#C9A45A" stroke-width="4" stroke-dasharray="10 6"/>
+    <!-- Front band must overlap actual skin below the nominal crown anchor. -->
+    <path id="crown-overlap" d="M900 720 Q969 680 1060 720 L1060 748 Q969 708 900 748 Z"
+          fill="#C9A45A" fill-opacity="0.25" stroke="#C9A45A" stroke-width="3" stroke-dasharray="6 6"/>
+    <!-- skin brush direction: strokes follow the form, wrap the turrets -->
+    <path d="M520 1040 C 600 990 680 980 760 1000 M820 1100 C 920 1060 1040 1060 1160 1120 M900 760 C 960 720 1060 720 1140 780 M1200 900 C 1230 980 1230 1060 1200 1140" class="stroke"/>
+  </g>
+
+  <!-- ===== L5 shield reserves and clear space ===== -->
+  <g id="shield-reserves">
+    <rect x="1476" y="316" width="288" height="336" class="clear"/>
+    <rect id="banner-arms-reserve" x="1500" y="340" width="240" height="288" class="resv"/>
+    <path d="M1500 340 H1740 V500 C 1740 580 1680 620 1620 628 C 1560 620 1500 580 1500 500 Z" fill="none" stroke="#F3E9D2" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="1500" y="680" class="lbl">banner arms 1500,340 → 1740,628</text>
+    <text x="1500" y="706" class="lblS">240×288 · clear 24 · opaque cloth below</text>
+
+    <rect x="962" y="2392" width="124" height="144" class="clear"/>
+    <rect id="rail-arms-reserve" x="974" y="2404" width="100" height="120" class="resv"/>
+    <path d="M974 2404 H1074 V2470 C 1074 2504 1050 2520 1024 2524 C 998 2520 974 2504 974 2470 Z" fill="none" stroke="#F3E9D2" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="1100" y="2444" class="lbl">rail arms 974,2404 → 1074,2524</text>
+    <text x="1100" y="2472" class="lblS">100×120 · same arms · clear 12 · opaque rail below</text>
+    <text x="1100" y="2500" class="lblS">plaque (Legendary) sits left of shield: 640,2420 → 940,2508</text>
+    <rect x="640" y="2420" width="300" height="88" fill="none" stroke="#C9A45A" stroke-width="2" stroke-dasharray="8 6"/>
+  </g>
+
+  <!-- ===== L6 alignment guides ===== -->
+  <g id="guides">
+    <!-- 4:5 crop inside the aperture -->
+    <rect id="crop-4x5" x="144" y="156" width="1760" height="2200" class="crop"/>
+    <text x="160" y="186" class="lblS">4:5 aperture crop 144,156 → 1904,2356 (1760×2200)</text>
+    <!-- canvas centre line -->
+    <path d="M1024 144 V2368" class="guide" stroke-opacity="0.6"/>
+    <text x="1032" y="2350" class="lblS">x = 1024 canvas centre</text>
+    <!-- eye line through both eye centres, extended across aperture -->
+    <path id="eye-line" d="M144 971.73 L1904 854.40" class="eyeln"/>
+    <text x="1300" y="1012" class="lbl" style="fill:#FF8A8A">EYE LINE (680,936)–(1040,912), slope −1/15</text>
+    <!-- mouth line extension -->
+    <path d="M300 1183.6 L1500 1243.3" class="guide" stroke-opacity="0.6"/>
+    <!-- head axis: snout tip to crown seat area (three-quarter turn) -->
+    <path d="M422 1120 L969 680" class="guide" stroke-opacity="0.5"/>
+    <!-- light direction -->
+    <path d="M240 260 L470 490" class="light" marker-end="url(#arrow)"/>
+    <text x="196" y="246" class="lbl">KEY LIGHT upper left (45°)</text>
+    <!-- gaze -->
+    <path d="M560 930 L330 950" class="light" marker-end="url(#arrow)"/>
+    <text x="250" y="900" class="lblS">faces viewer's left</text>
+  </g>
+
+  <!-- ===== L7 landmark crosshairs + labels ===== -->
+  <g id="landmarks">
+    <use href="#crosshair" x="680" y="936"/>
+    <text x="560" y="1036" class="lbl">far eye 680,936 · iris 60</text>
+    <text x="490" y="1062" class="lblS">opaque bed ≈88×96 · paint eyes over it</text>
+    <use href="#crosshair" x="1040" y="912"/>
+    <text x="1186" y="924" class="lbl">near eye 1040,912 · iris 90</text>
+    <text x="1186" y="952" class="lblS">opaque bed ≈136×136, not a hole</text>
+    <use href="#crosshair" x="969" y="680"/>
+    <text x="996" y="640" class="lbl">crown seat 969,680</text>
+    <text x="700" y="580" class="lblS">front band y700–748 · overlap dome ≥20px; extend side returns</text>
+    <use href="#crosshair" x="1238" y="1046"/>
+    <path d="M1266 1046 L1380 1110" class="mark"/>
+    <text x="1388" y="1120" class="lblS">tympanum ≈1238,1046</text>
+    <use href="#crosshair" x="422" y="1120"/>
+    <text x="196" y="1124" class="lbl">snout tip</text>
+    <text x="196" y="1150" class="lblS">422,1120</text>
+    <use href="#crosshair" x="495" y="1190"/>
+    <text x="250" y="1236" class="lbl">mouth 495,1190</text>
+    <use href="#crosshair" x="1060" y="1220"/>
+    <text x="1090" y="1218" class="lbl">mouth 1060,1220</text>
+    <use href="#crosshair" x="978" y="1536"/>
+    <text x="1210" y="1544" class="lbl">throat 978,1536</text>
+    <path d="M1000 1536 H1200" class="mark" stroke-opacity="0.6"/>
+    <use href="#crosshair" x="365" y="1760"/>
+    <text x="196" y="1820" class="lbl">far shoulder 365,1760</text>
+    <use href="#crosshair" x="1575" y="1712"/>
+    <text x="1500" y="1664" class="lbl">near shoulder 1575,1712</text>
+    <text x="790" y="1700" class="lblS">neck opening cx 978 · rx 210 · ry 64</text>
+  </g>
+
+  <!-- ===== L8 rail labels: title, axes, palette anchors ===== -->
+  <g id="rail-labels">
+    <text x="144" y="60" class="ttl">KEKBORN · bust template</text>
+    <text x="144" y="104" class="sub">master 2048×2560 · origin (0,0) top-left · x→ right · y↓ down · grid 64 / 256 px</text>
+    <text x="144" y="132" class="lblS">frame aperture (144,144) → (1904,2368) exclusive · 1760×2224 · everything outside is frame rail</text>
+    <g id="ruler-top" class="lblS">
+      <text x="400" y="140">256</text><text x="656" y="140">512</text><text x="912" y="140">768</text>
+      <text x="1168" y="140">1024</text><text x="1424" y="140">1280</text><text x="1680" y="140">1536</text>
+    </g>
+    <g id="ruler-left" class="lblS">
+      <text x="90" y="406">256</text><text x="90" y="662">512</text><text x="90" y="918">768</text>
+      <text x="80" y="1174">1024</text><text x="80" y="1430">1280</text><text x="80" y="1686">1536</text>
+      <text x="80" y="1942">1792</text><text x="80" y="2198">2048</text>
+    </g>
+    <g id="palette-swatches">
+      <rect x="1928" y="300" width="96" height="96" fill="#32251F" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="420" class="lblS">umber</text>
+      <rect x="1928" y="440" width="96" height="96" fill="#253E32" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="560" class="lblS">forest</text>
+      <rect x="1928" y="580" width="96" height="96" fill="#657044" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="700" class="lblS">moss</text>
+      <rect x="1928" y="720" width="96" height="96" fill="#682F38" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="840" class="lblS">oxblood</text>
+      <rect x="1928" y="860" width="96" height="96" fill="#B48A47" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="980" class="lblS">ochre</text>
+      <rect x="1928" y="1000" width="96" height="96" fill="#C9A45A" stroke="#D7C7A3" stroke-width="2"/>
+      <text x="1934" y="1120" class="lblS">gold leaf</text>
+      <rect x="1928" y="1140" width="96" height="96" fill="#D7C7A3" stroke="#32251F" stroke-width="2"/>
+      <text x="1934" y="1260" class="lblS">warm bone</text>
+    </g>
+    <text x="144" y="2400" class="lblS">bottom rail y 2368–2560</text>
+    <text x="144" y="2548" class="lblS">finish once: #E0B870 varnish · seeded #2A1E17 cracks in darks · inward shadow top/left only</text>
+  </g>
+</svg>

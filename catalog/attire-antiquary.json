@@ -1,0 +1,41 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-front.antiquary-doublet",
+      "slot": "attire-front",
+      "name": "antiquary-doublet",
+      "category": "antiquary",
+      "path": "layers/attire/antiquary/attire-front.antiquary-doublet.png",
+      "width": 2048,
+      "height": 2560,
+      "format": "png-rgba8",
+      "sha256": "66e0d41a7e70c79e4e1da99469429e4881b979f3ca1682043018b3f29ce49316",
+      "description": "Umber doublet with oxblood-faced lapels, gold-thread trim and slashed sleeves, open over an ochre waistcoat with gold-leaf buttons; bone linen stock and jabot cravat with a garnet pin closing the neck opening."
+    },
+    {
+      "id": "accessory.antiquary-monocle",
+      "slot": "accessory",
+      "name": "antiquary-monocle",
+      "category": "antiquary",
+      "path": "layers/attire/antiquary/accessory.antiquary-monocle.png",
+      "width": 2048,
+      "height": 2560,
+      "format": "png-rgba8",
+      "sha256": "d36d3a1ee1a07be137b2c0121f37f0b51fe90280f59b6277282f558c4296312b",
+      "description": "Gold-leaf monocle ring (~192 px) centred on the near eye (1040,912) with a faint glass reflection, and a fine gold chain falling to a stud on the near shoulder (1420,1702)."
+    },
+    {
+      "id": "prop-front.antiquary-scroll",
+      "slot": "prop-front",
+      "name": "antiquary-scroll",
+      "category": "antiquary",
+      "path": "layers/attire/antiquary/prop-front.antiquary-scroll.png",
+      "width": 2048,
+      "height": 2560,
+      "format": "png-rgba8",
+      "sha256": "2302ab2d5473dc68d6b4558bda7ed99db7f7d996c798b738439503aaa6c36a89",
+      "description": "Rolled parchment held low at the lower left, its sheet hanging and curling at the lower edge, faded script, forest ribbon and an oxblood wax seal."
+    }
+  ]
+}

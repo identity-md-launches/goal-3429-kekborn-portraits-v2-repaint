@@ -1,0 +1,11 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "skin.lichen",
+      "slot": "skin",
+      "path": "layers/skins/lichen.png",
+      "rarity": "common"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "headwear.legendary",
+      "slot": "headwear",
+      "path": "layers/headwear/legendary.png",
+      "tier": "legendary"
+    },
+    {
+      "id": "regalia.legendary",
+      "slot": "regalia",
+      "path": "layers/regalia/legendary.png",
+      "tier": "legendary"
+    }
+  ]
+}

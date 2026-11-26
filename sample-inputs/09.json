@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-09",
+  "tier": "epic",
+  "genetics": {
+    "skin": "skin.lichen",
+    "eyes": "eyes.amber"
+  },
+  "traits": {
+    "category": "knight",
+    "expression": "expression.wistful",
+    "background": "background.stone-apse",
+    "banner": "banner.ochre-gonfalon"
+  },
+  "artSeed": "sitting-09"
+}

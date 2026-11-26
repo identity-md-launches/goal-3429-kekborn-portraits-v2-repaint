@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-front.artisan-garb",
+      "slot": "attire-front",
+      "path": "layers/attire/artisan/attire-front.artisan-garb.png",
+      "category": "artisan"
+    },
+    {
+      "id": "prop-front.artisan-brushes",
+      "slot": "prop-front",
+      "path": "layers/attire/artisan/prop-front.artisan-brushes.png",
+      "category": "artisan"
+    }
+  ]
+}

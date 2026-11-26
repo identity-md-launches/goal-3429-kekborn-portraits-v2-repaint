@@ -1,0 +1,4 @@
+{"schema":"kekborn-assets@1","assets":[
+  {"id":"headwear.rare","slot":"headwear","name":"rare","path":"layers/headwear/rare.png","tier":"rare","description":"Chased silver circlet with five ball-tipped points, seated on the crown seat (969,680)"},
+  {"id":"regalia.rare","slot":"regalia","name":"rare","path":"layers/regalia/rare.png","tier":"rare","description":"Silver neck chain with a small pearl pendant over the upper garment"}
+]}

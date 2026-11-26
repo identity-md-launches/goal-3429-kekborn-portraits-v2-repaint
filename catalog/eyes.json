@@ -1,0 +1,45 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "eyes.amber",
+      "slot": "eyes",
+      "path": "layers/eyes/amber.png"
+    },
+    {
+      "id": "eyes.hazel",
+      "slot": "eyes",
+      "path": "layers/eyes/hazel.png"
+    },
+    {
+      "id": "eyes.olive",
+      "slot": "eyes",
+      "path": "layers/eyes/olive.png"
+    },
+    {
+      "id": "eyes.brass",
+      "slot": "eyes",
+      "path": "layers/eyes/brass.png"
+    },
+    {
+      "id": "eyes.silver",
+      "slot": "eyes",
+      "path": "layers/eyes/silver.png"
+    },
+    {
+      "id": "eyes.sienna",
+      "slot": "eyes",
+      "path": "layers/eyes/sienna.png"
+    },
+    {
+      "id": "eyes.umber",
+      "slot": "eyes",
+      "path": "layers/eyes/umber.png"
+    },
+    {
+      "id": "eyes.side-eye",
+      "slot": "eyes",
+      "path": "layers/eyes/side-eye.png"
+    }
+  ]
+}

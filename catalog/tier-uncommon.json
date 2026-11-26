@@ -1,0 +1,21 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "headwear.uncommon",
+      "slot": "headwear",
+      "name": "uncommon",
+      "tier": "uncommon",
+      "path": "layers/headwear/uncommon.png",
+      "description": "Soft oxblood felt bonnet with a turned-up brim and a gold-leaf oak-leaf-and-acorn brooch, seated on the crown seat (969,680)"
+    },
+    {
+      "id": "regalia.uncommon",
+      "slot": "regalia",
+      "name": "uncommon",
+      "tier": "uncommon",
+      "path": "layers/regalia/uncommon.png",
+      "description": "Turned oak roundel pin on a brass bail, hung from a woven forest-and-ochre collar ribbon around the neck opening"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-front.council-coat",
+      "slot": "attire-front",
+      "category": "council",
+      "path": "layers/attire/council/attire-front.council-coat.png"
+    },
+    {
+      "id": "accessory.council-sash",
+      "slot": "accessory",
+      "category": "council",
+      "path": "layers/attire/council/accessory.council-sash.png"
+    }
+  ]
+}

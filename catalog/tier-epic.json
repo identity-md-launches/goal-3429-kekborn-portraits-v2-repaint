@@ -1,0 +1,17 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "headwear.epic",
+      "slot": "headwear",
+      "path": "layers/headwear/epic.png",
+      "tier": "epic"
+    },
+    {
+      "id": "regalia.epic",
+      "slot": "regalia",
+      "path": "layers/regalia/epic.png",
+      "tier": "epic"
+    }
+  ]
+}

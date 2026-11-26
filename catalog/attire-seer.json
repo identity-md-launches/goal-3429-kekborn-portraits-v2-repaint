@@ -1,0 +1,23 @@
+{
+  "schema": "kekborn-assets@1",
+  "assets": [
+    {
+      "id": "attire-back.seer-hood",
+      "slot": "attire-back",
+      "path": "layers/attire/seer/seer-hood.png",
+      "category": "seer"
+    },
+    {
+      "id": "attire-front.seer-robe",
+      "slot": "attire-front",
+      "path": "layers/attire/seer/seer-robe.png",
+      "category": "seer"
+    },
+    {
+      "id": "prop-front.seer-orb",
+      "slot": "prop-front",
+      "path": "layers/attire/seer/seer-orb.png",
+      "category": "seer"
+    }
+  ]
+}

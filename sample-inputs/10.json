@@ -1,0 +1,15 @@
+{
+  "wallet": "kekborn-study-10",
+  "tier": "legendary",
+  "genetics": {
+    "skin": "skin.ivory",
+    "eyes": "eyes.silver"
+  },
+  "traits": {
+    "category": "artisan",
+    "expression": "expression.amused",
+    "background": "background.oak-gallery",
+    "banner": "banner.vert-pennon"
+  },
+  "artSeed": "sitting-10"
+}
