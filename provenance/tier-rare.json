@@ -1,0 +1,75 @@
+{
+  "target": "tier-rare",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "Pollinations image API, free tier (image.pollinations.ai)",
+    "name": "sana",
+    "requested": {
+      "width": 1024,
+      "height": 1280
+    },
+    "returned": {
+      "width": 686,
+      "height": 858,
+      "format": "JPEG"
+    },
+    "params": {
+      "nologo": true,
+      "private": true,
+      "enhance": false,
+      "negative_prompt": "style-guide negative prompt, verbatim"
+    },
+    "notExposed": "guidance, steps, sampler and revision not exposed; no inpainting or reference input on this endpoint, so nothing was painted onto template/master-reference.png"
+  },
+  "prompt": {
+    "order": "layer suffix before the locked prompt (kept intact), as in provenance/tier-epic.json"
+  },
+  "generations": [
+    {
+      "layer": "layers/headwear/rare.png",
+      "seed": 8201,
+      "source_sha256": "894ba3156343fa1538264e4e8aaf72e9cd55c74b8ce30cb7145a427bc6a3256a",
+      "suffix": "Still life oil painting of a single Tudor oxblood red velvet flat cap hat alone, no person, with a silver jewel brooch and a row of pearls on its brim, centered, isolated on a plain flat pale grey background, light from upper left.",
+      "note": "model painted a human sitter in an oxblood velvet cap; the cap has no jewel, so five pearl/silver beads painted by the same generation (on the sitter chain) were moved onto the brim"
+    },
+    {
+      "layer": "layers/regalia/rare.png",
+      "seed": 8202,
+      "source_sha256": "68a8636afda5aeb7d2cc38eebf24ebac471b71501a25601fd109e0c52a68140b",
+      "suffix": "Still life oil painting of a single Tudor silver chain necklace with pearl drops, laid flat as a U-shaped necklace, no person, centered, isolated on a plain flat dark black background, light from upper left.",
+      "note": "model painted a sitter wearing a beaded chain with pearl strand; only the U-shaped chain was kept and cooled toward silver"
+    },
+    {
+      "layer": "layers/frames/rare.png",
+      "seed": 8203,
+      "source_sha256": "b055b43162003ee34d49ff1fc6fc1c282d15d3e074820927e7a3abc72e105454",
+      "suffix": "Straight-on frontal view of an empty chased silver picture frame, cool grey silver with soft highlights, engraved chased moulding, wide rails, plain black empty centre, filling the whole image edge to edge.",
+      "note": "model painted a silver frame round a drawing, slightly angled, right rail cut off"
+    }
+  ],
+  "editReference": "template/master-reference.png used for placement and preview only",
+  "cutout": [
+    "headwear: red-dominant (r>1.6g, r>1.5b) or dark pixels inside box x136-609 y75-374, 1 px box feather, scaled 1.5x, brim centre (372,330) placed at (990,770) under the crown seat (969,680); right edge about x1347, clear of banner arms; no skin",
+    "regalia: pixels with local 7x7 luminance s.d.>22 and lum>60 inside x141-549 y456-659 minus the throat (y<560, x201-469); colour mixed 65% toward grey for silver; 1 px feather; scaled 1.9x, source (342,560) at (1000,1420)",
+    "frame: left half of painted frame resampled piecewise-linear (outer x60, opening x145, centre x373; y 22/97/770/828) to canvas edge, aperture (144,144)-(1904,2368) and centre, then mirrored for the right half; aperture alpha 0, rails alpha 255; rail-arms clear space (962,2392)-(1086,2536) filled from the painted bottom rail 420 px to its left; colour 40% desaturated toward cool grey",
+    "bilinear resampling; no pixel drawn by code"
+  ],
+  "delivered": [
+    {
+      "path": "layers/headwear/rare.png",
+      "bytes": 1195844,
+      "sha256": "e62bcdd5ee5a49751f3b22be60a996608194fb36069c95c7a4fac8e91e0dfe7e"
+    },
+    {
+      "path": "layers/regalia/rare.png",
+      "bytes": 1332651,
+      "sha256": "4429dd34719a1f7922a55725eabc92a35472ded19f28709cbb89571b3002784d"
+    },
+    {
+      "path": "layers/frames/rare.png",
+      "bytes": 1021912,
+      "sha256": "39c2278849d35cf0327ea525337abd340e69ea206c13e00eb95fb215bb4bcb54"
+    }
+  ],
+  "seen": "512x640 preview on master-reference with all three: oxblood velvet cap sits on the crown with five pearl/silver beads along the brim, edges clean; silver beaded chain forms a U across the shoulders with a small pendant and a pearl strand on the right; frame reads as cool grey chased silver with carved corners. Weaknesses: cap reads as a beret, the brim beads look pasted, the chain is thin, bottom rail shows a seam at the mirror line; it is not inpainted so light only roughly matches."
+}
