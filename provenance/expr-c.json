@@ -1,0 +1,189 @@
+{
+  "target": "expr-c",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "Pollinations image API, free tier (image.pollinations.ai)",
+    "name": "sana (the only model the endpoint lists)",
+    "mode": "text-to-image; the free endpoint offers no inpainting or image-to-image, so the master reference could not be sent as an edit input",
+    "requested": {
+      "width": 1024,
+      "height": 1280
+    },
+    "returned": {
+      "width": 686,
+      "height": 858,
+      "format": "JPEG"
+    },
+    "params": {
+      "nologo": true,
+      "private": true,
+      "enhance": false,
+      "model": "sana",
+      "negative_prompt": "style-guide.md Negative prompt, verbatim"
+    },
+    "notExposed": "guidance, steps, sampler and model revision are not exposed; whether negative_prompt is honoured is not confirmed"
+  },
+  "prompt": {
+    "locked": "style-guide.md Locked prompt, verbatim",
+    "negative": "style-guide.md Negative prompt, verbatim",
+    "order": "layer text placed before the locked prompt (the master run found sana ignores text after the long locked prompt)",
+    "suffixes": {
+      "dim-grin": "Close-up oil painting of the face of a big green frog, head fills the frame, three-quarter view facing left, heavy sleepy drooping eyelids half closed over the eyes at uneven heights, one lid lower than the other, dopey vacant look, wide slack open-mouthed grin showing a row of blunt flat teeth, full muted-red lips, smooth moss-green frog skin, no clothes, plain dark umber background.",
+      "scowl (seed 701)": "Close-up oil painting of the face of a big grumpy green frog, frog head with bulging frog eyes and a wide frog mouth fills the frame, no human features, furious frowning frog, thick green brow ridges pressed down low over the frog eyes, heavy lowered eyelids glaring, wide frog mouth in a hard downturned frown, thick pouting muted-red lower lip pushed out, smooth moss-green amphibian skin, no clothes, plain dark umber background.",
+      "scowl (seed 804)": "Oil painting of the head of an angry grumpy old green toad glaring furiously, deep V-shaped frown furrows between the eyes, thick angry brow ridges slanting down toward the snout, eyelids half lowered in a glare, wide sulking mouth with corners turned sharply down, pouting thick muted-red lower lip pushed out, frog, amphibian, no human, plain dark background."
+    }
+  },
+  "candidates": {
+    "dim-grin": "seeds 501-505; 505 used for the mouth (wide open grin, row of teeth), 502 for both lids (heavy sleepy lids)",
+    "scowl": "seeds 601-605 (human sitters, rejected), 701-705 (frog, weak anger), 801-807 (mostly human, rejected); 804 used for both lids (heavy brow pressed over hooded eyes), 701 for the mouth (full pouting lower lip)"
+  },
+  "sources": [
+    {
+      "use": "dim-grin lids",
+      "seed": 502
+    },
+    {
+      "use": "dim-grin mouth",
+      "seed": 505
+    },
+    {
+      "use": "scowl lids",
+      "seed": 804
+    },
+    {
+      "use": "scowl mouth",
+      "seed": 701
+    }
+  ],
+  "editReference": "template/master-reference.png and layers/skins/moss.png as the registration target (landmarks from template/master-reference.json: eyes (680,936)/(1040,912), measured mouth corners (680,1148)/(1200,1104)); not sent to the model, which cannot take one",
+  "registration": {
+    "dim-grin": {
+      "lids": [
+        {
+          "src": "dim-grin-502.jpg",
+          "sx": 145,
+          "sy": 302,
+          "dx": 680,
+          "dy": 940,
+          "kx": 1.45,
+          "ky": 1.45,
+          "rot": -4,
+          "rx": 60,
+          "up": 80
+        },
+        {
+          "src": "dim-grin-502.jpg",
+          "sx": 340,
+          "sy": 298,
+          "dx": 1040,
+          "dy": 888,
+          "kx": 1.15,
+          "ky": 1.15,
+          "rot": -4,
+          "rx": 96,
+          "up": 90
+        }
+      ],
+      "mouth": {
+        "src": "dim-grin-505.jpg",
+        "sx": 334,
+        "sy": 465,
+        "dx": 940,
+        "dy": 1126,
+        "kx": 1.13,
+        "ky": 0.92,
+        "rot": -4.8,
+        "bend": -10,
+        "hw": 262,
+        "mrx": 300,
+        "mtop": 56,
+        "mbot": 205
+      }
+    },
+    "scowl": {
+      "lids": [
+        {
+          "src": "scowl3-804.jpg",
+          "sx": 245,
+          "sy": 296,
+          "dx": 680,
+          "dy": 942,
+          "kx": 0.85,
+          "ky": 1.1,
+          "rot": 22,
+          "rx": 62,
+          "up": 120
+        },
+        {
+          "src": "scowl3-804.jpg",
+          "sx": 435,
+          "sy": 296,
+          "dx": 1040,
+          "dy": 914,
+          "kx": 1.2,
+          "ky": 1.25,
+          "rot": -20,
+          "rx": 100,
+          "up": 130
+        }
+      ],
+      "mouth": {
+        "src": "scowl2-701.jpg",
+        "sx": 356,
+        "sy": 548,
+        "dx": 940,
+        "dy": 1126,
+        "kx": 0.88,
+        "ky": 0.95,
+        "rot": -4.8,
+        "bend": 150,
+        "hw": 240,
+        "mrx": 290,
+        "mtop": 50,
+        "mbot": 150
+      }
+    }
+  },
+  "cutOut": [
+    "Each lid: similarity transform (scale, rotation) mapping the painting's upper lid edge at the eye centre onto the target lid line; dim-grin far lid at eye centre +4 px and near lid at centre -24 px (uneven); scowl lids rotated +22/-20 deg so they slope down toward the snout. Mask: region above the lid line, feathered 6 px, inside a smooth brow ellipse; nothing below 30 px under the eye centre.",
+    "Mouth: similarity transform onto the measured mouth corners with a quadratic vertical bend (dim-grin -10 px slack, scowl +150 px at the corners for the downturned arch), soft elliptical mask.",
+    "Split by colour key on the model paint: reddish, white (teeth) and dark-interior pixels go to <name>.png; green skin pixels go to <name>.skin.png.",
+    "Skin parts colour-matched to moss.png by per-channel mean/std transfer over the masked region, so the compositor tone matrix recolours them per skin; lip pixels muted 20-25% toward their own luminance.",
+    "All masks multiplied by moss.png alpha, so nothing falls outside the bust. No pixels were drawn by code: every painted pixel is a resampled model pixel."
+  ],
+  "looked": "Stacked over moss.png + layers/eyes/amber.png, and through bin/render.cjs with a throwaway test/scratch catalog carrying skinPaint, on moss and on peat with a throwaway tone matrix (peat has no tone in the checked-in catalog yet). dim-grin reads at preview size as dopey: far lid low over the top half of the iris, near lid higher, wide slack open grin with a row of teeth and pink-red interior. scowl reads as sulky-angry: lids slant down toward the snout over both irises, mouth a downturned arch with a thick pouting lower lip. Irises stay readable in both. Weaknesses: the teeth from seed 505 are pointed rather than blunt; scowl brows are heavy lids rather than a deep furrow; lid patch edges show slight sheen/texture mismatch at 100%; the model output is 686x858 JPEG, so these regions are upsampled about 1.1-1.5x and softer than the bust; no remnant of the reference bust is in either layer.",
+  "delivered": [
+    {
+      "path": "layers/expressions/dim-grin.png",
+      "bytes": 192106,
+      "sha256": "3fcae593996701ff8f3b01219aa64eb470ec9d7bc15677a7e4d821c83aabb66d",
+      "width": 2048,
+      "height": 2560,
+      "format": "RGBA8 straight alpha PNG"
+    },
+    {
+      "path": "layers/expressions/dim-grin.skin.png",
+      "bytes": 179881,
+      "sha256": "4592c061fac53f4440a9f65ee9811e5b1b00e8c6877e546536ddf5d522e1686c",
+      "width": 2048,
+      "height": 2560,
+      "format": "RGBA8 straight alpha PNG"
+    },
+    {
+      "path": "layers/expressions/scowl.png",
+      "bytes": 110472,
+      "sha256": "538f4e48222db34b686f6aedd5ed279bf79bd1ac63d65f54399a2250ee5d117d",
+      "width": 2048,
+      "height": 2560,
+      "format": "RGBA8 straight alpha PNG"
+    },
+    {
+      "path": "layers/expressions/scowl.skin.png",
+      "bytes": 235767,
+      "sha256": "006134e4b63735e599ddc78655c4147f8eba6f09bb57b1bb37279a61acba16a8",
+      "width": 2048,
+      "height": 2560,
+      "format": "RGBA8 straight alpha PNG"
+    }
+  ]
+}
