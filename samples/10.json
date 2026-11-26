@@ -1,0 +1,376 @@
+{
+  "study": "10",
+  "input": {
+    "wallet": "kekborn-study-10",
+    "tier": "legendary",
+    "genetics": {
+      "skin": "skin.ivory",
+      "eyes": "eyes.silver"
+    },
+    "traits": {
+      "category": "artisan",
+      "expression": "expression.amused",
+      "background": "background.oak-gallery",
+      "banner": "banner.vert-pennon"
+    },
+    "artSeed": "sitting-10"
+  },
+  "render": {
+    "tool": "bin/render.cjs",
+    "schema": "kekborn-render@1",
+    "seed": "1fa4e104f8f4f820eb68d1d3b0ec8efd03f08add274a9e1f8be4d30d025a6065",
+    "tier": "legendary",
+    "category": "artisan",
+    "canvas": {
+      "width": 2048,
+      "height": 2560
+    },
+    "finish": {
+      "pass": "raster.finish",
+      "count": 1,
+      "afterLayer": 12,
+      "seed": "seed"
+    }
+  },
+  "layers": [
+    {
+      "index": 0,
+      "group": "background",
+      "kind": "catalog",
+      "id": "background.oak-gallery",
+      "slot": "background",
+      "path": "layers/backgrounds/oak-gallery.png",
+      "sha256": "f495a6a316091a5ed5606d641f3b4d6096530e5b07111c73677eda0e143e3427",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 1,
+      "group": "banner",
+      "kind": "catalog",
+      "id": "banner.vert-pennon",
+      "slot": "banner",
+      "path": "layers/banners/vert-pennon.png",
+      "sha256": "0f4acb272359a671c7bc92dd245634c310d7b9ec59569525e07792a4092da58a",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 2,
+      "group": "banner-arms",
+      "kind": "procedural",
+      "id": "arms:banner-arms",
+      "imageSha256": "110625555fa3d26c3fd53342c6c65920453b3f270f51c81c84b9ef9a72713784",
+      "source": "heraldry.buildArms",
+      "placement": {
+        "x": 1500,
+        "y": 340,
+        "width": 240,
+        "height": 288
+      }
+    },
+    {
+      "index": 3,
+      "group": "skin",
+      "kind": "catalog",
+      "id": "skin.ivory",
+      "slot": "skin",
+      "path": "layers/skins/ivory.png",
+      "sha256": "1f25e177b1d87a473054f19beea4cb6093d5aaba70209f600ed614c32595b30d",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 4,
+      "group": "eyes",
+      "kind": "catalog",
+      "id": "eyes.silver",
+      "slot": "eyes",
+      "path": "layers/eyes/silver.png",
+      "sha256": "ab76cef3a130a582b6a0c2724782e333051a70e2aaee257667e34db8f5e56fdd",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 5,
+      "group": "expression",
+      "kind": "skinPaint",
+      "id": "expression.amused",
+      "slot": "expression",
+      "path": "layers/expressions/sly.skin.png",
+      "sha256": "5f684f01f283d5b86375085d7c3412c56b76a7795776d265f7002520a9998377",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 6,
+      "group": "expression",
+      "kind": "catalog",
+      "id": "expression.amused",
+      "slot": "expression",
+      "path": "layers/expressions/sly.png",
+      "sha256": "3adce24f5fcb5239e8c056364338bd7aee96b3484eb5a98b66df51a6fd9805c2",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 7,
+      "group": "attire-front",
+      "kind": "catalog",
+      "id": "attire-front.artisan-garb",
+      "slot": "attire-front",
+      "path": "layers/attire/artisan/attire-front.artisan-garb.png",
+      "sha256": "b3ff00ced9f348029203b1e7d148561654e6de599da8aa19bb7186b01ac87610",
+      "source": "match",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 8,
+      "group": "headwear",
+      "kind": "catalog",
+      "id": "headwear.legendary",
+      "slot": "headwear",
+      "path": "layers/headwear/legendary.png",
+      "sha256": "106f7eb57e6228c394f6672d0a86921ba402abf6fb56b6e9c5b923e8eb513ed7",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 9,
+      "group": "regalia",
+      "kind": "catalog",
+      "id": "regalia.legendary",
+      "slot": "regalia",
+      "path": "layers/regalia/legendary.png",
+      "sha256": "e9cd7dd5f2c723a76bdde1841c799d33ed0e6e890e41c7b8667a7d0944ba1c44",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 10,
+      "group": "prop-front",
+      "kind": "catalog",
+      "id": "prop-front.artisan-brushes",
+      "slot": "prop-front",
+      "path": "layers/attire/artisan/prop-front.artisan-brushes.png",
+      "sha256": "67378bbeac66015d7afc5a4e041c46919a1aa57a035b272790ca122741a0ce09",
+      "source": "match",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 11,
+      "group": "frame",
+      "kind": "catalog",
+      "id": "frame.legendary",
+      "slot": "frame",
+      "path": "layers/frames/legendary.png",
+      "sha256": "7a8cc73aca96e8adc25c90f2493962a6f46d3a680d5b2085d1667ac1ae1eb169",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 12,
+      "group": "rail-arms",
+      "kind": "procedural",
+      "id": "arms:rail-arms",
+      "imageSha256": "110625555fa3d26c3fd53342c6c65920453b3f270f51c81c84b9ef9a72713784",
+      "source": "heraldry.buildArms",
+      "placement": {
+        "x": 974,
+        "y": 2404,
+        "width": 100,
+        "height": 120
+      }
+    }
+  ],
+  "arms": {
+    "choices": {
+      "tincture": {
+        "field": {
+          "name": "azure",
+          "hex": "#2B4A7A"
+        },
+        "secondary": {
+          "name": "sable",
+          "hex": "#32251F"
+        },
+        "metal": {
+          "name": "or",
+          "hex": "#C9A45A"
+        },
+        "charge": {
+          "name": "vert",
+          "hex": "#253E32"
+        }
+      },
+      "division": "plain",
+      "ordinary": "cross",
+      "charge": "trefoil"
+    },
+    "imageSize": {
+      "width": 240,
+      "height": 288
+    },
+    "imageSha256": "110625555fa3d26c3fd53342c6c65920453b3f270f51c81c84b9ef9a72713784",
+    "parts": [
+      {
+        "path": "layers/heraldry/fields/plain.png",
+        "sha256": "d540dabd1e819f89d8337972a2d4bd9ca8c910f1df8c007856270e3919f55087"
+      },
+      {
+        "path": "layers/heraldry/ordinaries/cross.png",
+        "sha256": "c6132c375be7aaf9454ec5952c877e5e760d1f979932a0ec9b9db19108109fdf"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil-keyline.png",
+        "sha256": "1976e8d8a1f2c01cae30465beff7e42e29d6d1aa175d6a7d6376e7c1cdbde805"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil-fimbriation.png",
+        "sha256": "d302c0bdcd455f966211cb486302f26ad336ace08b0a9e90553b335db725f505"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil.png",
+        "sha256": "7f208678e7a8ef0cfe19d4738c8d8e87876463d12458278ff38f96f05e80e0a2"
+      },
+      {
+        "path": "layers/heraldry/fields/edge-keyline.png",
+        "sha256": "5ede79bac9104f554b3fc5a9e18a690d806e524930c42981e81f316911810226"
+      },
+      {
+        "path": "layers/heraldry/fields/edge-fillet.png",
+        "sha256": "3637b5b3189292926eb5db3c329d10d65282f82d16971a23e594eb5ecf39871b"
+      }
+    ],
+    "placements": {
+      "banner": {
+        "x": 1500,
+        "y": 340,
+        "width": 240,
+        "height": 288
+      },
+      "rail": {
+        "x": 974,
+        "y": 2404,
+        "width": 100,
+        "height": 120
+      }
+    }
+  },
+  "masters": {
+    "plain": {
+      "width": 2048,
+      "height": 2560,
+      "sha256": "ae57f85707f80d39cb52d819109b4adec65dae3fa170985906029984e257cb5a",
+      "committed": false
+    },
+    "harmonised": {
+      "width": 2048,
+      "height": 2560,
+      "sha256": "d1c3993a564ca2fc4e504a3dd85b0d61eba03bb60c920d8dbf6edf93f17861ad",
+      "committed": false
+    }
+  },
+  "previews": {
+    "plain": {
+      "path": "samples/10-plain.jpg",
+      "width": 1024,
+      "height": 1280,
+      "quality": 90,
+      "bytes": 547940,
+      "sha256": "bf380115ccbedba3a44b81ad0e2c9ec4b2bf85a1d20e17e26bfb2a52a69c360c"
+    },
+    "harmonised": {
+      "path": "samples/10-harmonised.jpg",
+      "width": 1024,
+      "height": 1280,
+      "quality": 90,
+      "bytes": 514853,
+      "sha256": "7b780130c12057bdade9aacbe1ce004d732d566911c15fed313ab2efe8f47f4a"
+    }
+  },
+  "harmonise": {
+    "tool": "bin/harmonise.cjs",
+    "service": "AI Horde (aihorde.net), anonymous key",
+    "model": "AlbedoBase XL (SDXL)",
+    "mode": "img2img",
+    "strength": 0.22,
+    "seed": 1536,
+    "sampler": "k_euler_a",
+    "karras": true,
+    "steps": 24,
+    "cfgScale": 6,
+    "modelCanvas": {
+      "width": 832,
+      "height": 1024,
+      "note": "plain master downscaled (lanczos3) to this size as the source image; model output upscaled (lanczos3) to 2048x2560 before apply"
+    },
+    "worker": "t63c_5080",
+    "requestId": "3e6bb818-9ed3-4952-81a0-7197bc42f56b",
+    "modelOutputSha256": "d6429d54132772ac6cac9ff1b4f9af15ff05696cbb613684fb8c5ae135d2859e",
+    "prompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+    "aperture": {
+      "x": 144,
+      "y": 144,
+      "width": 1760,
+      "height": 2224
+    },
+    "applyMix": "up to 22% model RGB inside aperture, frame rails, plaque and rail arms byte-identical"
+  }
+}
