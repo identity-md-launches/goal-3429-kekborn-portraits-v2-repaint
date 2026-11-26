@@ -1,0 +1,63 @@
+{
+  "target": "eyes",
+  "model": "OpenAI built-in image generation, reference-guided edit",
+  "settings": {
+    "transparentBackground": false,
+    "generatedWidth": 1774,
+    "generatedHeight": 887,
+    "seed": null,
+    "editStrength": null,
+    "mask": "Text-directed socket edit; the tool does not expose a pixel mask, seed or strength."
+  },
+  "editReference": {
+    "path": "template/master-reference.png",
+    "bytes": 1583717,
+    "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+  },
+  "promptSource": "Locked and negative prompts in style-guide.md",
+  "promptSuffix": "Layer-specific edit: make a 4 columns by 2 rows contact sheet of tight crops of the SAME frog face from this reference, each with its two sockets inpainted, keeping pose, anatomy and lighting. Crop the face close, eyebrows through mouth. The two eyeballs are unoccluded large wet painted globes, no eyelids included in the eyeball paint, dark oval pupils slightly offset to image-left, irises clear with upper-left warm ivory catchlights. Modest dark olive-brown sclera, no human white sclera. All same pose and exact slight left gaze except final cell. Row 1: amber, brass, hazel, olive. Row 2: sienna, silver, umber, strong paranoid side-eye (amber irises both shoved to far image-left). Only eyes change. No labels or text. This must be a 4 by 2 grid of eight distinct edits. Match source much more closely than the global style prompt and do not add attire or accessories.",
+  "cutout": "Extracted only the painted globe interiors from each model edit, with a slanted crop for the foreshortened far globe. Bilinearly registered each cutout to the measured socket and bed envelopes, with a five-pixel allowance and feather, clipped to the moss silhouette. Exported full-canvas 2048 × 2560 straight-alpha RGBA PNGs.",
+  "review": "Inspected a half-scale grid of all eight over moss and the full 1024 × 1280 amber preview. Near eyes retain visible radial strokes and cream catchlights. Hazel and umber are close at half scale, silver reads warm grey, and side-eye is clearest on the near eye. The far pupil is partly foreshortened at the silhouette. The existing moss contours frame the eyes.",
+  "files": [
+    {
+      "path": "layers/eyes/amber.png",
+      "bytes": 90892,
+      "sha256": "c017c074f2cfd28e51e55961e2abe209420a546b2eb527c23bb4a6411afeb772"
+    },
+    {
+      "path": "layers/eyes/hazel.png",
+      "bytes": 90980,
+      "sha256": "25af25247c8b391e30c49ad8e3e88ce7c4433dcd33a3d4eb0f07b7ff4677a053"
+    },
+    {
+      "path": "layers/eyes/olive.png",
+      "bytes": 88024,
+      "sha256": "78f9c2d0d4322a5d0ae5eaf14c3a62da4d159dc2ed5ef5bbcc3746eaff9432e8"
+    },
+    {
+      "path": "layers/eyes/brass.png",
+      "bytes": 90606,
+      "sha256": "631000c05ce6b1aaa0874967efc55ecec1d6209e931a8b93a1dc6c9b938d1bea"
+    },
+    {
+      "path": "layers/eyes/silver.png",
+      "bytes": 92953,
+      "sha256": "ab76cef3a130a582b6a0c2724782e333051a70e2aaee257667e34db8f5e56fdd"
+    },
+    {
+      "path": "layers/eyes/sienna.png",
+      "bytes": 87970,
+      "sha256": "5c4b1e8572e11db1a2831ca8cfc5938b275b2fe8a0b41781b6de6a724668faa4"
+    },
+    {
+      "path": "layers/eyes/umber.png",
+      "bytes": 86728,
+      "sha256": "6aa832cc4f2937795d47e5a3de30304580d8954bfc9bb7b481fa1e652346477d"
+    },
+    {
+      "path": "layers/eyes/side-eye.png",
+      "bytes": 91617,
+      "sha256": "cac6cb6c64cd6a7d02e7c5b9fca9289fa55c1ddde92519c0c90b1ba938f3ed6a"
+    }
+  ]
+}
