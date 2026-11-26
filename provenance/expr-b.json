@@ -1,0 +1,102 @@
+{
+  "schema": "kekborn-paint-provenance@1",
+  "target": "expr-b",
+  "model": "OpenAI ImageGen (built-in image editor)",
+  "settings": {
+    "mode": "reference-guided image editing",
+    "reference": "template/master-reference.png",
+    "transparentBackground": false,
+    "seed": null,
+    "editStrength": null,
+    "pixelMask": null,
+    "negativePromptTransport": "Inline in the prompt. The tool has no separate negative prompt field.",
+    "unavailable": [
+      "exact model revision",
+      "seed",
+      "edit strength",
+      "pixel mask"
+    ]
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "expressions": [
+    {
+      "name": "paranoid-side-eye",
+      "promptSuffix": "Edit the attached registered master reference directly. Paint only the frog's facial expression in the existing painted green anatomy with upper-left lighting. Preserve the exact reference composition, head silhouette, gaze centres and position of muzzle. Keep existing shoulders and background in place. Narrow both lids into tense asymmetric slits, with the top lids coming low onto the irises while the pupils remain visible. Pinch the brow, tense the cheeks. Side-eye gaze. Thin pressed muted oxblood lips with a crooked lateral pull to the viewer's right. No smile or open mouth.",
+      "sourceDimensions": {
+        "width": 1121,
+        "height": 1403
+      },
+      "sourceSha256": "52fab89096450f09d3f40c505ffdea50d1e5fce64225110d44bfdf0fbd5a7935"
+    },
+    {
+      "name": "startled",
+      "promptSuffix": "Edit the attached registered master reference directly. Paint only the frog's facial expression in the existing painted green anatomy with upper-left lighting. Preserve the exact reference composition, head silhouette, gaze centres and position of muzzle. Keep existing shoulders and background in place. Eyes pulled wide open, high raised moss-green eyebrow ridges, tense cheeks, a large round open O of surprise with dark deep burgundy interior, muted-red full lips, no teeth. The O is integrated into a broad painted frog muzzle.",
+      "sourceDimensions": {
+        "width": 1121,
+        "height": 1403
+      },
+      "sourceSha256": "6679fa4831615532e56beea46a430540338985e7458f5bb161225882e7d53c33"
+    }
+  ],
+  "export": {
+    "dimensions": {
+      "width": 2048,
+      "height": 2560
+    },
+    "format": "straight-alpha RGBA8 PNG",
+    "method": "Registered individual painted regions to the measured moss sockets and muzzle using local scaling, translation and shear. Bilinearly resampled model pixels and traced feathered alpha mattes around the eyelid, brow, cheek and lip paint. Clipped to the moss silhouette and excluded the generated eye interiors to expose catalog iris paint. Muted the colors with channel adjustments. The skin files carry recolorable facial modeling. The main files carry the original model's lip paint, mouth interior where visible and adjacent dark glazes. No procedural pigment, varnish or cracks were added."
+  },
+  "review": {
+    "method": "Rendered four portraits via the repository compositor and a scratch catalog with skinPaint entries. Inspected face details at 1024x1280 preview scale. Exercised recoloring with a scratch-only lichen tone matrix.",
+    "eyeSourceCommit": "7df760b04990be5a892ded22124d784ecdb7c53b",
+    "observations": [
+      "On moss the pinched brows and tight, off-center oxblood mouth read as wary. Raised brow arches, a fuller iris aperture and the dark O read as startled.",
+      "Lichen retains the expression shapes after recoloring. The current lichen bust has a wider snout and a lower neutral mouth seam that remains visible at the left. There is also a texture and color transition at the muzzle and brows. The cutouts use the painted moss master for registration.",
+      "The far eye sits at the painted moss silhouette and the landed eye can project slightly in these previews."
+    ],
+    "remaining": "The catalog target owns production skinPaint registration. Final alternate-skin fit depends on the separately repainted skin layers.",
+    "lichenScratchTone": [
+      [
+        0.36,
+        0.45,
+        0,
+        30
+      ],
+      [
+        0.17,
+        0.58,
+        0,
+        26
+      ],
+      [
+        0,
+        0.28,
+        0.46,
+        16
+      ]
+    ]
+  },
+  "files": [
+    {
+      "path": "layers/expressions/paranoid-side-eye.png",
+      "bytes": 49074,
+      "sha256": "c2a7a83a01a5100b52086b66710eb7346d6fe9e668a0ebcec2c0480df331dff7"
+    },
+    {
+      "path": "layers/expressions/paranoid-side-eye.skin.png",
+      "bytes": 370465,
+      "sha256": "3cc9eae54b4e0f976d20310eb771f3f504034ee09cdc06fa9752c5e46d2e6822"
+    },
+    {
+      "path": "layers/expressions/startled.png",
+      "bytes": 104514,
+      "sha256": "a03442734c3b03b8c062640b716eb5d91cf83b90fec17b4d668d5e48a6efec18"
+    },
+    {
+      "path": "layers/expressions/startled.skin.png",
+      "bytes": 375768,
+      "sha256": "5415674869d4c04fa721337c06ac2c70f05fa47022c28e3b82907b737965331b"
+    }
+  ]
+}
