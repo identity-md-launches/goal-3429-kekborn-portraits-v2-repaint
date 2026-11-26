@@ -47,7 +47,7 @@
       "tier": "Common",
       "material": "plain wood",
       "path": "layers/frames/common.png",
-      "sha256": "404d25da53192d2205211365bf3309b15004b6beba8e4c5924b9f1f5ea24d62a",
+      "sha256": "7848f3f8b64d658bb7c58db294bf447e55c8022e2b39f1507cc4702ee94e6b2f",
       "alpha": "Transparent aperture; opaque rails, including the arms reserve and its clear space.",
       "finishBakedIn": false
     }

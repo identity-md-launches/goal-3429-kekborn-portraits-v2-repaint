@@ -5,13 +5,15 @@
       "id": "headwear.common",
       "slot": "headwear",
       "path": "layers/headwear/common.png",
-      "tier": "common"
+      "tier": "common",
+      "description": "Plain black wool Tudor flat cap: softly gathered low crown, narrow sewn band and warm upper-left brush highlights; no jewels or ornament. Image-model inpaint on the registered master bust, isolated with soft alpha edges and seated over the crown, clear of banner arms."
     },
     {
       "id": "regalia.common",
       "slot": "regalia",
       "path": "layers/regalia/common.png",
-      "tier": "common"
+      "tier": "common",
+      "description": "Simple cream linen turn-down collar with softly folded points, warm glazed creases and a thin dark umber cord tied at centre front. Image-model inpaint on the master bust, isolated without skin and registered to the neck/garment opening; no chain, gems or embroidery."
     }
   ]
 }

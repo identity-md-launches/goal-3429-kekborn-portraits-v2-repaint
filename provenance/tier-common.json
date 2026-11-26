@@ -1,0 +1,172 @@
+{
+  "schema": "kekborn-layer-provenance@1",
+  "target": "tier-common",
+  "batch": "kekborn-v2-build",
+  "summary": "Repainted the common tier as a black wool Tudor flat cap, simple cream linen collar with dark cord, and plain lightly moulded dark wood frame. All colour and material brushwork was made by an image model; local code only isolated, registered, resampled and encoded the supplied paint.",
+  "model": {
+    "service": "OpenAI ImageGen",
+    "tool": "image_gen.imagegen",
+    "modelRevision": "Not exposed by the tool",
+    "seed": null,
+    "seedNote": "No seed control exposed",
+    "sampler": null,
+    "steps": null,
+    "guidance": null,
+    "quality": "Not exposed",
+    "calls": [
+      {
+        "id": "inpaint",
+        "mode": "reference-image edit",
+        "reference": "template/master-reference.png",
+        "transparent_background": false,
+        "returned": {
+          "width": 1121,
+          "height": 1403,
+          "format": "PNG"
+        }
+      },
+      {
+        "id": "frame",
+        "mode": "text-to-image",
+        "transparent_background": true,
+        "returned": {
+          "width": 1122,
+          "height": 1402,
+          "format": "PNG"
+        }
+      },
+      {
+        "id": "cutouts",
+        "mode": "reference-image edit of inpaint result",
+        "transparent_background": true,
+        "returned": {
+          "width": 1122,
+          "height": 1402,
+          "format": "PNG"
+        }
+      }
+    ],
+    "transportNote": "The advertised generated-image filesystem path was unavailable. The returned PNG data was decoded into scratch space. One attempt to pass that unavailable path to the cutout edit failed; the successful edit used the recent generated image as reference."
+  },
+  "prompts": {
+    "locked": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "negative": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+    "inpaintSuffix": "EDIT THE PROVIDED REGISTERED MASTER BUST, retaining its exact composition, head size, position and silhouette. Inpaint ONLY two common-tier clothing elements onto this exact sitter. 1. A plain BLACK WOOL TUDOR FLAT CAP, low, broad, softly gathered wool crown and a narrow sewn brim/band, visibly hand-brushed charcoal wool with subtle warm ochre highlights from upper left, without jewels, feathers, embroidery or brooch. Seat the cap across the top of this actual frog skull, crown-seat anchor at (969,680) on the 2048x2560 canvas; front band overlaps the green skull down to about y740, side returns follow the head; keep below eye area clear, and keep all cap paint left of x1476 above y652. 2. A SIMPLE CREAM LINEN COLLAR around the actual neck base, narrow standing back and folded pointed soft linen lobes at front, modest and lightly rumpled, with a thin DARK UMBER CORD tied at centre front with a tiny knot and short hanging ends. Neck opening anchor (978,1600), ellipse radii 210x64; collar should cover the neck-to-garment join, upper edge at about y1515, lower lobes to y1720, tie to y1810. The collar and cap are unadorned and clearly common-tier, but brushwork is rich with linen threads, wool strokes and glazed warm shadows. Paint no other clothing, frame or accessories. Keep the eyes and entire frog anatomy unchanged. Preserve whole 4:5 canvas and original scale; no crop, no zoom. These are original painted asset designs, not copies. Shared overall finishing will be applied later; keep local material brushwork and shadow, without a heavy global crack or varnish overlay.",
+    "frameSuffix": "ASSET: THE COMMON-TIER PICTURE FRAME ONLY. Create an original hand-painted trompe-l'oeil plain DARK WOOD picture frame, completely straight-on, square corners and exact rectangular edges, 4:5 canvas 2048x2560. The frame fills the entire canvas edge-to-edge, with no outer margin. Four opaque rails in deep warm walnut/umber wood with brushed longitudinal grain, subtle upper-left warm light, modest moulding: a plain narrow outer bead, broad gently convex centre, slim bevel towards opening. Plain honest wood, no carvings, no gold, no jewels, no plaque, no decoration, no coat of arms. It looks like oil paint rather than a photo: rich broad brushstrokes on the grain, soft glazes in the recesses, warm ochre on upper-left bevels. Exact inner aperture runs from (144,144) top-left to (1904,2368) bottom-right, and must be COMPLETELY EMPTY AND TRANSPARENT, with no sitter or background in the aperture. Left, top and right rails each 144 pixels wide; bottom rail is 192 pixels high. All rails are fully opaque including all four image corners. Bottom centre at x962–1086,y2392–2536 must be quiet, plain opaque continuous wood suitable for a later heraldic shield overlay: paint no shield or marks there. Image contains only the painted dark wood frame, no portrait, no frog, no object or lettering in the transparent opening. No perspective or camera tilt, no drop shadow outside the canvas. Material texture only; global finishing pass is added later.",
+    "cutoutSuffix": "CUTOUT EDIT of the supplied painting, not a new composition. Remove the whole frog, all skin, all background and all ground shadows, and retain ONLY these exact two painted objects: the black wool flat cap at the upper head position, and the cream linen collar with its tiny dark cord knot and two hanging cord ends at the throat position. Do not leave any green or brown skin between the collar halves, inside the neck opening, beneath the brim or between the cord ends. Keep the entire 4:5 canvas, no crop, no zoom, exact same position, scale, silhouette and brushwork for both items. Preserve translucent, softly antialiased oil-paint edges. The neck opening is transparent and every gap outside fabric or cord is transparent. Separate cap and collar, with no contact. Nothing else visible. This is a production isolated layer sheet with real alpha transparency, not a painted checkerboard. The cap and collar stay hand-painted, with their original warm upper-left light. Do not add ornaments, linen pattern, cracks or finish.",
+    "assembly": "Locked prompt, newline LAYER-SPECIFIC DESCRIPTION and the suffix, newline NEGATIVE PROMPT and the unchanged negative prompt."
+  },
+  "references": {
+    "style": "style-guide.md",
+    "registration": "template/master-reference.json",
+    "bust": "template/master-reference.png",
+    "paintingContract": "docs/painting.md"
+  },
+  "export": {
+    "canvas": {
+      "width": 2048,
+      "height": 2560,
+      "format": "straight RGBA8 sRGB"
+    },
+    "encoder": "src/raster.encodePNG, no new dependencies",
+    "clothingCutout": "The model removed the reference bust and background, including the neck opening and cord gaps. Separated the resulting sheet into cap and collar without copying skin. Alpha below 16 removed as matte dust, alpha >=245 normalised to 255 before premultiplied bilinear resampling; intermediate edge coverage retained. Source isolation boxes, exclusive: cap [260,265,810,565], collar [345,590,775,855].",
+    "headwearRegistration": "Source x = master x * 1122/2048. Source y = (master y - shift(x)) * 1402/2560. shift(x) = -55 + 80*min(1,((x-969)/(x<969?289:381))^2). This seats the central band at about y748, deepens side returns to meet the painted dome, and keeps the entire cap left of the banner reserve.",
+    "regaliaRegistration": "Source x = master x * 1122/2048. Source y = ((master y - 820)/0.6)*1402/2560. The collar is compressed vertically and lowered from the model's anatomy-fitted neckline to the library neck/garment opening; front knot about y1640 and cord ends about y1740.",
+    "frameRegistration": "Re-registered only the model-painted wood. Piecewise bilinear mapping: master x [0,144,1904,2047] -> source x [0,134,989,1121]; master y [0,144,2368,2559] -> source y [0,138,1235,1401]. Aperture [144,144,1904,2368] is exactly alpha 0. All other pixels are alpha 255, including the entire rail-arms clear space. Cropping the inner matte rim retains the painted bevel without translucent rail holes.",
+    "colourChanges": "None; no synthetic wood grain, textile strokes, texture, ornaments or RGB painting were generated by code.",
+    "sharedFinish": "No additional global finishing baked into exports. Local material glazes and upper-left lighting are model paint. Compositor applies its shared finish once."
+  },
+  "catalog": {
+    "tierCommon": "Original schema, IDs, paths and selectors retained; added material and registration descriptions.",
+    "foundation": "Changed only the sha256 of layers/frames/common.png in the existing layers entry."
+  },
+  "review": {
+    "renderCommand": "node bin/render.cjs sample-inputs/01.json test/scratch/common-sample-01.png",
+    "preview": "Scratch-only 1024x1280 JPEG quality 90; also inspected a 768x960 master overlay and a cap detail at master scale.",
+    "observation": "Black wool cap has warm upper-left strokes and a dark sewn brim in contact with the green dome; no visible floating seam, retained skin, or banner-arms collision. Cream linen points and tiny dark tie sit over the garment opening. Frame is straight-on plain brushed dark wood with warm bevel light, an entirely open rectangular aperture and unornamented continuous wood beneath the rail shield. No background halo visible around cap or collar.",
+    "limitations": "Existing master anatomy is smaller than the guide's intended full noble bust. Current sample also contains legacy eye paint, spectacles and scholar attire, including its separate standing collar; those assets belong to other targets. This target adds no final sample library, harmonised previews or contact sheet.",
+    "renderSha256": "1ba8b17f502a35a7b54d4b98de9abf483e4e15d7e1aa8ef3cd8f9e7c20c810fd"
+  },
+  "delivered": [
+    {
+      "path": "layers/headwear/common.png",
+      "bytes": 441913,
+      "sha256": "4cd8b668216b702d91c4bec00bde0fce22c4de10467805f7334284451f9199de"
+    },
+    {
+      "path": "layers/regalia/common.png",
+      "bytes": 183439,
+      "sha256": "80ea55e756b211d0ddd53288b76e38fb6049149637504ac36bd3225b4cda59ba"
+    },
+    {
+      "path": "layers/frames/common.png",
+      "bytes": 1646237,
+      "sha256": "7848f3f8b64d658bb7c58db294bf447e55c8022e2b39f1507cc4702ee94e6b2f"
+    },
+    {
+      "path": "catalog/tier-common.json",
+      "bytes": 909,
+      "sha256": "b1bd42d49fe435634ef27ff9efc864aa31d1dbeb5d8246dca98a5b65c7ad5ac1"
+    },
+    {
+      "path": "catalog/foundation.json",
+      "bytes": 4194,
+      "sha256": "e40ad6e8bc32292c72f3e44f5d907a672753f64fb34ec94209eb59bcc14ea0b7"
+    }
+  ],
+  "checks": [
+    {
+      "command": "Required tier-common + foundation acceptance command from assignment, including node --test test/raster/foundation.test.cjs",
+      "exitCode": 0,
+      "foundationPassed": 3
+    },
+    {
+      "command": "node test/scratch/verify-common.cjs",
+      "exitCode": 0,
+      "result": {
+        "apertureTransparentPixels": 3914240,
+        "opaqueRailPixels": 1328640,
+        "capPartialAlphaPixels": 14362,
+        "collarPartialAlphaPixels": 9374,
+        "centralCrownOpaqueOverlap": 55
+      }
+    },
+    {
+      "command": "node --test test/compositor/real-catalog.test.cjs test/approval/sample-inputs.test.cjs",
+      "exitCode": 0,
+      "passed": 8
+    },
+    {
+      "command": "node bin/render.cjs sample-inputs/01.json test/scratch/common-sample-01.png",
+      "exitCode": 0
+    }
+  ],
+  "removed": [],
+  "undone": "No remaining common-tier asset work identified. Final collection previews and owner approval remain separate batch targets.",
+  "sourcePaintings": [
+    {
+      "generation": "common-inpaint",
+      "bytes": 1579535,
+      "width": 1121,
+      "height": 1403,
+      "sha256": "2f6ac387ba971f3a7f5b2e934137382c19e2d5910dbdf92ad64a4bf3158939ad",
+      "retention": "Scratch only; source colour is present in the delivered isolated layers."
+    },
+    {
+      "generation": "common-frame-source",
+      "bytes": 1230710,
+      "width": 1122,
+      "height": 1402,
+      "sha256": "7301325b774d0128c842b95c2c4e6362b1db5ab380f0746b5a61979e597e009a",
+      "retention": "Scratch only; source colour is present in the delivered isolated layers."
+    },
+    {
+      "generation": "common-cutouts",
+      "bytes": 330891,
+      "width": 1122,
+      "height": 1402,
+      "sha256": "2c5e7bd5cbf96d36b9be680f946285fbae5e174a0b8ff3817775490d8ac67edb",
+      "retention": "Scratch only; source colour is present in the delivered isolated layers."
+    }
+  ]
+}
