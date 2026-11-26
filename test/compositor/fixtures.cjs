@@ -1,13 +1,13 @@
 'use strict';
 
-// Builds a self-contained fixture repository root in a temp directory: a
+// Builds a self-contained fixture repository root under test/scratch: a
 // catalog, full-canvas layer PNGs, heraldry part files, a stub heraldry module
 // and a raster shim that re-exports the real raster module. Tests never depend
 // on the shared catalog or layer library other workers are producing.
 
 const fs = require('node:fs');
-const os = require('node:os');
 const path = require('node:path');
+const { after } = require('node:test');
 
 const realRaster = require.resolve('../../src/raster/index.cjs');
 const { createImage, encodePNG, MASTER_WIDTH, MASTER_HEIGHT } = require(realRaster);
@@ -73,9 +73,17 @@ module.exports = { buildArms };
 `;
 
 let template;
+let workspace;
+
+after(() => {
+  if (workspace) fs.rmSync(workspace, { recursive: true, force: true });
+});
 
 function buildTemplate() {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'kekborn-render-tpl-'));
+  const scratch = path.resolve(__dirname, '../scratch');
+  fs.mkdirSync(scratch, { recursive: true });
+  workspace = fs.mkdtempSync(path.join(scratch, 'kekborn-render-'));
+  const dir = fs.mkdtempSync(path.join(workspace, 'template-'));
   const records = [];
   for (const [id, slot, extra, color, box] of ASSETS) {
     const rel = `layers/${slot}/${id}.png`;
@@ -103,7 +111,7 @@ function buildTemplate() {
 /** A fresh copy of the fixture root, safe to mutate in one test. */
 function fixtureRoot() {
   template ||= buildTemplate();
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'kekborn-render-'));
+  const dir = fs.mkdtempSync(path.join(workspace, 'fixture-'));
   fs.cpSync(template, dir, { recursive: true });
   return dir;
 }

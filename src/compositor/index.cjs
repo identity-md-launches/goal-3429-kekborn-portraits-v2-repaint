@@ -17,17 +17,39 @@ function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
 }
 
-function readAsset(absPath, label) {
+function readAsset(absPath, label, code = 'E_MISSING_FILE') {
   try {
     return fs.readFileSync(absPath);
   } catch (error) {
-    throw new RenderError('E_MISSING_FILE', `${label}: cannot read ${absPath} (${error.code || error.message})`);
+    throw new RenderError(code, `${label}: cannot read ${absPath} (${error.code || error.message})`);
   }
 }
 
 function pngSize(bytes) {
   if (bytes.length < 24 || bytes.toString('latin1', 12, 16) !== 'IHDR') return null;
   return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
+
+function readLayer(file, label, width, height, code) {
+  const bytes = readAsset(file.absPath, label, code);
+  const size = pngSize(bytes);
+  if (!size || size.width !== width || size.height !== height) {
+    throw new RenderError('E_ASSET_SIZE', `${label}: ${file.path} must be a ${width}x${height} PNG`);
+  }
+  return bytes;
+}
+
+function applyTone(data, tone) {
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    for (let channel = 0; channel < 3; channel++) {
+      const row = tone[channel];
+      const value = row[0] * r + row[1] * g + row[2] * b + row[3];
+      data[i + channel] = Math.min(255, Math.max(0, Math.round(value)));
+    }
+  }
 }
 
 function relPath(root, abs) {
@@ -69,6 +91,7 @@ function renderPortrait(input, options = {}) {
   const catalog = loadCatalog(root);
   const seed = computeSeed(input.wallet, input.artSeed);
   const stack = selectLayers(catalog, seed, normal);
+  const tone = stack.find((item) => item.group === 'skin').asset.tone;
 
   const width = raster.MASTER_WIDTH || 2048;
   const height = raster.MASTER_HEIGHT || 2560;
@@ -78,12 +101,14 @@ function renderPortrait(input, options = {}) {
   const files = new Map();
   for (const item of stack) {
     if (!item.asset) continue;
-    const bytes = readAsset(item.asset.absPath, `Asset ${item.asset.id}`);
-    const size = pngSize(bytes);
-    if (!size || size.width !== width || size.height !== height) {
-      throw new RenderError('E_ASSET_SIZE', `Asset ${item.asset.id}: ${item.asset.path} must be a ${width}x${height} PNG`);
-    }
-    files.set(item.asset.id, bytes);
+    const { asset } = item;
+    const label = `Asset ${asset.id}`;
+    files.set(asset.id, {
+      main: readLayer(asset, label, width, height),
+      skinPaint: asset.skinPaint
+        ? readLayer(asset.skinPaint, `${label} skinPaint`, width, height, 'E_CATALOG')
+        : null,
+    });
   }
 
   const arms = heraldry.buildArms(seed, { root });
@@ -99,12 +124,21 @@ function renderPortrait(input, options = {}) {
   const layers = [];
   for (const item of stack) {
     if (item.asset) {
-      const bytes = files.get(item.asset.id);
-      const decoded = raster.decodePNG(bytes, scratch);
+      const { main, skinPaint } = files.get(item.asset.id);
+      if (skinPaint) {
+        const decoded = raster.decodePNG(skinPaint, scratch);
+        if (tone) applyTone(decoded.data, tone);
+        raster.composite(canvas, decoded, full);
+        layers.push({
+          index: layers.length, group: item.group, kind: 'skinPaint', id: item.asset.id, slot: item.asset.slot,
+          path: item.asset.skinPaint.path, sha256: sha256(skinPaint), source: item.source, placement: { ...full },
+        });
+      }
+      const decoded = raster.decodePNG(main, scratch);
       raster.composite(canvas, decoded, full);
       layers.push({
         index: layers.length, group: item.group, kind: 'catalog', id: item.asset.id, slot: item.asset.slot,
-        path: item.asset.path, sha256: sha256(bytes), source: item.source, placement: { ...full },
+        path: item.asset.path, sha256: sha256(main), source: item.source, placement: { ...full },
       });
     } else {
       const where = item.group === 'banner-arms' ? ARMS_PLACEMENTS.banner : ARMS_PLACEMENTS.rail;

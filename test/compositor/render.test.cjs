@@ -238,3 +238,87 @@ test('independent CLI runs give byte-identical PNG and JSON; other seeds differ'
   assert.equal(c.status, 0, c.stderr);
   assert.ok(!fs.readFileSync(a.outFile).equals(fs.readFileSync(c.outFile)));
 });
+
+function setAssetFields(root, id, fields) {
+  for (const name of ['a-core.json', 'b-more.json']) {
+    const file = path.join(root, 'catalog', name);
+    const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const asset = doc.assets.find((entry) => entry.id === id);
+    if (asset) {
+      Object.assign(asset, fields);
+      fs.writeFileSync(file, JSON.stringify(doc));
+      return;
+    }
+  }
+  assert.fail(`No fixture asset ${id}`);
+}
+
+test('skinPaint is composited beneath its owner using the selected skin tone and original alpha', () => {
+  const root = fixtureRoot();
+  const skinPaint = 'layers/face-paint.png';
+  const paint = raster.createImage(2048, 2560);
+  paint.data.set([100, 120, 80, 137]);
+  const bytes = raster.encodePNG(paint);
+  fs.writeFileSync(path.join(root, skinPaint), bytes);
+  setAssetFields(root, 'skin.gold', { tone: [[0, 1, 0, 0.75], [0.5, 0, 0, -68], [0, 0, 4, 0]] });
+  setAssetFields(root, 'expression.smug', { skinPaint });
+  setAssetFields(root, 'attire-back.hood', { skinPaint });
+
+  for (const [skin, expected] of [['skin.gold', [121, 0, 255, 137]], ['skin.moss', [100, 120, 80, 137]]]) {
+    const composited = [];
+    const spy = {
+      ...raster,
+      composite: (dest, src, rect) => {
+        composited.push([...src.data.subarray(0, 4)]);
+        return raster.composite(dest, src, rect);
+      },
+    };
+    const { record } = renderPortrait(input({
+      genetics: { skin }, traits: { expression: 'expression.smug' },
+    }), { root, raster: spy });
+    const overlays = record.layers.filter((layer) => layer.kind === 'skinPaint');
+    assert.deepEqual(overlays.map((layer) => layer.id), ['attire-back.hood', 'expression.smug']);
+    for (const layer of overlays) {
+      const owner = record.layers[layer.index + 1];
+      assert.equal(owner.kind, 'catalog');
+      assert.equal(owner.id, layer.id);
+      assert.equal(layer.path, skinPaint);
+      assert.equal(layer.sha256, sha(bytes));
+      assert.deepEqual(composited[layer.index], expected);
+      assert.deepEqual(composited[owner.index], [0, 0, 0, 0]);
+    }
+  }
+});
+
+test('malformed tone and missing skinPaint fail catalog loading even on unselected assets', () => {
+  const root = fixtureRoot();
+  for (const tone of [null, [1, 2, 3, 4], [[1, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0]],
+    [[1, 0, 0, 0], [0, '1', 0, 0], [0, 0, 1, 0]]]) {
+    setAssetFields(root, 'skin.gold', { tone });
+    assert.throws(() => loadCatalog(root), { code: 'E_CATALOG', message: /skin\.gold: tone/ });
+  }
+  setAssetFields(root, 'skin.gold', { tone: undefined });
+  setAssetFields(root, 'expression.smug', { skinPaint: 'layers/missing.png' });
+  assert.throws(() => loadCatalog(root), { code: 'E_CATALOG', message: /expression\.smug: skinPaint/ });
+});
+
+test('explicitOnly excludes implicit draws and matches while allowing existing explicit selectors', () => {
+  const root = fixtureRoot();
+  setAssetFields(root, 'skin.gold', { explicitOnly: true });
+  setAssetFields(root, 'eyes.side', { explicitOnly: true });
+  setAssetFields(root, 'expression.side-eye', { explicitOnly: true });
+  setAssetFields(root, 'headwear.crown', { explicitOnly: true });
+  setAssetFields(root, 'accessory.spectacles', { explicitOnly: true });
+  for (let i = 0; i < 32; i++) {
+    const ids = plan(root, input({ artSeed: `explicit-${i}` }));
+    for (const id of ['skin.gold', 'eyes.side', 'expression.side-eye', 'headwear.crown', 'accessory.spectacles']) {
+      assert.ok(!ids.includes(id), id);
+    }
+  }
+  const data = input({
+    genetics: { skin: 'skin.gold', eyes: 'eyes.side' }, traits: { expression: 'expression.side-eye' },
+  });
+  const ids = plan(root, data);
+  for (const id of ['skin.gold', 'eyes.side', 'expression.side-eye']) assert.ok(ids.includes(id), id);
+  catalogError(root, input({ traits: { expression: 'expression.side-eye' } }), 'E_INCOMPATIBLE');
+});

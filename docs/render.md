@@ -53,7 +53,7 @@ by `rarity` (absent/common 8, uncommon 4, rare 2, epic 1, legendary 1). A draw d
 ## Catalog
 
 Every `catalog/*.json` (read in file-name order) is
-`{"schema":"kekborn-assets@1","assets":[{id,slot,path,tier?,category?,rarity?,requiresEyes?}]}`.
+`{"schema":"kekborn-assets@1","assets":[{id,slot,path,tier?,category?,rarity?,requiresEyes?,tone?,skinPaint?,explicitOnly?}]}`.
 IDs are unique across files; `path` is relative to the root and must stay inside it; `tier`, `category` and
 `requiresEyes` may be a string or an array. An asset without `tier`/`category` fits every tier/category.
 Every drawn layer must be a full-canvas 2048×2560 PNG (`E_ASSET_SIZE`) and exist (`E_MISSING_FILE`); all
@@ -61,6 +61,14 @@ files are checked before painting. Records with a slot not listed below are igno
 `common`, `uncommon`, `rare`, `epic`, `legendary`; any other value stops the load with `E_CATALOG`. A file may carry
 other top-level fields beside `schema` and `assets` (`catalog/foundation.json` keeps its registration document and
 registers `skin.moss` and `frame.common` in its `assets`).
+
+| Optional field | Rule |
+|---|---|
+| `tone` | Skin assets can define a 3×4 matrix of finite numbers. Each row is multiplied by `[R, G, B, 1]` using moss RGB in the 0–255 range. The three results are rounded to the nearest integer and clamped to 0–255. |
+| `skinPaint` | Any asset can reference a full-canvas PNG at a repository-relative path. The renderer draws it immediately beneath the asset's own PNG, applying the selected skin's tone to its RGB and preserving alpha. With no tone, the underlay is drawn as supplied. |
+| `explicitOnly` | Boolean, default false. When true, the asset is excluded from default draws and automatic matches. It can be selected by name through an input selector for its slot, subject to the usual tier, category and compatibility rules. |
+
+A malformed `tone` or a missing `skinPaint` file is an `E_CATALOG` error, including on unselected assets.
 
 ## Stack (back to front)
 
@@ -89,18 +97,20 @@ Layers are decoded into one reused `2048*2560*4` buffer and composited with `src
 ```
 { schema: "kekborn-render@1", catalogSchema, input, seed, tier, category, canvas,
   layers: [ {index, group, kind:"catalog", id, slot, path, sha256, source, placement}
+          | {index, group, kind:"skinPaint", id, slot, path, sha256, source, placement}
           | {index, group:"banner-arms"|"rail-arms", kind:"procedural", id, imageSha256, source, placement} ],
   arms: { choices, imageSize, imageSha256, parts:[{path, sha256, …}], placements:{banner, rail} },
   finish: { pass:"raster.finish", count:1, afterLayer }, pngSha256 }
 ```
 
-`source` is `explicit`, `draw`, `draw:requiresEyes` or `match`. `imageSha256` hashes `"<w>x<h>\0"` followed by the
+`source` is `explicit`, `draw`, `draw:requiresEyes` or `match`. A `skinPaint` entry uses the owning asset's
+ID, slot, group and source. Its SHA-256 hashes the original underlay PNG bytes. `imageSha256` hashes `"<w>x<h>\0"` followed by the
 raw RGBA bytes of the arms image. The JSON uses 2-space indentation, a trailing newline and root-relative paths, so it
 is identical between checkouts.
 
 ## Tests
 
-`node --test test/compositor/render.test.cjs` builds a private fixture root in the OS temp dir (catalog, layer PNGs,
+`node --test test/compositor/render.test.cjs` builds a private fixture root under `test/scratch/` (catalog, layer PNGs,
 stub heraldry, raster shim) and does not depend on the shared library.
 `node --test test/compositor/real-catalog.test.cjs` loads the real `catalog/` folder and selects layers for all twelve
 `sample-inputs/NN.json`, so a catalog file the loader rejects or an asset the samples need but no file registers fails a test.

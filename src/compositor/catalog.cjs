@@ -37,10 +37,40 @@ function asList(value, field, id, allowed) {
   return normal;
 }
 
+function assetPath(root, value, field, id) {
+  const rel = value.replace(/\\/g, '/');
+  const abs = path.resolve(root, rel);
+  const fromRoot = path.relative(root, abs);
+  if (!fromRoot || path.isAbsolute(rel) || path.win32.isAbsolute(rel) ||
+      /^[a-z]:/i.test(rel) || rel.includes('\0') || path.isAbsolute(fromRoot) ||
+      fromRoot === '..' || fromRoot.startsWith('..' + path.sep)) {
+    throw new RenderError('E_CATALOG', `Asset ${id}: ${field} must stay inside the repository`);
+  }
+  return { path: rel, absPath: abs };
+}
+
+function loadSkinPaint(root, value, id) {
+  if (value === undefined) return null;
+  if (typeof value !== 'string' || !value) {
+    throw new RenderError('E_CATALOG', `Asset ${id}: skinPaint must be a nonempty PNG path`);
+  }
+  const file = assetPath(root, value, 'skinPaint', id);
+  try {
+    const realRoot = fs.realpathSync(root);
+    const realFile = fs.realpathSync(file.absPath);
+    assetPath(realRoot, path.relative(realRoot, realFile), 'skinPaint', id);
+    if (fs.statSync(realFile).isFile()) return file;
+  } catch (error) {
+    if (error instanceof RenderError) throw error;
+  }
+  throw new RenderError('E_CATALOG', `Asset ${id}: skinPaint file ${file.path} is unavailable`);
+}
+
 /**
  * Load every root/catalog/*.json (sorted by file name). Each file must be
  * { schema: "kekborn-assets@1", assets: [{ id, slot, path, tier?, category?,
- * rarity?, requiresEyes? }] }. IDs are unique across all files. Paths are
+ * rarity?, requiresEyes?, tone?, skinPaint?, explicitOnly? }] }.
+ * IDs are unique across all files. Paths are
  * relative to root and may not leave it.
  */
 function loadCatalog(root) {
@@ -70,10 +100,14 @@ function loadCatalog(root) {
       }
       const id = raw.id;
       if (byId.has(id)) throw new RenderError('E_CATALOG', `Duplicate asset id ${id} (catalog/${name})`);
-      const rel = raw.path.replace(/\\/g, '/');
-      const abs = path.resolve(root, rel);
-      if (path.isAbsolute(rel) || !abs.startsWith(path.resolve(root) + path.sep)) {
-        throw new RenderError('E_CATALOG', `Asset ${id}: path must stay inside the repository`);
+      const file = assetPath(root, raw.path, 'path', id);
+      const { tone, explicitOnly } = raw;
+      if (tone !== undefined && (raw.slot !== 'skin' || !Array.isArray(tone) || tone.length !== 3 ||
+          !tone.every((row) => Array.isArray(row) && row.length === 4 && row.every(Number.isFinite)))) {
+        throw new RenderError('E_CATALOG', `Asset ${id}: tone must be a 3x4 matrix of finite numbers on a skin asset`);
+      }
+      if (explicitOnly !== undefined && typeof explicitOnly !== 'boolean') {
+        throw new RenderError('E_CATALOG', `Asset ${id}: explicitOnly must be a boolean`);
       }
       if (raw.rarity !== undefined && (typeof raw.rarity !== 'string' ||
           !RARITIES.includes(raw.rarity.toLowerCase()))) {
@@ -82,8 +116,10 @@ function loadCatalog(root) {
       byId.set(id, Object.freeze({
         id,
         slot: raw.slot,
-        path: rel,
-        absPath: abs,
+        ...file,
+        tone: tone || null,
+        skinPaint: loadSkinPaint(root, raw.skinPaint, id),
+        explicitOnly: explicitOnly === true,
         tier: asList(raw.tier, 'tier', id, TIERS),
         category: asList(raw.category, 'category', id, CATEGORIES),
         rarity: raw.rarity === undefined ? null : raw.rarity.toLowerCase(),
@@ -108,10 +144,10 @@ function matches(asset, tier, category) {
   return (!asset.tier || asset.tier.includes(tier)) && (!asset.category || asset.category.includes(category));
 }
 
-/** Assets of a slot that fit the tier and category, sorted by ID (code-unit order). */
+/** Implicit candidates that fit the slot, tier and category, sorted by ID. */
 function eligible(catalog, slot, tier, category) {
   return [...catalog.values()]
-    .filter((asset) => asset.slot === slot && matches(asset, tier, category))
+    .filter((asset) => asset.slot === slot && !asset.explicitOnly && matches(asset, tier, category))
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 }
 
