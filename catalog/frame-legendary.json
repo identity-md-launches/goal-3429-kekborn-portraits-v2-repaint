@@ -6,7 +6,8 @@
       "slot": "frame",
       "name": "legendary",
       "path": "layers/frames/legendary.png",
-      "tier": "legendary"
+      "tier": "legendary",
+      "description": "An ornate gold-leaf frame with jewelled cartouches at the corners and along the rails, a blank incised plaque and a plain gold heraldry reserve."
     }
   ]
 }

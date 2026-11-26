@@ -1,0 +1,60 @@
+{
+  "target": "tier-legendary",
+  "model": "OpenAI ImageGen via image_gen.imagegen",
+  "settings": {
+    "seed": null,
+    "seedNote": "The tool exposes no seed, model revision, or inpainting strength.",
+    "generationSize": [
+      1122,
+      1402
+    ],
+    "exportSize": [
+      2048,
+      2560
+    ]
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "generations": [
+    {
+      "assets": [
+        "headwear.legendary",
+        "regalia.legendary"
+      ],
+      "reference": "template/master-reference.png",
+      "transparentBackground": true,
+      "promptSuffix": "Inpaint only two accessories onto the exact supplied painted master geometry then cut out both accessories in place against transparent alpha, preserving their placement. Output a 4:5 canvas with no frog pixels, no background and nothing except the two separate accessories. At the upper 20-29% of canvas fit a Tudor coronet with ruby and emerald cabochons over oxblood velvet cap with a cream black-flecked ermine brim, centered horizontally at 47%, width 28%, base at 29%. At the lower 65-86% place a heavy jewelled Tudor gold chain of office with layered ropes of cream pearls draped across the chest, a great deep emerald pendant with gold and ruby mount. Keep all gaps in chain transparent. Carefully model raised impasto highlights on metal and gems. No frame, no text.",
+      "method": "Reference-conditioned edit with model-generated accessory isolation, then separate crops, alpha cleanup, premultiplied bilinear resampling and registration. Placement and tilt were corrected after generation."
+    },
+    {
+      "assets": [
+        "frame.legendary"
+      ],
+      "reference": null,
+      "transparentBackground": false,
+      "promptSuffix": "Paint the frame layer alone as an original oil-painted, straight-on orthographic rectangular Tudor picture frame, dark rich gold leaf with carved floral relief and cabochon emeralds, rubies and sapphires at all four corners and at the midpoint of both side rails and the top rail. Edge-to-edge frame, absolutely no exterior margins, perfectly square miter joints and strictly rectangular inner aperture. Canvas 4:5. Aperture corners are normalized (7%,5.625%) to (93%,92.5%). Aperture empty transparent. On the deeper bottom rail, leave the middle below x=47–53% as plain smooth gold leaf for separately composited heraldry. Immediately left of that smooth patch put one small rectangular blank engraved gold name plaque with an incised outline, no letters, at x=31–46%, y=94.5–98%. Keep the plaque and adjacent smooth reserve distinct. Upper-left soft light, oil brushwork with impasto on cabochons. This is only the frame layer, omit all sitter and portrait scenery; the straight-on requirement applies to the frame. Use a solid dark backing inside the aperture if transparency is unavailable. The frame fills every pixel right up to the image edges.",
+      "method": "Selected the opaque second frame generation. Registered model-painted rails and incised plaque with piecewise resampling and removed the entire aperture to straight alpha."
+    }
+  ],
+  "review": {
+    "input": "sample-inputs/05.json",
+    "notes": "The ermine brim meets the skull on both the painted moss master and the ivory sample. The gold links and pearl loops read against the green robe, and the orb overlaps the lower-left drape. The banner clears the coronet, and the rail shield sits on plain gold beside the empty plaque. Horizontal frame ornaments are wider after rail registration."
+  },
+  "files": [
+    {
+      "path": "layers/headwear/legendary.png",
+      "bytes": 436010,
+      "sha256": "106f7eb57e6228c394f6672d0a86921ba402abf6fb56b6e9c5b923e8eb513ed7"
+    },
+    {
+      "path": "layers/regalia/legendary.png",
+      "bytes": 647162,
+      "sha256": "e9cd7dd5f2c723a76bdde1841c799d33ed0e6e890e41c7b8667a7d0944ba1c44"
+    },
+    {
+      "path": "layers/frames/legendary.png",
+      "bytes": 2817155,
+      "sha256": "7a8cc73aca96e8adc25c90f2493962a6f46d3a680d5b2085d1667ac1ae1eb169"
+    }
+  ]
+}
