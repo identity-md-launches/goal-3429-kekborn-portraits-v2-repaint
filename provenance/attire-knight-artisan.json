@@ -1,0 +1,91 @@
+{
+  "schema": "kekborn-attire-provenance@1",
+  "generator": {
+    "model": "OpenAI ImageGen",
+    "modelVersion": null,
+    "seed": null,
+    "strength": null,
+    "mode": "Reference-image edit with transparent background requested",
+    "transparentBackground": true,
+    "outputDimensions": {
+      "width": 1122,
+      "height": 1402
+    },
+    "stylePrompts": "Locked prompt and negative prompt from style-guide.md; negative prompt supplied in the same text field.",
+    "settingsNote": "The tool does not expose the underlying model version, seed, edit strength or a separate inpainting mask."
+  },
+  "reference": {
+    "path": "template/master-reference.png",
+    "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+  },
+  "export": {
+    "width": 2048,
+    "height": 2560,
+    "format": "straight-alpha RGBA8 PNG",
+    "method": "Used the model-generated alpha as the cutout. Tightened the low-opacity fringe and bilinearly resampled with alpha-weighted RGB during registration. All visible artwork comes from the selected model outputs."
+  },
+  "assets": [
+    {
+      "id": "attire-front.knight-armour",
+      "slot": "attire-front",
+      "path": "layers/attire/knight/attire-front.knight-armour.png",
+      "bytes": 3149606,
+      "sha256": "aca51cc20368cd1f4c1b6662ad17f90969b3ca940dab88a69dd4ade996f0b6e1",
+      "promptSuffix": "Use the supplied master bust as the precise inpainting reference for a knight garment, then return just the edited garment on transparency, same 4:5 framing. Blackened steel gorget and breastplate with gilt edging over a distinct tightly woven mail collar, dark steel shoulder armour. Keep head free and all skin transparent. The top of the collar should sit at y=1450/2560, centered at x=978/2048, shoulders spreading outward with more width on viewer's right and armor extending through bottom edge. No hands, no helmet, no weapon, no background. Keep paint texture and subdued antique palette.",
+      "placement": "Registered the mail opening over the neck and retained the painted shoulders and breastplate through the bottom of the frame."
+    },
+    {
+      "id": "prop-front.knight-gauntlet",
+      "slot": "prop-front",
+      "path": "layers/attire/knight/prop-front.knight-gauntlet.png",
+      "bytes": 764608,
+      "sha256": "ec09ed43bca5fabc09837c2b03f77056861744d83000d75f4f91d986708d6cac",
+      "promptSuffix": "Use the supplied master bust as the inpainting reference and isolate only a single knight's steel gauntlet raised at the lower edge, fully covering a closed relaxed fist and wrist. Place it at lower viewer right of the bust, well below the neck, with the forearm running off the bottom edge and the back of the fist visible. Articulated blackened steel plates, warm restrained light from upper left, Tudor knight. Return only the painted gauntlet cut out on transparency with no skin or background or other objects. 4:5 canvas.",
+      "placement": "Rescaled and placed the raised plated fist over the lower-right breastplate, with the cuff continuing under the frame."
+    },
+    {
+      "id": "attire-front.artisan-garb",
+      "slot": "attire-front",
+      "path": "layers/attire/artisan/attire-front.artisan-garb.png",
+      "bytes": 3303939,
+      "sha256": "b3ff00ced9f348029203b1e7d148561654e6de599da8aa19bb7186b01ac87610",
+      "promptSuffix": "Use the supplied master bust as the precise inpainting reference for an artisan garment, then return just the edited garment on transparency, same 4:5 framing. Deep forest green wool Tudor jerkin with a substantial russet-brown leather apron and soft cream linen collar. Keep head free and all skin transparent. The top of the collar should sit at y=1450/2560, centered at x=978/2048, shoulders spreading outward with more width on viewer's right and fabric extending through bottom edge. No hands, no hat, no tools, no background. Keep visible oil paint texture and subdued antique palette.",
+      "placement": "Aligned the linen collar points to the master neck; compressed the upper fabric vertically to seat the opening and extended the painted apron below the aperture."
+    },
+    {
+      "id": "prop-front.artisan-brushes",
+      "slot": "prop-front",
+      "path": "layers/attire/artisan/prop-front.artisan-brushes.png",
+      "bytes": 523841,
+      "sha256": "67378bbeac66015d7afc5a4e041c46919a1aa57a035b272790ca122741a0ce09",
+      "promptSuffix": "Use the supplied master bust as the inpainting reference and isolate only a small bundle of artist's long-handled wooden paintbrushes held in a single worn tobacco-brown leather gloved hand. Tips individually daubed in cream, muted ochre, oxblood and deep green. Position on the viewer's lower right of the bust, well below the neck, wrist entering from the bottom and the brush tips pointing diagonally up to the viewer's left. Soft light from upper left. Return only painted gloved hand, cuff and brushes against transparency, with no skin or backdrop or other objects. 4:5 canvas.",
+      "placement": "Rescaled and placed the gloved hand at lower right with the brush tips aimed toward the apron centre and the cuff continuing under the frame."
+    }
+  ],
+  "review": {
+    "command": "node bin/render.cjs INPUT OUTPUT",
+    "variants": [
+      {
+        "input": "sample-inputs/03.json",
+        "category": "knight",
+        "skins": [
+          "skin.moss",
+          "skin.lichen"
+        ]
+      },
+      {
+        "input": "sample-inputs/04.json",
+        "category": "artisan",
+        "skins": [
+          "skin.moss",
+          "skin.lichen"
+        ]
+      }
+    ],
+    "notes": [
+      "Inspected all four finished composites at 410 × 512. Gold catches the same upper-left light on the armour and articulated glove. The cuff meets the lower frame and the hand stays below the neck.",
+      "The artisan linen opens on the neck and the brown apron reads separately from the green sleeves. Four paint tips are visible against the bodice, and the brush bundle clears the face.",
+      "The checkout’s lichen silhouette leaves a small skin wedge just outside the knight’s far collar. The moss master fits cleanly at the collar. Existing facial overlays are visible in the previews and were outside this target."
+    ]
+  }
+}
