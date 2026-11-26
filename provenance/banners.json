@@ -1,0 +1,79 @@
+{
+  "model": "OpenAI ImageGen (model version not exposed by the tool)",
+  "seed": null,
+  "settings": {
+    "note": "The tool exposed no seed, strength, or sampling controls.",
+    "generation": {
+      "transparent_background": true
+    },
+    "edit": {
+      "transparent_background": false,
+      "num_last_images_to_include": 1
+    },
+    "returnedEditSize": [
+      1536,
+      1024
+    ]
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "promptSuffix": "Asset sheet for that painting: paint ONLY the three isolated hanging banners, equal scale, side by side, separated by broad transparent gutters, all wholly visible with transparent margins. Wide landscape sheet. Each entire banner with mounting hardware is about 0.68 times as wide as tall; cloth nearly as wide as the mounting bar. Upper 70% of each hanging body is a broad almost rectangular plane of evenly lit blank cloth all the way across (for a large coat of arms to be added later); place subtle same-color weave there, no fold or ornament within the central 75% of the width until near the bottom quarter. Glazed folds near edges and below this space, soft illumination from upper left, broken impasto on gold fringe and cords. First: deep muted forest green silk pennon, hanging vertically, swallow-tailed with precisely two long points and one V notch opening upward, delicate gold fringe and top bar. Second: broad muted oxblood subtly tone-on-tone damask standard, rectangular with a straight hem, gilded tasselled cords hanging just at either side, mounted from top bar. Third: muted earthy ochre gonfalon hung from crossbar, lower edge cut into exactly three distinct tails. Frontal view, no perspective foreshortening, no wind, no shield, symbols, frog, figure, scenery, baked cracks, vignette, or cast shadow on background. Clean isolated gently feathered silhouettes on true transparent alpha.",
+  "editReference": "First ImageGen output for this three-banner sheet. The existing banner PNGs were measured for registration only.",
+  "editPrompt": "Edit the supplied original painted three-banner sheet. Preserve its three distinct banners, exact colors and silhouettes, Tudor oil paint, brush marks, all gold fringe and tasselled cords. Replace only the entire brown ambience/background including all holes and open gaps between bars and tabs, around tassels and between the tails with perfectly uniform solid vivid chroma aqua (#00FFFF), no shadows in the aqua. Keep clean separable edges. Quiet down the upper interior across the middle three quarters of the width of each cloth, with slight textile texture and very flat even light from upper left, retaining the pronounced folds at the bottom. Keep wide gaps and edge margin. No added artwork or markings.",
+  "editedSheetSha256": "b4f58409c4af84c106c7f3182c0d0ef9b635e307623b8d6fccf600047a51c865",
+  "cutoutMethod": "Split the painted sheet at its transparent gutters after aqua chroma keying and edge decontamination. Crop to measured alpha bounds and resample premultiplied colour into the baseline positions on straight RGBA8 2048 × 2560 canvases. Rescale vertical bands on the pennon and gonfalon to keep the painted folds and tail trim below the heraldry reserve.",
+  "reserve": {
+    "x": 1476,
+    "y": 316,
+    "width": 288,
+    "height": 336,
+    "alpha": 255
+  },
+  "files": [
+    {
+      "id": "banner.vert-pennon",
+      "path": "layers/banners/vert-pennon.png",
+      "bytes": 482065,
+      "sha256": "0f4acb272359a671c7bc92dd245634c310d7b9ec59569525e07792a4092da58a",
+      "placement": {
+        "x": 1382,
+        "y": 182,
+        "width": 479,
+        "height": 678
+      }
+    },
+    {
+      "id": "banner.oxblood-standard",
+      "path": "layers/banners/oxblood-standard.png",
+      "bytes": 604006,
+      "sha256": "24deadb981473cd0f7638ea9276de61d98432d502f096050be21991f45eb6a42",
+      "placement": {
+        "x": 1382,
+        "y": 182,
+        "width": 479,
+        "height": 700
+      }
+    },
+    {
+      "id": "banner.ochre-gonfalon",
+      "path": "layers/banners/ochre-gonfalon.png",
+      "bytes": 594343,
+      "sha256": "05fefc47b8a1334ca7a2bcb55008a122ff3cb8c7f37743089c3e6e1ae9b41e13",
+      "placement": {
+        "x": 1382,
+        "y": 182,
+        "width": 479,
+        "height": 700
+      }
+    }
+  ],
+  "review": {
+    "backgrounds": [
+      "background.umber-hall",
+      "background.green-arras"
+    ],
+    "portraitRenders": 6,
+    "input": "sample-inputs/01.json with explicit banner and backdrop overrides",
+    "observation": "In all six previews and upper-right crops the heater shield sits on continuous opaque cloth. Broad folds lie at the shoulders of the cloth and below the shield, with the strongest highlights near the tails and hems. The backdrops show through the open loops, clear spaces beside the cords and gaps between the tails. The gilded trim and tassels remain readable at thumbnail size."
+  }
+}
