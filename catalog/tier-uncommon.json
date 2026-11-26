@@ -7,7 +7,7 @@
       "name": "uncommon",
       "tier": "uncommon",
       "path": "layers/headwear/uncommon.png",
-      "description": "Soft oxblood felt bonnet with a turned-up brim and a gold-leaf oak-leaf-and-acorn brooch, seated on the crown seat (969,680)"
+      "description": "Deep forest-green velvet Tudor bonnet with a rolled brim and a short warm-cream feather, fitted over the crown seat (969,680)."
     },
     {
       "id": "regalia.uncommon",
@@ -15,7 +15,7 @@
       "name": "uncommon",
       "tier": "uncommon",
       "path": "layers/regalia/uncommon.png",
-      "description": "Turned oak roundel pin on a brass bail, hung from a woven forest-and-ochre collar ribbon around the neck opening"
+      "description": "A single strand of plain oval brass links with a small round medallion resting over the doublet."
     }
   ]
 }

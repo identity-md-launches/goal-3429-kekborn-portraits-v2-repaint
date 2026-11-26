@@ -1,0 +1,64 @@
+{
+  "model": "OpenAI built-in image generation model (image_gen.imagegen; model version unavailable)",
+  "settings": {
+    "transparentBackground": false,
+    "seed": null,
+    "pixelEditMask": null,
+    "editStrength": null,
+    "notes": "The interface did not expose a model version, seed, numeric edit strength, or pixel mask. Accessory placement used a reference-conditioned inpainting request."
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "generations": [
+    {
+      "editReference": "template/master-reference.png",
+      "sourceSize": [
+        1121,
+        1403
+      ],
+      "sourceTransfer": "Model response PNG",
+      "promptSuffix": "Inpaint the supplied master bust in place, preserving its exact image boundaries, position, face and scale. Add just two items: a low, broad deep forest-green Tudor velvet bonnet with a softly folded rolled brim and a single short warm-cream feather at its upper left, resting over the frog crown with the centre of brim overlapping the skull around y=735 (on 2048 by 2560 registration). Keep both eyes visible. Second, place a simple single strand of small plain oval brass links on the lower chest (between y=1680 and 1950 on master), curved from the left collar to near right shoulder, with one small plain round brass medallion at centre left. To facilitate cutting out the links, put the chain on a temporary solid dark plum cloth, whose paint will be removed. Leave all other reference features in the same place. No heraldry or frame in this particular layer edit.",
+      "outputs": [
+        {
+          "path": "layers/headwear/uncommon.png",
+          "bytes": 432249,
+          "sha256": "f324d1615b3e473258b15863d03e93504132302a9ced05533677c0450e9beba4"
+        },
+        {
+          "path": "layers/regalia/uncommon.png",
+          "bytes": 95477,
+          "sha256": "f5bc0ddf98799661856a2e03e1d5d35cd622cfade63f27fbe8f6a8e6d304d6bb"
+        }
+      ],
+      "extraction": "Feathered hand-traced contour for the bonnet, with a local luminance/chroma key on feather barbs. Feathered contour and brass chroma key for the chain, excluding plum paint from the link openings. Placed and resampled extracted paint on the master grid; no paint was drawn during export.",
+      "sourceSha256": "0b495cb14fcde6adc641a7a19328c9a3fca5f2f232f133881ef04941411453ce",
+      "editReferenceSha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+    },
+    {
+      "editReference": null,
+      "sourceSize": [
+        1122,
+        1402
+      ],
+      "sourceTransfer": "Model response PNG",
+      "promptSuffix": "Frame layer only: paint an entire straight-on rectangular 16th-century English carved oak picture frame, 4:5 portrait canvas with the frame extending flush to the outer bounds on all four sides, no perspective or exterior. Dark honey-brown oak with hand-carved repeating fine leaf-and-rosette Tudor moulding on all four rails, slightly raised bevels and visible thin brush strokes, subtle oak grain, soft highlights from upper left. No gilding. Huge blank flat dark aperture, absolutely empty; no sitter or background or heraldry in this layer. Sharp rectangular inner border, perfectly horizontal and vertical, opening about 86% of canvas width and 87% of canvas height. Bottom rail slightly wider, with a small quiet plain oak section directly at bottom centre, width 9% of image, for overlaid heraldry, no carving or decoration in this section. No added varnish or crack network, shared during compositing.",
+      "outputs": [
+        {
+          "path": "layers/frames/uncommon.png",
+          "bytes": 2582907,
+          "sha256": "bde439decf641efc3c087335e569773f886010c6ac45fffe60a15ca58519a6b5"
+        }
+      ],
+      "extraction": "Piecewise bilinear registration of the model-painted rails, with the aperture clipped to the exact master rectangle. The bottom centre uses the model's plain oak grain and stays opaque.",
+      "sourceSha256": "6df7cd973851bda765e5638d04d7496a68dbe0f27e749de6fc42a72890e565d9"
+    }
+  ],
+  "review": {
+    "samples": [
+      "sample-inputs/02.json",
+      "sample-inputs/07.json"
+    ],
+    "visual": "The warm leaf-and-rosette carving reads clearly at preview size, with quiet wood under the rail arms. The velvet bonnet and short cream feather are clear of the banner and the brim overlaps the crown on moss. The chain reads more strongly on the oxblood scholar robe than on the pale antiquary waistcoat; some shadow-side links are subtle. The left brim edge comes close to the far eye on the scholar sitting.",
+    "registration": "Checked every frame alpha pixel, every banner-clearance alpha pixel on the hat, and measured 32 overlapping central rows at alpha greater than 127 on both bonnet and moss."
+  }
+}
