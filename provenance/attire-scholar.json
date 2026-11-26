@@ -1,0 +1,66 @@
+{
+  "schema": "kekborn-layer-provenance@1",
+  "target": "attire-scholar",
+  "model": "OpenAI ImageGen via image_gen.imagegen; underlying model/version not exposed",
+  "settings": {
+    "transparent_background": true,
+    "seed": null,
+    "seedNote": "Tool exposes no seed, sampler, steps or strength controls. Three reference-image edits, one per piece.",
+    "reference": "template/master-reference.png",
+    "sourceSizes": {
+      "robe": [
+        793,
+        1983
+      ],
+      "hood": [
+        1774,
+        887
+      ],
+      "spectacles": [
+        1774,
+        887
+      ]
+    },
+    "output": [
+      2048,
+      2560
+    ]
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "promptSuffixes": {
+    "robe": "Inpaint a scholar's BLACK DAMASK GOWN with rich BROWN FUR COLLAR over a CREAM SHIRT onto the attached master bust. Preserve reference registration exactly, full 2048x2560 canvas. Neck opening centred (978,1600), opening reaches y1450 to cover chest and shoulders, garment shoulders extend to (365,1760) and (1575,1712), gown fills lower canvas down to y2400. Then REMOVE all reference skin, head, hands and background, leaving ONLY garment on genuine transparent background at its original location. Head and entire upper canvas remain empty. Soft fur edges, warm upper-left light, broad painterly folds, restrained black-on-black floral damask. No hood, spectacles, jewellery or props. Output the isolated front garment layer only. Do not move or enlarge garment to fill upper empty canvas.",
+    "hood": "Inpaint ONLY the scholar's folded academic hood lying BEHIND the shoulders of the attached reference bust, in warm black velvet/damask with muted oxblood lining, subdued brown fur binding. Hood DOWN, never around the head. Preserve bust position on full 4:5 canvas; hood occupies a broad shallow shoulder crescent from x420 to1650 and y1420 to1850 on the 2048x2560 registration. Then cut out the hood only, remove ALL skin, head, body and background, true transparent background. Nothing above y1400, nothing below y1900. Loose folds lit upper left, visibly hand-painted. Leave central neck opening clear. No robe or shirt, no other objects. Output isolated hood in its original canvas position, do not crop to object.",
+    "spectacles": "Inpaint a single pair of delicate ROUND BRASS-RIMMED SCHOLAR SPECTACLES onto the attached master frog's muzzle and eyes. Keep same camera angle and anatomical placement: far lens centred (680,936), near lens centred (1040,912) on 2048x2560 canvas. Far round lens foreshortened, near larger. Thin antique brass rims, arched bridge across muzzle, short temples receding toward sides. Warm upper-left impasto glints. Then REMOVE EVERYTHING EXCEPT THE METAL SPECTACLE FRAME. Fully transparent lens interiors, NO glass tint, NO eyes, NO skin, NO head, NO backdrop. True transparent PNG, isolated wire spectacles, oil-painted uneven metal highlights not vector lines. No chain. Preserve original canvas registration if possible."
+  },
+  "cutout": "Model-generated transparency; no skin or background retained. Plain Node repository raster codec, premultiplied-alpha resampling only, no code-painted artwork. Generated crops registered to full transparent canvas. Robe source rectangle placed at (120,105), size1850x2479; hood at (300,1247), size1400x580. Spectacles piecewise horizontal registration aligns lens centres to (680,936)/(1040,912), vertical scale0.33 and eye-line shear. Transparent lens interiors preserved.",
+  "catalog": "Unchanged: same ids, slots, paths and kekborn-assets@1 schema. Task's black gown specification takes precedence over older oxblood description in guide.",
+  "removed": [
+    "layers/attire/scholar/paint-scholar.cjs"
+  ],
+  "review": {
+    "inputs": "sample-inputs/01.json with explicit moss and lichen skins; common tier, scholar, amber eyes, smug expression",
+    "observations": "Inspected master overlay and full compositor previews on moss and lichen. Black floral damask, directional brown fur highlights and cream linen are visible; hood folds peek behind shoulders; brass lenses surround both eye sockets without filling eyes. No reference skin in isolated layers. Widened robe to cover a skin sliver at left frame edge on lichen. Shared upper-left illumination. Existing cap, eyes and expression remain stylistically inconsistent pending their owners' repaint; moss's existing expression creates a second mouth seam. Lichen's neck is broader than master's but garment covers chest.",
+    "limits": "Generated reference edits returned cropped canvases, so registration resampling was necessary. No fixed model seed available. Shared finishing, other categories and final twelve-portrait approval package belong to other targets."
+  },
+  "assets": [
+    {
+      "id": "attire-back.scholar-folded-hood",
+      "path": "layers/attire/scholar/attire-back.scholar-folded-hood.png",
+      "bytes": 759964,
+      "sha256": "574e52c7eafad1f33cf5b81e65f63dcb2a8a061ac07dc51e3f96ded2ae3115a4"
+    },
+    {
+      "id": "attire-front.scholar-robe",
+      "path": "layers/attire/scholar/attire-front.scholar-robe.png",
+      "bytes": 2612804,
+      "sha256": "a07e3899b08675799fc551bae6dc2d7cd7bf63874c8ae14feada2f166d7f8d78"
+    },
+    {
+      "id": "accessory.scholar-spectacles",
+      "path": "layers/attire/scholar/accessory.scholar-spectacles.png",
+      "bytes": 123463,
+      "sha256": "27436ad2c62240dac0541248b7dbc66ddaaa93a34389a73ee39be7e051c94ec2"
+    }
+  ]
+}
