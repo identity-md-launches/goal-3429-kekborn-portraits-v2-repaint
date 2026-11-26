@@ -10,8 +10,8 @@
       "width": 2048,
       "height": 2560,
       "format": "png-rgba8",
-      "sha256": "66e0d41a7e70c79e4e1da99469429e4881b979f3ca1682043018b3f29ce49316",
-      "description": "Umber doublet with oxblood-faced lapels, gold-thread trim and slashed sleeves, open over an ochre waistcoat with gold-leaf buttons; bone linen stock and jabot cravat with a garnet pin closing the neck opening."
+      "sha256": "d7afef6ff4accb642ffdd9a72cf2007fee1d7ef9eee551cec85c432031de39f3",
+      "description": "Ochre floral brocade Tudor doublet with gold-thread trim, oxblood velvet slashed sleeves lined in bone linen, and a fitted bone linen neck stock."
     },
     {
       "id": "accessory.antiquary-monocle",
@@ -22,8 +22,8 @@
       "width": 2048,
       "height": 2560,
       "format": "png-rgba8",
-      "sha256": "d36d3a1ee1a07be137b2c0121f37f0b51fe90280f59b6277282f558c4296312b",
-      "description": "Gold-leaf monocle ring (~192 px) centred on the near eye (1040,912) with a faint glass reflection, and a fine gold chain falling to a stud on the near shoulder (1420,1702)."
+      "sha256": "bd830e4d0114033adafac4d114dede7840e34d600f9d3b34cd286935d4627139",
+      "description": "A gold-rimmed monocle on the near eye (1040, 912), with an open lens interior and a narrow oxblood silk ribbon trailing to the lapel."
     },
     {
       "id": "prop-front.antiquary-scroll",
@@ -34,8 +34,8 @@
       "width": 2048,
       "height": 2560,
       "format": "png-rgba8",
-      "sha256": "2302ab2d5473dc68d6b4558bda7ed99db7f7d996c798b738439503aaa6c36a89",
-      "description": "Rolled parchment held low at the lower left, its sheet hanging and curling at the lower edge, faded script, forest ribbon and an oxblood wax seal."
+      "sha256": "b3ffbc7199eebf0dd2aa25081a82167087f9899e43892f0eef04187e0e114e54",
+      "description": "A rolled parchment tied with moss ribbon and an oxblood wax seal, gripped in an oxblood leather glove at the lower left."
     }
   ]
 }

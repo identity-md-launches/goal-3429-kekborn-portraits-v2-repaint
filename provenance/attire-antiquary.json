@@ -1,0 +1,81 @@
+{
+  "schema": "kekborn-layer-provenance@1",
+  "target": "attire-antiquary",
+  "model": "OpenAI ImageGen",
+  "settings": {
+    "mode": "Three separate reference-guided edits, each with the master bust attached",
+    "transparentBackground": true,
+    "modelVersion": null,
+    "seed": null,
+    "editStrength": null,
+    "note": "The tool exposes no model version, seed, sampler, steps, numeric strength, or pixel mask. Both style prompts were supplied in the prompt text."
+  },
+  "reference": {
+    "path": "template/master-reference.png",
+    "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "export": {
+    "dimensions": [
+      2048,
+      2560
+    ],
+    "format": "Straight-alpha RGBA8 PNG",
+    "method": "Used model-generated transparency, tightened the low-opacity fringe, trimmed the rear collar, and registered the painted cutouts with alpha-weighted bilinear resampling."
+  },
+  "removed": [
+    "layers/attire/antiquary/paint-antiquary.cjs"
+  ],
+  "review": {
+    "inputs": [
+      "sample-inputs/02.json (lichen)",
+      "sample-inputs/08.json (oxblood)"
+    ],
+    "observations": "Inspected both compositor renders at 640 × 800. The linen front edge follows the throat and the brocade covers the lower bust. The gold rim surrounds the near eye without obscuring the iris, and the silk ribbon drops to the lapel. The seal is readable against the parchment and the glove cuff runs behind the bottom frame. Warm highlights on the brocade, rim and parchment agree with the upper-left lighting. The rare tier chain crosses the chest below the ribbon."
+  },
+  "assets": [
+    {
+      "id": "attire-front.antiquary-doublet",
+      "slot": "attire-front",
+      "path": "layers/attire/antiquary/attire-front.antiquary-doublet.png",
+      "bytes": 3342318,
+      "sha256": "d7afef6ff4accb642ffdd9a72cf2007fee1d7ef9eee551cec85c432031de39f3",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "sourceSha256": "462682330eb26134a06bcc104ac3cac45583b50beb9b836ea97108502c906e7f",
+      "promptSuffix": "Reference edit: dress the attached frog bust in a fitted Tudor antiquary doublet in rich ochre floral brocade and oxblood velvet with slashed puff sleeves revealing bone linen. Preserve the three-quarter left orientation and upper-left light. Shoulder facing viewer is on the right, and higher and broader. Include a narrow bone linen stock at the neck, the body extends down to the bottom of the portrait. No hands, objects, jewelry, hat or cloak. Then remove the frog head and all skin and background, output ONLY the garment, isolated on actual transparency, including true transparency inside the neck opening. Tight silhouette, no floor or shadow, fabric extends to bottom of image. Keep the collar curve fitted to the long throat on this bust. Paint detail in strokes and glazes, no added surface cracks or global varnish.",
+      "placement": "Trimmed the rear collar along the painted front linen edge and fitted the collar to the master throat. Remapped the shoulder slopes over the flanks of the bust and extended the fabric below the frame aperture."
+    },
+    {
+      "id": "accessory.antiquary-monocle",
+      "slot": "accessory",
+      "path": "layers/attire/antiquary/accessory.antiquary-monocle.png",
+      "bytes": 118680,
+      "sha256": "bd830e4d0114033adafac4d114dede7840e34d600f9d3b34cd286935d4627139",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "sourceSha256": "248a6c16aefee04fb025ffdd6794be9305ee08c12d9655bb72122f118fb4ecc0",
+      "promptSuffix": "Reference edit: fit one gold-rimmed monocle over the attached frog's large near eye at viewer right (1040,912 on master), with a slender oxblood silk ribbon trailing in one controlled soft S curve down and slightly right to the lapel pin. The round gold rim is roughly 190 pixels diameter on the master. Its ribbon extends down four ring diameters and no more than two ring diameters to the right. Upper-left small warm impasto glints and glazed gold shadows, restrained thin metal. Then cut out ONLY the painted metal rim, connector and narrow ribbon, preserving actual transparency inside the lens and all around the objects. Remove all frog, eye, skin and scenery. No glass reflection, no second lens, no text. Crop close to this single long slender cutout so the rim and ribbon have resolution.",
+      "placement": "Registered the gold rim around the near eye at (1040, 912) with a diameter of about 190 px. Extended and eased the ribbon down and right onto the lapel. Kept the lens opening transparent."
+    },
+    {
+      "id": "prop-front.antiquary-scroll",
+      "slot": "prop-front",
+      "path": "layers/attire/antiquary/prop-front.antiquary-scroll.png",
+      "bytes": 573477,
+      "sha256": "b3ffbc7199eebf0dd2aa25081a82167087f9899e43892f0eef04187e0e114e54",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "sourceSha256": "b35598328016288ce2c37a039a07555d7b1d64897fa51025c98f7ef2782894c8",
+      "promptSuffix": "Reference edit: inpaint only an antiquary's left foreground prop at the lower left of the attached frog bust: one dark umber or oxblood leather gloved hand entering from the bottom and gripping one rolled cream parchment document diagonally with its upper opening slanted to the viewer's left. Narrow moss silk tie, conspicuous dark oxblood red wax seal attached on the front, no writing. Rich directional ochre and warm bone brushwork on the rolled edges, lit softly from upper left. All digits covered, cuff truncated at lower edge so it can continue below frame. Remove all frog, skin, torso, backdrop and furniture and output ONLY the painted scroll plus the gloved gripping hand and wrist on a truly transparent background. Crop close to the whole held scroll and glove for resolution.",
+      "placement": "Set the sealed scroll and its gloved hand below the shoulders in the lower left, with the cuff extending below the frame aperture."
+    }
+  ]
+}
