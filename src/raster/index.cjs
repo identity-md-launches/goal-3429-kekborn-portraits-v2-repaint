@@ -7,6 +7,21 @@ const MASTER_WIDTH = 2048;
 const MASTER_HEIGHT = 2560;
 const FRAME_APERTURE = Object.freeze({ x: 144, y: 144, width: 1760, height: 2224 });
 
+// Finish strengths are display-space amounts, except craquelure (mask bytes).
+const GLAZE_STRENGTH = 0.16;
+const GLAZE_TINT = Object.freeze([180, 120, 64]);
+const BRUSH_STRENGTH = 0.03;
+const CANVAS_WEAVE_WEIGHT = 0.30;
+const STROKE_RELIEF_WEIGHT = 0.70;
+const VARNISH_STRENGTH = 0.06;
+const VARNISH_HIGHLIGHT_STRENGTH = 0.01;
+const VARNISH_TINT = Object.freeze([224, 184, 112]);
+const CRAQUELURE_STRENGTH = 24;
+const CRAQUELURE_TINT = Object.freeze([42, 30, 23]);
+const FRAME_SHADOW_STRENGTH = 0.23;
+const FRAME_SHADOW_FADE = 44; // master pixels
+const FINISH_STAGES = Object.freeze(['glaze', 'brush', 'varnish', 'craquelure', 'frameShadow']);
+
 /**
  * Raster = { width, height, data: Uint8Array }. Buffer is also accepted.
  * Pixels are tightly packed, straight (unpremultiplied) RGBA8 in row-major order.
@@ -17,7 +32,7 @@ const FRAME_APERTURE = Object.freeze({ x: 144, y: 144, width: 1760, height: 2224
  * createImage(width = 2048, height = 2560) -> zero-filled Raster
  * decodePNG(bytes: Uint8Array, target?: Uint8Array) -> Raster
  * composite(destination: Raster, source: Raster, rect?) -> destination
- * finish(image: Raster, seed: Uint8Array) -> image
+ * finish(image: Raster, seed: Uint8Array, stages?: object) -> image
  * encodePNG(image: Raster) -> Buffer
  *
  * Composite mutates destination. Call in back-to-front order and release each
@@ -30,10 +45,10 @@ const FRAME_APERTURE = Object.freeze({ x: 144, y: 144, width: 1760, height: 2224
  * to the canvas and uses center-aligned, alpha-weighted bilinear interpolation.
  *
  * Call finish exactly once after the last layer, then encode. Finish mutates RGB
- * in place, preserves alpha, and uses the supplied seed bytes for crack geometry.
- * It multiplies a restrained #E0B870 varnish, blends fine #2A1E17 cracks with
- * visibility weighted toward dark paint, then casts the top/left rail shadow
- * inward. Fully transparent pixels retain their hidden RGB samples as well.
+ * in place and preserves alpha. In order: warm shadow glaze, seeded canvas weave
+ * and brush relief, #E0B870 varnish, fine #2A1E17 craquelure, top/left rail shadow.
+ * Optional boolean stage switches allow comparisons; all default to true.
+ * Fully transparent pixels retain their hidden RGB samples as well.
  * The aperture scales proportionally on non-master rasters used for previews.
  * PNG decoding preserves RGB samples without applying embedded color profiles.
  * Encoding writes RGBA8 with no ancillary chunks or time-dependent metadata.
@@ -133,8 +148,8 @@ function composite(destination, source, rect = { x: 0, y: 0, width: source.width
   return destination;
 }
 
-function seededRandom(seed) {
-  const digest = createHash('sha256').update('kekborn/craquelure/v1\0').update(seed).digest();
+function seededRandom(seed, domain = 'kekborn/craquelure/v1\0') {
+  const digest = createHash('sha256').update(domain).update(seed).digest();
   let state = digest.readUInt32LE(0);
   return () => {
     state = (state + 0x6d2b79f5) >>> 0;
@@ -175,7 +190,7 @@ function crackMask(width, height, seed) {
   function link(start, end) {
     const middleX = (start.x + end.x) / 2 + (random() - 0.5) * spacing * 0.27;
     const middleY = (start.y + end.y) / 2 + (random() - 0.5) * spacing * 0.27;
-    const strength = 10 + random() * 14;
+    const strength = 10 + random() * (CRAQUELURE_STRENGTH - 10);
     trace(mask, width, height, start.x, start.y, middleX, middleY, strength);
     trace(mask, width, height, middleX, middleY, end.x, end.y, strength);
   }
@@ -190,13 +205,69 @@ function crackMask(width, height, seed) {
   return mask;
 }
 
-function finish(image, seed) {
+// A small seeded height field gives elongated, slanted stroke relief. Its
+// directional derivative lights the slopes facing the upper-left key. This is
+// surface texture only: the painted forms and their brushwork come from layers.
+function brushTexture(width, height, seed) {
+  const random = seededRandom(seed, 'kekborn/brush/v1\0');
+  const strokeWidth = 18;
+  const strokeLength = 72;
+  const slant = 0.28;
+  const columns = Math.ceil((MASTER_WIDTH + slant * MASTER_HEIGHT) / strokeWidth) + 3;
+  const rows = Math.ceil(MASTER_HEIGHT / strokeLength) + 3;
+  const heights = Float32Array.from({ length: columns * rows }, () => random() * 2 - 1);
+  const phaseX = random() * Math.PI * 2;
+  const phaseY = random() * Math.PI * 2;
+  const scaleX = width / MASTER_WIDTH;
+  const scaleY = height / MASTER_HEIGHT;
+  // Fade out undersampled weave and relief instead of making preview moire.
+  const resolved = (period, scale) => Math.max(0, Math.min(1, (period * scale - 2) / 2));
+  const warpFade = resolved(6, scaleX);
+  const weftFade = resolved(7, scaleY);
+  const reliefFade = resolved(strokeWidth / (1 + slant), Math.min(scaleX, scaleY));
+  const warp = Float32Array.from({ length: width }, (_, x) =>
+    Math.sin((x + 0.5) / scaleX * Math.PI * 2 / 6 + phaseX) * warpFade);
+  const weft = Float32Array.from({ length: height }, (_, y) =>
+    Math.sin((y + 0.5) / scaleY * Math.PI * 2 / 7 + phaseY) * weftFade);
+  const slopeX = (1 + slant) / strokeWidth;
+  const slopeY = 1 / strokeLength;
+  // Cubic interpolation's slope is bounded by 3 for heights in [-1,1].
+  const normalise = 3 * (slopeX + slopeY);
+  return (x, y, masterX, masterY) => {
+    const u = (masterX + slant * masterY) / strokeWidth + 1;
+    const v = masterY / strokeLength + 1;
+    const col = Math.floor(u);
+    const row = Math.floor(v);
+    const tx = u - col;
+    const ty = v - row;
+    const sx = tx * tx * (3 - 2 * tx);
+    const sy = ty * ty * (3 - 2 * ty);
+    const i = row * columns + col;
+    const a = heights[i];
+    const b = heights[i + 1];
+    const c = heights[i + columns];
+    const d = heights[i + columns + 1];
+    const du = ((b - a) * (1 - sy) + (d - c) * sy) * 6 * tx * (1 - tx);
+    const dv = ((c - a) * (1 - sx) + (d - b) * sx) * 6 * ty * (1 - ty);
+    const relief = (du * slopeX + dv * slopeY) / normalise * reliefFade;
+    const weave = (warp[x] + weft[y]) / 2;
+    return CANVAS_WEAVE_WEIGHT * weave + STROKE_RELIEF_WEIGHT * relief;
+  };
+}
+
+function finish(image, seed, stages = {}) {
   validateImage(image);
   if (!(seed instanceof Uint8Array) || seed.length === 0) {
     throw new TypeError('Expected nonempty seed bytes');
   }
+  if (!stages || typeof stages !== 'object' || Array.isArray(stages) ||
+      Object.keys(stages).some(key => !FINISH_STAGES.includes(key) || typeof stages[key] !== 'boolean')) {
+    throw new TypeError('Expected boolean finish stage switches');
+  }
+  const enabled = Object.fromEntries(FINISH_STAGES.map(key => [key, stages[key] !== false]));
   const { width, height, data } = image;
-  const cracks = crackMask(width, height, seed);
+  const cracks = enabled.craquelure ? crackMask(width, height, seed) : null;
+  const brush = enabled.brush ? brushTexture(width, height, seed) : null;
   const scaleX = width / MASTER_WIDTH;
   const scaleY = height / MASTER_HEIGHT;
   const { x: left, y: top, width: apertureWidth, height: apertureHeight } = FRAME_APERTURE;
@@ -214,25 +285,47 @@ function finish(image, seed) {
       const inside = masterX >= left && masterX < right && masterY >= top && masterY < bottom;
       const distance = Math.min(masterX - left, masterY - top);
       let shadow = 1;
-      if (inside && distance < 44) {
-        const t = 1 - distance / 44;
-        shadow -= 0.23 * t * t * (3 - 2 * t);
+      if (enabled.frameShadow && inside && distance < FRAME_SHADOW_FADE) {
+        const t = 1 - distance / FRAME_SHADOW_FADE;
+        shadow -= FRAME_SHADOW_STRENGTH * t * t * (3 - 2 * t);
       }
       // Display-space luminance of the pristine paint, independent of coverage.
-      // A little extra multiply in highlights gives the varnish its yellowing
-      // without an additive wash lifting the darks or erasing brushwork.
       const luminance = (0.2126 * data[i] + 0.7152 * data[i + 1] + 0.0722 * data[i + 2]) / 255;
-      const varnish = 0.06 + 0.01 * luminance * luminance;
-      const crack = cracks[pixel] / 255 * (1 - luminance) ** 2;
-      const red = data[i] * (1 - varnish + varnish * 224 / 255);
-      const green = data[i + 1] * (1 - varnish + varnish * 184 / 255);
-      const blue = data[i + 2] * (1 - varnish + varnish * 112 / 255);
-      data[i] = Math.round((red + (42 - red) * crack) * shadow);
-      data[i + 1] = Math.round((green + (30 - green) * crack) * shadow);
-      data[i + 2] = Math.round((blue + (23 - blue) * crack) * shadow);
+      const darkWeight = (1 - luminance) ** 2;
+      // 1. A transparent ochre/umber multiply deepens and warms shadow paint.
+      const glaze = enabled.glaze ? GLAZE_STRENGTH * darkWeight : 0;
+      let red = data[i] * (1 - glaze + glaze * GLAZE_TINT[0] / 255);
+      let green = data[i + 1] * (1 - glaze + glaze * GLAZE_TINT[1] / 255);
+      let blue = data[i + 2] * (1 - glaze + glaze * GLAZE_TINT[2] / 255);
+      // 2. Neutral lightness relief, bounded by +/-3%, protects black and white.
+      const texture = 1 + (brush ? BRUSH_STRENGTH * brush(x, y, masterX, masterY) *
+        4 * luminance * (1 - luminance) : 0);
+      red *= texture;
+      green *= texture;
+      blue *= texture;
+      // 3. Warm varnish yellows highlights without an additive amber wash.
+      const varnish = enabled.varnish ? VARNISH_STRENGTH + VARNISH_HIGHLIGHT_STRENGTH * luminance ** 2 : 0;
+      red *= 1 - varnish + varnish * VARNISH_TINT[0] / 255;
+      green *= 1 - varnish + varnish * VARNISH_TINT[1] / 255;
+      blue *= 1 - varnish + varnish * VARNISH_TINT[2] / 255;
+      // 4. Fine warm cracks; crossings use maximum coverage, never extra ink.
+      const crack = cracks ? cracks[pixel] / 255 * darkWeight : 0;
+      red += (CRAQUELURE_TINT[0] - red) * crack;
+      green += (CRAQUELURE_TINT[1] - green) * crack;
+      blue += (CRAQUELURE_TINT[2] - blue) * crack;
+      // 5. The frame shadow sits over the finished surface. Round only here.
+      data[i] = Math.max(0, Math.min(255, Math.round(red * shadow)));
+      data[i + 1] = Math.max(0, Math.min(255, Math.round(green * shadow)));
+      data[i + 2] = Math.max(0, Math.min(255, Math.round(blue * shadow)));
     }
   }
   return image;
 }
 
-module.exports = { MASTER_WIDTH, MASTER_HEIGHT, FRAME_APERTURE, createImage, decodePNG, composite, finish, encodePNG };
+module.exports = {
+  MASTER_WIDTH, MASTER_HEIGHT, FRAME_APERTURE,
+  GLAZE_STRENGTH, GLAZE_TINT, BRUSH_STRENGTH, CANVAS_WEAVE_WEIGHT, STROKE_RELIEF_WEIGHT,
+  VARNISH_STRENGTH, VARNISH_HIGHLIGHT_STRENGTH, VARNISH_TINT,
+  CRAQUELURE_STRENGTH, CRAQUELURE_TINT, FRAME_SHADOW_STRENGTH, FRAME_SHADOW_FADE,
+  createImage, decodePNG, composite, finish, encodePNG,
+};
