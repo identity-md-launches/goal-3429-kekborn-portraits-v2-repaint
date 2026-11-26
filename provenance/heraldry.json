@@ -1,0 +1,510 @@
+{
+  "model": "OpenAI ImageGen",
+  "settings": {
+    "mode": "text-to-image",
+    "transparentBackground": false,
+    "seed": null,
+    "checkpoint": null,
+    "width": 1122,
+    "height": 1402,
+    "note": "Tool exposes neither seed nor checkpoint. Resolution was selected by the tool."
+  },
+  "editReference": null,
+  "prompts": {
+    "locked": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "suffix": "Show only a full-bleed, flat, straight-on material atlas from the heraldic banner in that scene. Six equal rectangular swatches in two columns and three rows, no margins, dividers or labels. Top left forest oil brushed vertically over taut linen. Top right oxblood brushed diagonally down-right on linen. Middle left ochre oil brushed horizontally. Middle right umber brushed diagonally down-left. Bottom left gently worn gold leaf in small irregular hand-laid dabs over warm bole. Bottom right warm bone and ochre oil impasto with curling strokes and flecks of worn gold. Uniform overall tone within each swatch, directional small bristle marks, slight local impasto, soft upper-left lighting. Only paint surface, no folds, large shadows, figures, imagery, cracks or varnish gloss in this material close-up.",
+    "negative": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting."
+  },
+  "atlasSha256": "1a11e1c51f09024db659d3c0f029f162e90decb30a54dc9835ea36155707a075",
+  "swatches": [
+    "vertical forest oil",
+    "diagonal oxblood oil",
+    "horizontal ochre oil",
+    "diagonal umber oil",
+    "worn gold leaf",
+    "curved warm bone impasto"
+  ],
+  "method": "Crop inside each painted swatch. Map the crop into the registered 240×288 shield box, mirroring the oxblood brushwork to follow the descending bend. Take display-space Rec. 709 luma. Center within each mask by alpha-weighted mean, scale by the 93rd percentile absolute deviation, clip and recenter after clipping. The trefoil uses a closer crop of raised paint with an asymmetric highlight allowance to preserve the central relief at rail size. Replace only visible RGB, channel for channel. Retain the baseline straight-alpha masks and 2048×2560 raster dimensions exactly.",
+  "files": [
+    {
+      "path": "layers/heraldry/charges/estoile-fimbriation.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 48112,
+      "sha256": "b7880c0e3d68973a040acc2e840e3870c6ebd7f2c6385d30cef125f57a80c06c",
+      "baselineSha256": "fc157e77af5fcb4bb3630851a3f2d9bc39f6d794a3e61a3b39366061e6493095",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        168,
+        184
+      ],
+      "meanLightness": 175.999
+    },
+    {
+      "path": "layers/heraldry/charges/estoile-keyline.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 49606,
+      "sha256": "73100a95341a49773d5634950491a6bc8b6b97a1719eee98a5a9ae47939fd759",
+      "baselineSha256": "0bea9088e2ecf69afd83c1ba86df30bb6411f12200406fa91d42a24f5515f03a",
+      "swatch": 3,
+      "sourceCrop": {
+        "x": 574,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        170,
+        182
+      ],
+      "meanLightness": 176.002
+    },
+    {
+      "path": "layers/heraldry/charges/estoile.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 48647,
+      "sha256": "7bae5c46da723ecc51cff335ef7c383f7c3d9e12c888c68bdc81dcfb597a77ed",
+      "baselineSha256": "d314777dea6c633cf841125a7f7dd8512ecbd2b56814d0a1a39347eb3fd4f6d2",
+      "swatch": 5,
+      "sourceCrop": {
+        "x": 574,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        162,
+        190
+      ],
+      "meanLightness": 175.994
+    },
+    {
+      "path": "layers/heraldry/charges/tower-fimbriation.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 38298,
+      "sha256": "4608a824ab9f179c4105d97d72cd0cb866197b96e7b81edca700640784d812c8",
+      "baselineSha256": "643cec4a25d59e4907ca9667af156632ffa72a3139c2149053324bfdba8f4bc6",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        168,
+        184
+      ],
+      "meanLightness": 176
+    },
+    {
+      "path": "layers/heraldry/charges/tower-keyline.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 39445,
+      "sha256": "050a8ababd40c27abab82852ecae8857a6e0c86f8583dbfb5b481bac69814ef1",
+      "baselineSha256": "e2406ec5e97c5763ec7b946dfbf2fe1f03b81e42a5a9f8cec9cca93ecb39016d",
+      "swatch": 3,
+      "sourceCrop": {
+        "x": 574,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        170,
+        182
+      ],
+      "meanLightness": 176.001
+    },
+    {
+      "path": "layers/heraldry/charges/tower.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 37533,
+      "sha256": "7875a978f3da197db259ddd8c42f6c75a8ca00abc96a09bd50ef828c992dcce5",
+      "baselineSha256": "4af601351e708b3c8a866a938be007de26007add71bf0aecd24883f8f986f7a7",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        162,
+        190
+      ],
+      "meanLightness": 175.995
+    },
+    {
+      "path": "layers/heraldry/charges/trefoil-fimbriation.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 50299,
+      "sha256": "d302c0bdcd455f966211cb486302f26ad336ace08b0a9e90553b335db725f505",
+      "baselineSha256": "eb99458e7eb7a9f4b4ed63e3c83194b91cfac940931aa9026acabe39d838b8d8",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        168,
+        184
+      ],
+      "meanLightness": 175.999
+    },
+    {
+      "path": "layers/heraldry/charges/trefoil-keyline.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 51324,
+      "sha256": "1976e8d8a1f2c01cae30465beff7e42e29d6d1aa175d6a7d6376e7c1cdbde805",
+      "baselineSha256": "d9ac5f8d834513fefa79b8d7be7ba71df835b72743300fcf54cb1cefe1bb64e0",
+      "swatch": 3,
+      "sourceCrop": {
+        "x": 574,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        170,
+        182
+      ],
+      "meanLightness": 175.997
+    },
+    {
+      "path": "layers/heraldry/charges/trefoil.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 52982,
+      "sha256": "7f208678e7a8ef0cfe19d4738c8d8e87876463d12458278ff38f96f05e80e0a2",
+      "baselineSha256": "fc72e975962784d80e6225edcffad042a2781ce90bfdba507ce2e80284194d97",
+      "swatch": 5,
+      "sourceCrop": {
+        "x": 599,
+        "y": 1183,
+        "width": 240,
+        "height": 160
+      },
+      "mirror": false,
+      "lightnessRange": [
+        160,
+        228
+      ],
+      "meanLightness": 175.996
+    },
+    {
+      "path": "layers/heraldry/divisions/fess-base.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 56476,
+      "sha256": "f86627de10c12ba9104d91a8af082689018908a93ef1f75c91e0f09870588495",
+      "baselineSha256": "ce782be8b7335facaa6af4fce358e5325927d067a0e2177aeb8f2ca5a09f9c38",
+      "swatch": 2,
+      "sourceCrop": {
+        "x": 14,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        165,
+        187
+      ],
+      "meanLightness": 175.999
+    },
+    {
+      "path": "layers/heraldry/divisions/fess-chief.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 60711,
+      "sha256": "10dd043290e0e0f0d3552ead66343c121630195a82968dd172fa6a71fecf3453",
+      "baselineSha256": "ddd08f80cf1f3dbe3057cde76c64a2152c156c8394c19240a1690e15cf24d110",
+      "swatch": 2,
+      "sourceCrop": {
+        "x": 14,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        165,
+        187
+      ],
+      "meanLightness": 175.999
+    },
+    {
+      "path": "layers/heraldry/divisions/pale-dexter.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 61277,
+      "sha256": "4ac963e286c286d4453a0142bcb7e0f9984c5df92560b8c6fd640fd94ac6af4b",
+      "baselineSha256": "1b2f064bf923f641d2d4fa87656979d68ba6b5f55ae1c1fecf68e3b829ffbf42",
+      "swatch": 0,
+      "sourceCrop": {
+        "x": 14,
+        "y": 14,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        165,
+        187
+      ],
+      "meanLightness": 176.007
+    },
+    {
+      "path": "layers/heraldry/divisions/pale-sinister.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 64326,
+      "sha256": "26c634c456d17c368e0e52de31a0d6c478901243b24b3b47261deb89fb8ad845",
+      "baselineSha256": "20ec2d002644e25862396b756a64fb26f18fd092d0bcf7ce4e67b8e2784aa88f",
+      "swatch": 0,
+      "sourceCrop": {
+        "x": 14,
+        "y": 14,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        165,
+        187
+      ],
+      "meanLightness": 175.999
+    },
+    {
+      "path": "layers/heraldry/fields/edge-fillet.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 35073,
+      "sha256": "3637b5b3189292926eb5db3c329d10d65282f82d16971a23e594eb5ecf39871b",
+      "baselineSha256": "0476f82c6628dd6ed20905682ec821954fcef8916cdcccf16acf52766abff0b8",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        168,
+        184
+      ],
+      "meanLightness": 176.003
+    },
+    {
+      "path": "layers/heraldry/fields/edge-keyline.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 35041,
+      "sha256": "5ede79bac9104f554b3fc5a9e18a690d806e524930c42981e81f316911810226",
+      "baselineSha256": "0e0c62166c8ab7b25c5f20b75c71dab11a181e1a397df04ad76986c91cc34ee3",
+      "swatch": 3,
+      "sourceCrop": {
+        "x": 574,
+        "y": 481,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        170,
+        182
+      ],
+      "meanLightness": 176.006
+    },
+    {
+      "path": "layers/heraldry/fields/plain.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 87540,
+      "sha256": "d540dabd1e819f89d8337972a2d4bd9ca8c910f1df8c007856270e3919f55087",
+      "baselineSha256": "01afc1d2059326237c08fc73a9f16ffe7c860beee8d42b99222e63b15de3e949",
+      "swatch": 0,
+      "sourceCrop": {
+        "x": 14,
+        "y": 14,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        164,
+        188
+      ],
+      "meanLightness": 176.001
+    },
+    {
+      "path": "layers/heraldry/ordinaries/bend.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 60826,
+      "sha256": "48c0b642c6743071895845e3a3ec2e4f3a9cfb23ea02cb936ba0305f335ed40e",
+      "baselineSha256": "a48b7105797e5d2d51c093432960246e53f7f886391d600f5019444918a85592",
+      "swatch": 1,
+      "sourceCrop": {
+        "x": 574,
+        "y": 14,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": true,
+      "lightnessRange": [
+        166,
+        186
+      ],
+      "meanLightness": 176
+    },
+    {
+      "path": "layers/heraldry/ordinaries/cross.png",
+      "width": 2048,
+      "height": 2560,
+      "bytes": 62395,
+      "sha256": "c6132c375be7aaf9454ec5952c877e5e760d1f979932a0ec9b9db19108109fdf",
+      "baselineSha256": "22679dedd9cc74eb3b6a7e9375f522108135879de58e858c60ed5c7b9630f860",
+      "swatch": 4,
+      "sourceCrop": {
+        "x": 14,
+        "y": 948,
+        "width": 534,
+        "height": 438
+      },
+      "mirror": false,
+      "lightnessRange": [
+        166,
+        186
+      ],
+      "meanLightness": 176.002
+    }
+  ],
+  "review": {
+    "placements": {
+      "banner": [
+        240,
+        288
+      ],
+      "rail": [
+        100,
+        120
+      ]
+    },
+    "seeds": [
+      {
+        "seedLabel": "heraldry-review-0",
+        "seed": "67d6198001d7b120eb55a87c37d1a28c778bd06fdb6ae8723c49748a684bb08f",
+        "choices": {
+          "tincture": {
+            "field": {
+              "name": "vert",
+              "hex": "#253E32"
+            },
+            "secondary": {
+              "name": "azure",
+              "hex": "#2B4A7A"
+            },
+            "metal": {
+              "name": "argent",
+              "hex": "#A7A9A4"
+            },
+            "charge": {
+              "name": "sable",
+              "hex": "#32251F"
+            }
+          },
+          "division": "pale",
+          "ordinary": "cross",
+          "charge": "tower"
+        },
+        "bannerPath": "layers/banners/vert-pennon.png",
+        "framePath": "layers/frames/common.png"
+      },
+      {
+        "seedLabel": "heraldry-review-10",
+        "seed": "5f9c1820539f86dc4e47c6d2289aab8272b34657fe3fbc68ab5eda9b9011cb57",
+        "choices": {
+          "tincture": {
+            "field": {
+              "name": "sable",
+              "hex": "#32251F"
+            },
+            "secondary": {
+              "name": "vert",
+              "hex": "#253E32"
+            },
+            "metal": {
+              "name": "or",
+              "hex": "#C9A45A"
+            },
+            "charge": {
+              "name": "gules",
+              "hex": "#682F38"
+            }
+          },
+          "division": "fess",
+          "ordinary": "bend",
+          "charge": "trefoil"
+        },
+        "bannerPath": "layers/banners/oxblood-standard.png",
+        "framePath": "layers/frames/common.png"
+      },
+      {
+        "seedLabel": "heraldry-review-15",
+        "seed": "5c73d53926b82531bf28b966e1fa11d83b9a373b7f560715cabd30c86225bcca",
+        "choices": {
+          "tincture": {
+            "field": {
+              "name": "vert",
+              "hex": "#253E32"
+            },
+            "secondary": {
+              "name": "sable",
+              "hex": "#32251F"
+            },
+            "metal": {
+              "name": "or",
+              "hex": "#C9A45A"
+            },
+            "charge": {
+              "name": "gules",
+              "hex": "#682F38"
+            }
+          },
+          "division": "plain",
+          "ordinary": "cross",
+          "charge": "estoile"
+        },
+        "bannerPath": "layers/banners/ochre-gonfalon.png",
+        "framePath": "layers/frames/common.png"
+      }
+    ],
+    "observations": "At banner size the cross reads as lightly mottled metal, the bend shows diagonal bristle lines and the trefoil shows raised curling paint. The field divisions stay distinct. At rail size most of the fine stroke detail softens, while the tower battlements, trefoil lobes, estoile profile and shield edges remain legible against the wood."
+  }
+}
