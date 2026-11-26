@@ -1,0 +1,398 @@
+{
+  "study": "02",
+  "input": {
+    "wallet": "kekborn-study-02",
+    "tier": "uncommon",
+    "genetics": {
+      "skin": "skin.lichen",
+      "eyes": "eyes.side-eye"
+    },
+    "traits": {
+      "category": "antiquary",
+      "expression": "expression.paranoid-side-eye",
+      "background": "background.green-arras",
+      "banner": "banner.oxblood-standard"
+    },
+    "artSeed": "sitting-02"
+  },
+  "render": {
+    "tool": "bin/render.cjs",
+    "schema": "kekborn-render@1",
+    "catalogSchema": "kekborn-assets@1",
+    "seed": "873de6e39ede32e6ccae84773161ef24f955feac6b807cf5e21d27e513cacfd3",
+    "tier": "uncommon",
+    "category": "antiquary",
+    "canvas": {
+      "width": 2048,
+      "height": 2560
+    },
+    "finish": {
+      "pass": "raster.finish",
+      "count": 1,
+      "afterLayer": 13,
+      "seed": "seed"
+    }
+  },
+  "layers": [
+    {
+      "index": 0,
+      "group": "background",
+      "kind": "catalog",
+      "id": "background.green-arras",
+      "slot": "background",
+      "path": "layers/backgrounds/green-arras.png",
+      "sha256": "32b42540bd3339f46b6508174cf56f225df04ca9af3d23f4e16191f94ce67232",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 1,
+      "group": "banner",
+      "kind": "catalog",
+      "id": "banner.oxblood-standard",
+      "slot": "banner",
+      "path": "layers/banners/oxblood-standard.png",
+      "sha256": "24deadb981473cd0f7638ea9276de61d98432d502f096050be21991f45eb6a42",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 2,
+      "group": "banner-arms",
+      "kind": "procedural",
+      "id": "arms:banner-arms",
+      "imageSha256": "1449e157eb80035a0972baba615bafb78c1f64001278e97157068664948c4b30",
+      "source": "heraldry.buildArms",
+      "placement": {
+        "x": 1500,
+        "y": 340,
+        "width": 240,
+        "height": 288
+      }
+    },
+    {
+      "index": 3,
+      "group": "skin",
+      "kind": "catalog",
+      "id": "skin.lichen",
+      "slot": "skin",
+      "path": "layers/skins/lichen.png",
+      "sha256": "cb1ec4d19b7d4ac274774577f938afa67a9b2bd8a8ea1b72f53847b97bac79ee",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 4,
+      "group": "eyes",
+      "kind": "catalog",
+      "id": "eyes.side-eye",
+      "slot": "eyes",
+      "path": "layers/eyes/side-eye.png",
+      "sha256": "cac6cb6c64cd6a7d02e7c5b9fca9289fa55c1ddde92519c0c90b1ba938f3ed6a",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 5,
+      "group": "expression",
+      "kind": "skinPaint",
+      "id": "expression.paranoid-side-eye",
+      "slot": "expression",
+      "path": "layers/expressions/paranoid-side-eye.skin.png",
+      "sha256": "3cc9eae54b4e0f976d20310eb771f3f504034ee09cdc06fa9752c5e46d2e6822",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 6,
+      "group": "expression",
+      "kind": "catalog",
+      "id": "expression.paranoid-side-eye",
+      "slot": "expression",
+      "path": "layers/expressions/paranoid-side-eye.png",
+      "sha256": "c2a7a83a01a5100b52086b66710eb7346d6fe9e668a0ebcec2c0480df331dff7",
+      "source": "explicit",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 7,
+      "group": "attire-front",
+      "kind": "catalog",
+      "id": "attire-front.antiquary-doublet",
+      "slot": "attire-front",
+      "path": "layers/attire/antiquary/attire-front.antiquary-doublet.png",
+      "sha256": "d7afef6ff4accb642ffdd9a72cf2007fee1d7ef9eee551cec85c432031de39f3",
+      "source": "match",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 8,
+      "group": "accessory",
+      "kind": "catalog",
+      "id": "accessory.antiquary-monocle",
+      "slot": "accessory",
+      "path": "layers/attire/antiquary/accessory.antiquary-monocle.png",
+      "sha256": "bd830e4d0114033adafac4d114dede7840e34d600f9d3b34cd286935d4627139",
+      "source": "match",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 9,
+      "group": "headwear",
+      "kind": "catalog",
+      "id": "headwear.uncommon",
+      "slot": "headwear",
+      "path": "layers/headwear/uncommon.png",
+      "sha256": "f324d1615b3e473258b15863d03e93504132302a9ced05533677c0450e9beba4",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 10,
+      "group": "regalia",
+      "kind": "catalog",
+      "id": "regalia.uncommon",
+      "slot": "regalia",
+      "path": "layers/regalia/uncommon.png",
+      "sha256": "f5bc0ddf98799661856a2e03e1d5d35cd622cfade63f27fbe8f6a8e6d304d6bb",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 11,
+      "group": "prop-front",
+      "kind": "catalog",
+      "id": "prop-front.antiquary-scroll",
+      "slot": "prop-front",
+      "path": "layers/attire/antiquary/prop-front.antiquary-scroll.png",
+      "sha256": "b3ffbc7199eebf0dd2aa25081a82167087f9899e43892f0eef04187e0e114e54",
+      "source": "match",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 12,
+      "group": "frame",
+      "kind": "catalog",
+      "id": "frame.uncommon",
+      "slot": "frame",
+      "path": "layers/frames/uncommon.png",
+      "sha256": "bde439decf641efc3c087335e569773f886010c6ac45fffe60a15ca58519a6b5",
+      "source": "draw",
+      "placement": {
+        "x": 0,
+        "y": 0,
+        "width": 2048,
+        "height": 2560
+      }
+    },
+    {
+      "index": 13,
+      "group": "rail-arms",
+      "kind": "procedural",
+      "id": "arms:rail-arms",
+      "imageSha256": "1449e157eb80035a0972baba615bafb78c1f64001278e97157068664948c4b30",
+      "source": "heraldry.buildArms",
+      "placement": {
+        "x": 974,
+        "y": 2404,
+        "width": 100,
+        "height": 120
+      }
+    }
+  ],
+  "arms": {
+    "choices": {
+      "tincture": {
+        "field": {
+          "name": "sable",
+          "hex": "#32251F"
+        },
+        "secondary": {
+          "name": "gules",
+          "hex": "#682F38"
+        },
+        "metal": {
+          "name": "or",
+          "hex": "#C9A45A"
+        },
+        "charge": {
+          "name": "azure",
+          "hex": "#2B4A7A"
+        }
+      },
+      "division": "pale",
+      "ordinary": "bend",
+      "charge": "trefoil"
+    },
+    "imageSize": {
+      "width": 240,
+      "height": 288
+    },
+    "imageSha256": "1449e157eb80035a0972baba615bafb78c1f64001278e97157068664948c4b30",
+    "parts": [
+      {
+        "path": "layers/heraldry/divisions/pale-dexter.png",
+        "sha256": "4ac963e286c286d4453a0142bcb7e0f9984c5df92560b8c6fd640fd94ac6af4b"
+      },
+      {
+        "path": "layers/heraldry/divisions/pale-sinister.png",
+        "sha256": "26c634c456d17c368e0e52de31a0d6c478901243b24b3b47261deb89fb8ad845"
+      },
+      {
+        "path": "layers/heraldry/ordinaries/bend.png",
+        "sha256": "48c0b642c6743071895845e3a3ec2e4f3a9cfb23ea02cb936ba0305f335ed40e"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil-keyline.png",
+        "sha256": "1976e8d8a1f2c01cae30465beff7e42e29d6d1aa175d6a7d6376e7c1cdbde805"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil-fimbriation.png",
+        "sha256": "d302c0bdcd455f966211cb486302f26ad336ace08b0a9e90553b335db725f505"
+      },
+      {
+        "path": "layers/heraldry/charges/trefoil.png",
+        "sha256": "7f208678e7a8ef0cfe19d4738c8d8e87876463d12458278ff38f96f05e80e0a2"
+      },
+      {
+        "path": "layers/heraldry/fields/edge-keyline.png",
+        "sha256": "5ede79bac9104f554b3fc5a9e18a690d806e524930c42981e81f316911810226"
+      },
+      {
+        "path": "layers/heraldry/fields/edge-fillet.png",
+        "sha256": "3637b5b3189292926eb5db3c329d10d65282f82d16971a23e594eb5ecf39871b"
+      }
+    ],
+    "placements": {
+      "banner": {
+        "x": 1500,
+        "y": 340,
+        "width": 240,
+        "height": 288
+      },
+      "rail": {
+        "x": 974,
+        "y": 2404,
+        "width": 100,
+        "height": 120
+      }
+    }
+  },
+  "masters": {
+    "plain": {
+      "width": 2048,
+      "height": 2560,
+      "sha256": "dd58d482e96fee95eb2b824d2336ac3f8483f784aac49f7da746e90aed7b1dfe",
+      "committed": false
+    },
+    "harmonised": {
+      "width": 2048,
+      "height": 2560,
+      "sha256": "7fd90d69c79c4dff289479532de83b20197c08d42264e3a1bc1b8b2eb3f0a5bd",
+      "committed": false
+    }
+  },
+  "previews": {
+    "plain": {
+      "path": "samples/02-plain.jpg",
+      "width": 1024,
+      "height": 1280,
+      "quality": 90,
+      "bytes": 504205,
+      "sha256": "8a8cd0ebe2feb053db1b3fa9700e8d3c9213f29def5cd6963fa1a439bb461f2e"
+    },
+    "harmonised": {
+      "path": "samples/02-harmonised.jpg",
+      "width": 1024,
+      "height": 1280,
+      "quality": 90,
+      "bytes": 468410,
+      "sha256": "0c7653c093ae66c0b326cb647436911eeeee06a05c64300f9e3bc622e6115613"
+    }
+  },
+  "harmonise": {
+    "tool": "bin/harmonise.cjs",
+    "service": "AI Horde (aihorde.net), anonymous key",
+    "model": "AlbedoBase XL (SDXL)",
+    "mode": "img2img",
+    "strength": 0.22,
+    "seed": 1536,
+    "sampler": "k_euler_a",
+    "karras": true,
+    "steps": 24,
+    "cfgScale": 6,
+    "modelCanvas": {
+      "width": 832,
+      "height": 1024,
+      "note": "plain master downscaled (lanczos3) to this size and sent as WebP source image; model WebP output upscaled (lanczos3) to 2048x2560 opaque PNG before apply"
+    },
+    "worker": "t63c_5080",
+    "requestId": "aaa0ffda-bea8-4bf4-a0aa-b9f6962826bb",
+    "modelOutputSha256": "06579524e7c45ed68c035a2abea74f1b5bdf18a3bf785c77520123de1e574984",
+    "modelOutputWebpSha256": "1195626fda41a777f7d7f3a1536bd3e362bc8a6ebce73ac61a1d684b6f4607f9",
+    "prompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+    "aperture": {
+      "x": 144,
+      "y": 144,
+      "width": 1760,
+      "height": 2224
+    },
+    "applyMix": "up to 22% model RGB inside aperture, frame rails, plaque and rail arms byte-identical"
+  }
+}
