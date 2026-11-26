@@ -37,7 +37,7 @@
       "id": "moss",
       "kind": "skin",
       "path": "layers/skins/moss.png",
-      "sha256": "98b4c9283db6896b61642a6b7cbb43645aaa644858d8e1fbc550b2c5a44b44bd",
+      "sha256": "2966947f8061dfc671087d31d77dcf8d88c9fe613f66e51d2b59bb6cb2e1e014",
       "alpha": "Transparent outside the painted bust; opaque umber eye beds, not holes.",
       "finishBakedIn": false
     },

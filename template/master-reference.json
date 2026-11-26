@@ -1,0 +1,92 @@
+{
+  "schema": "kekborn-master-reference@1",
+  "image": "template/master-reference.png",
+  "skin": "layers/skins/moss.png",
+  "canvas": {
+    "width": 2048,
+    "height": 2560
+  },
+  "grid": "template/bust.svg",
+  "boxesNote": "Measured on the registered painting. Boxes run from x0,y0 inclusive to x1,y1 exclusive in master pixels. Socket boxes are the painted eye sockets mapped from the source painting; the opaque umber beds on the moss skin sit inside them.",
+  "landmarks": {
+    "farEye": {
+      "x": 680,
+      "y": 936
+    },
+    "nearEye": {
+      "x": 1040,
+      "y": 912
+    },
+    "crownSeat": {
+      "x": 969,
+      "y": 680
+    },
+    "skullTopAtCrownSeatX": 690,
+    "measuredMouthCorners": {
+      "far": [
+        680,
+        1148
+      ],
+      "near": [
+        1200,
+        1104
+      ]
+    }
+  },
+  "boxes": {
+    "head": {
+      "x0": 650,
+      "y0": 689,
+      "x1": 1449,
+      "y1": 1229
+    },
+    "farEyeSocket": {
+      "x0": 629,
+      "y0": 887,
+      "x1": 731,
+      "y1": 992
+    },
+    "nearEyeSocket": {
+      "x0": 946,
+      "y0": 863,
+      "x1": 1134,
+      "y1": 977
+    },
+    "mouth": {
+      "x0": 680,
+      "y0": 1090,
+      "x1": 1200,
+      "y1": 1162
+    },
+    "neck": {
+      "x0": 690,
+      "y0": 1229,
+      "x1": 1300,
+      "y1": 1540
+    },
+    "shoulders": {
+      "x0": 629,
+      "y0": 1450,
+      "x1": 1468,
+      "y1": 1760
+    }
+  },
+  "skinEyeBeds": {
+    "far": {
+      "cx": 680,
+      "cy": 936,
+      "rx": 50,
+      "ry": 54
+    },
+    "near": {
+      "cx": 1040,
+      "cy": 912,
+      "rx": 76,
+      "ry": 74
+    }
+  },
+  "deviations": [
+    "The painted head is narrower than the style-guide silhouette: snout tip and mouth corners sit to the right of the guide values (see measuredMouthCorners).",
+    "The bust ends near y 1760 with a soft fade. The shoulders do not reach the guide shoulder peaks at (365,1760) and (1575,1712)."
+  ]
+}

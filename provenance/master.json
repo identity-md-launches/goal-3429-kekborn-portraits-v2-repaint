@@ -1,0 +1,70 @@
+{
+  "target": "master",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "Pollinations image API, free tier (image.pollinations.ai)",
+    "name": "sana (the only model the free endpoint listed)",
+    "seed": 4131,
+    "requested": {
+      "width": 1024,
+      "height": 1280
+    },
+    "returned": {
+      "width": 686,
+      "height": 858,
+      "format": "JPEG"
+    },
+    "params": {
+      "nologo": true,
+      "private": true,
+      "enhance": false,
+      "negative_prompt": "style-guide negative prompt, verbatim"
+    },
+    "notExposed": "guidance scale, steps and sampler are not exposed; negative_prompt is passed but the service does not confirm it is honoured; a small service watermark sits bottom right, outside the cut-out field"
+  },
+  "prompt": {
+    "locked": "style-guide.md Locked prompt, verbatim",
+    "negative": "style-guide.md Negative prompt, verbatim",
+    "layerSuffix": "Oil painting head-and-shoulders of a big green frog, frog head with frog eyes and wide frog mouth, smooth moss-green amphibian skin, thick frog neck, rounded green frog shoulders, no human features, calm, facing left, plain dark umber background, no frame.",
+    "order": "Layer text placed BEFORE the locked prompt. With the suffix appended after it, this model ignored the suffix (the prompt appears truncated around the text-encoder limit) and painted human sitters in 9 of 10 tries. Both shared prompts were sent intact.",
+    "fullPrompt": "Oil painting head-and-shoulders of a big green frog, frog head with frog eyes and wide frog mouth, smooth moss-green amphibian skin, thick frog neck, rounded green frog shoulders, no human features, calm, facing left, plain dark umber background, no frame. Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner."
+  },
+  "candidates": "15 generations (seeds 4101-4114, 4120-4124, 4131-4134); seed 4131 chosen: a frog, three-quarter facing left, oil look, calm face, no clothes.",
+  "editReference": "none: this is the base painting",
+  "processing": [
+    "Similarity registration (scale 1.582, rotation -9.35 deg) mapping the painted eye centres (198,330) and (425,352) to (680,936) and (1040,912); bilinear resampling.",
+    "Vertical warp: the cranium above y 905 is compressed by 1.39 so the skull top sits at y 690 on x 969, and the body below y 1450 is stretched by 1/0.68.",
+    "master-reference.png: bust over its own painted ground; the ground is a mirror-tiled patch of the model background, glazed down to 38% for a dark ground. Opaque.",
+    "moss.png cut-out: hand-traced 35-point silhouette lasso of the painted frog, feathered about 2.5 source px; fades out where the source painting ends (y~1760); transparent outside it and outside the frame aperture.",
+    "Socket beds on moss.png: a multiply-style glaze of dark umber (46,33,25 modulated by the underlying paint luminance) over the painted eyes in irregular ellipses (far rx50 ry54, near rx76 ry74), fully opaque inside. This edit was NOT done by the model: the free endpoint offers no image editing or inpainting.",
+    "Muzzle: left as painted (a thin closed mouth line with no full lips); not repainted."
+  ],
+  "delivered": [
+    {
+      "path": "template/master-reference.png",
+      "bytes": 1583717,
+      "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+    },
+    {
+      "path": "layers/skins/moss.png",
+      "bytes": 1616975,
+      "sha256": "2966947f8061dfc671087d31d77dcf8d88c9fe613f66e51d2b59bb6cb2e1e014"
+    },
+    {
+      "path": "template/master-reference.json",
+      "bytes": 1917,
+      "sha256": "775f29374f0a4c54671b68871d29bd8f30565cece670b6ad440619d974ec73b8"
+    },
+    {
+      "path": "catalog/foundation.json",
+      "bytes": 4194,
+      "sha256": "b5fb86446ba0f094c21f74fee2dd709a82b0dd8dc6d9b83dc6c93dbdbba2e4b7"
+    }
+  ],
+  "seen": "In a 512x640 preview of sample-inputs/01.json, the moss frog face reads as an oil painting: soft upper-left light, glossy painted skin, amber eyes under the spectacles layer. The bust is narrower and smaller than the older code-drawn attire, so the frog arms and chest show above the scholar collar and the shoulders float inside a wide doublet. The rest of the stack (hat, attire, banner, frame) is still the old code-drawn library and looks digital beside the painted face. The cut-out edge is clean, and no ground remains around the head. The face is the model frog design, not a Pepe copy, but it is closer to a realistic tree frog than to the guide's heavy-lidded, full-lipped design.",
+  "undone": [
+    "Socket beds and lipless muzzle should be repainted by an image-edit model when one with inpainting is available.",
+    "The bust should be repainted wider, reaching the guide shoulder peaks and the aperture bottom, with heavier lids and a design closer to the guide.",
+    "At this resolution (686x858 upscaled to 2048x2560) the master is soft."
+  ]
+}
