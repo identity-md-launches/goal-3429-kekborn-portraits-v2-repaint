@@ -1,0 +1,500 @@
+{
+  "schema": "kekborn-paint-provenance@1",
+  "target": "skins",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "OpenAI ImageGen tool",
+    "name": "ImageGen; underlying model version not exposed",
+    "settings": {
+      "transparent_background": true,
+      "referenceMode": "referenced_image_paths",
+      "strength": "Minimal colour-only edit requested in text; no numeric strength control exposed",
+      "seed": null,
+      "seedNote": "Seed not exposed by the tool",
+      "sampler": null,
+      "steps": null,
+      "guidance": null,
+      "returnedWidth": 1121,
+      "returnedHeight": 1403,
+      "exportWidth": 2048,
+      "exportHeight": 2560
+    },
+    "calls": 7,
+    "rejected": "First lichen and peat trials using the uncleaned moss PNG moved the subject or retained hidden background RGB. Both discarded; five final edits use the cleaned reference."
+  },
+  "references": {
+    "source": "layers/skins/moss.png",
+    "sourceSha256": "2966947f8061dfc671087d31d77dcf8d88c9fe613f66e51d2b59bb6cb2e1e014",
+    "registration": "template/master-reference.json",
+    "styleGuide": "style-guide.md",
+    "styleGuideSha256": "c3ca75ae85457068160b4f7f4e663774aa5cf656674e36b38333d0ef5d42f6be",
+    "cleanedReference": "Scratch-only copy of moss.png: RGB set to zero only where alpha is zero. All visible master pixels and every alpha byte unchanged.",
+    "cleanedReferenceSha256": "d051e06f688372e0aa84fee949ff84bdbfd6b2ac6d9a28e06b275a35d8acc457"
+  },
+  "prompts": {
+    "locked": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "negative": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+    "variants": {
+      "lichen": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.\nLayer-specific edit: LICHEN skin variant. Use supplied registered transparent moss skin, change only skin colour and its glazes to pale GREY-GREEN lichen, warm grey-cream highlights, muted sage green-grey shadows. Minimal edit strength. EXACT SAME canvas composition, scale, placement, silhouette, pose, brushwork, lipless muzzle and mouth seam, dark brown opaque socket beds with no eyes. Preserve alpha; no background, costumes or additions. Do not zoom or recrop or rotate. Skin occupies only the same small central bust area as reference. Shared style describes final painting; output only transparent skin, with no added varnish or craquelure.\nNegative prompt: photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+      "peat": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.\nLayer-specific edit: PEAT skin variant. Use supplied registered transparent moss skin, change only skin colour and its glazes to DARK BROWN-GREEN peat, warm muted olive-brown highlights, umber and deep forest glazed shadows. Maintain readable facial planes even on this dark morph. Minimal edit strength. EXACT SAME canvas composition, scale, placement, silhouette, pose, brushwork, lipless muzzle and mouth seam, dark brown opaque socket beds with no eyes. Preserve alpha; no background, costumes or additions. Do not zoom or recrop or rotate. Skin occupies only the same small central bust area as reference. Shared style describes final painting; output only transparent skin, with no added varnish or craquelure.\nNegative prompt: photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+      "slate": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.\nLayer-specific edit: SLATE skin variant. Use supplied registered transparent moss skin, change only skin colour and its glazes to muted BLUE-GREY slate, silvery grey-blue highlights, warm grey throat and deep charcoal-blue shadows. Minimal edit strength. EXACT SAME canvas composition, scale, placement, silhouette, pose, brushwork, lipless muzzle and mouth seam, dark brown opaque socket beds with no eyes. Preserve alpha; no background, costumes or additions. Do not zoom or recrop or rotate. Skin occupies only the same small central bust area as reference. Shared style describes final painting; output only transparent skin, with no added varnish or craquelure.\nNegative prompt: photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+      "ivory": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.\nLayer-specific edit: IVORY rare skin variant. Use supplied registered transparent moss skin, change only skin colour and its glazes to pale warm CREAM ivory, bone-white highlights with honey-grey glazed shadows. Retain readable sculptural shadows, not chalk white. Minimal edit strength. EXACT SAME canvas composition, scale, placement, silhouette, pose, brushwork, lipless muzzle and mouth seam, dark brown opaque socket beds with no eyes. Preserve alpha; no background, costumes or additions. Do not zoom or recrop or rotate. Skin occupies only the same small central bust area as reference. Shared style describes final painting; output only transparent skin, with no added varnish or craquelure.\nNegative prompt: photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+      "oxblood": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.\nLayer-specific edit: OXBLOOD rare skin variant. Use supplied registered transparent moss skin, change only skin colour and its glazes to deep muted RED-BROWN oxblood amphibian skin, warm red earth and copper-brown highlights, dark burgundy-brown glazes. Keep readable form in darks, not saturated red. Minimal edit strength. EXACT SAME canvas composition, scale, placement, silhouette, pose, brushwork, lipless muzzle and mouth seam, dark brown opaque socket beds with no eyes. Preserve alpha; no background, costumes or additions. Do not zoom or recrop or rotate. Skin occupies only the same small central bust area as reference. Shared style describes final painting; output only transparent skin, with no added varnish or craquelure.\nNegative prompt: photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting."
+    }
+  },
+  "processing": [
+    "Every delivered skin uses RGB painted by the image model, not a procedural recolouring of moss. No drawing code, external artwork, new dependencies or submodules used.",
+    "Detected dark socket-bed centroids on moss and each model edit. Similarity transform maps master canvas coordinates to native model coordinates; matrices and centroids recorded per skin. Bilinear resampling registers painted RGB.",
+    "Edge decontamination: source pixels with alpha >245 seed nearest-opaque RGB dilation beneath translucent and transparent pixels. This avoids coloured edge contamination without generating any painted forms.",
+    "Reapply the original moss alpha byte for byte; exported transparent pixels have zero RGB. Original outline, fade and cut-out therefore remain registered.",
+    "Retain the original warm umber socket-bed pixels inside the registered bed ellipses (far centre 680,936 radii 50,54; near centre 1040,912 radii 76,74). Weight is 1 through normalized radius 0.94, falls linearly to zero at 1.10. Do not retain green skin pixels where master G > 1.02R; use model paint there to prevent green fringes.",
+    "No shared finish baked into layers. Existing compositor finish used only on review renders."
+  ],
+  "toneFit": {
+    "method": "Ordinary unweighted least squares with constant term, independent R/G/B output channels; pivoted elimination of 4x4 normal equations using normalized RGB for numerical conditioning, exported coefficients for byte RGB.",
+    "formula": "output[channel] = tone[channel][0]*moss.R + tone[channel][1]*moss.G + tone[channel][2]*moss.B + tone[channel][3]",
+    "mask": "Every master pixel with alpha exactly 255, excluding ellipse ((x-680)/66)^2+((y-936)/70)^2 <=1 and ellipse ((x-1040)/94)^2+((y-912)/92)^2 <=1.",
+    "samples": 604850,
+    "coefficientDecimals": 10,
+    "validation": "Independent residual check: mean residual times each normalized predictor and constant below 1e-6 in all channels. Maximum observed <6.1e-9. Alpha equality verified for every pixel of every skin; 22551 warm core socket pixels preserved exactly per skin.",
+    "limitation": "Model glazes are spatially varying; a single affine RGB tone is an approximation for expression skinPaint. Per-channel byte RMSE is recorded for each skin, not concealed by clamping."
+  },
+  "variants": [
+    {
+      "name": "lichen",
+      "path": "layers/skins/lichen.png",
+      "bytes": 1122603,
+      "sha256": "cb1ec4d19b7d4ac274774577f938afa67a9b2bd8a8ea1b72f53847b97bac79ee",
+      "modelSource": {
+        "width": 1121,
+        "height": 1403,
+        "sha256": "ecdd58927b4a92bea2516a0bac3d78eafeea95a3c770345342ac5038da864213"
+      },
+      "registration": {
+        "targetSocketCentroids": [
+          [
+            679.11994353595,
+            938.8112717754499
+          ],
+          [
+            1044.416405609627,
+            912.2929473178868
+          ]
+        ],
+        "modelSocketCentroids": [
+          [
+            368.15757868198915,
+            515.9278651761273
+          ],
+          [
+            569.1886614812577,
+            500.80331867617156
+          ]
+        ],
+        "masterToModel": [
+          0.5504280543976632,
+          0.0014457209902756147,
+          -7.006349702667805,
+          -0.0014457209902756147,
+          0.5504280543976632,
+          0.16162136345531053
+        ]
+      },
+      "fit": {
+        "tone": [
+          [
+            -0.1282676751,
+            1.1729063773,
+            0.1762603543,
+            34.3850560164
+          ],
+          [
+            -0.491410746,
+            1.3594639197,
+            0.339236043,
+            34.3912028286
+          ],
+          [
+            -0.5336744129,
+            1.1442272097,
+            0.5656130169,
+            8.9521611786
+          ]
+        ],
+        "samples": 604850,
+        "rmse": [
+          17.41419886673253,
+          16.734704863478534,
+          15.02049595178454
+        ]
+      }
+    },
+    {
+      "name": "peat",
+      "path": "layers/skins/peat.png",
+      "bytes": 1020072,
+      "sha256": "bd4429607f2bfbdd4d65d659d78d2eff94bd574b6c87794efc9d8dc5967c2774",
+      "modelSource": {
+        "width": 1121,
+        "height": 1403,
+        "sha256": "d841623ecc94b3cdd311fe0c088bfea95668dd41743b6275b409de78f5e82f10"
+      },
+      "registration": {
+        "targetSocketCentroids": [
+          [
+            679.11994353595,
+            938.8112717754499
+          ],
+          [
+            1044.416405609627,
+            912.2929473178868
+          ]
+        ],
+        "modelSocketCentroids": [
+          [
+            368.5476376800291,
+            516.376635616249
+          ],
+          [
+            571.4009997819888,
+            504.89822921519277
+          ]
+        ],
+        "masterToModel": [
+          0.5546696125257318,
+          -0.008843508454238242,
+          0.1628271593271915,
+          0.008843508454238242,
+          0.5546696125257318,
+          -10.359251696331228
+        ]
+      },
+      "fit": {
+        "tone": [
+          [
+            0.6382577981,
+            0.1759331548,
+            -0.0871797169,
+            10.842056899
+          ],
+          [
+            0.2341451007,
+            0.3087678134,
+            0.1341633869,
+            8.5291564113
+          ],
+          [
+            0.07218271,
+            -0.0309227219,
+            0.4358883465,
+            5.5572787373
+          ]
+        ],
+        "samples": 604850,
+        "rmse": [
+          19.826829634980527,
+          16.555939837059384,
+          10.510153784084052
+        ]
+      }
+    },
+    {
+      "name": "slate",
+      "path": "layers/skins/slate.png",
+      "bytes": 991718,
+      "sha256": "430208e92451048d788dd3b9832689e9e0c66927ae122ee2dea6608b900dc07f",
+      "modelSource": {
+        "width": 1121,
+        "height": 1403,
+        "sha256": "7d37ad2a186a7b42ad7d81700eb3ac6b900638886d76595ce9136530e55c8ce8"
+      },
+      "registration": {
+        "targetSocketCentroids": [
+          [
+            679.11994353595,
+            938.8112717754499
+          ],
+          [
+            1044.416405609627,
+            912.2929473178868
+          ]
+        ],
+        "modelSocketCentroids": [
+          [
+            369.4010428506149,
+            516.9998196173125
+          ],
+          [
+            570.6472279903928,
+            505.88395185165786
+          ]
+        ],
+        "masterToModel": [
+          0.5502213573472072,
+          -0.009513042344380707,
+          4.66569709848749,
+          0.009513042344380707,
+          0.5502213573472072,
+          -6.014689411604365
+        ]
+      },
+      "fit": {
+        "tone": [
+          [
+            0.2686600319,
+            0.6218195983,
+            0.0167028827,
+            11.1806210844
+          ],
+          [
+            -0.1409700775,
+            0.9225172209,
+            0.1334668937,
+            13.6792607425
+          ],
+          [
+            -0.5108772079,
+            1.177062336,
+            0.2546067439,
+            14.7557864208
+          ]
+        ],
+        "samples": 604850,
+        "rmse": [
+          19.422283127814715,
+          18.691414218529136,
+          18.09532466497541
+        ]
+      }
+    },
+    {
+      "name": "ivory",
+      "path": "layers/skins/ivory.png",
+      "bytes": 1072072,
+      "sha256": "1f25e177b1d87a473054f19beea4cb6093d5aaba70209f600ed614c32595b30d",
+      "modelSource": {
+        "width": 1121,
+        "height": 1403,
+        "sha256": "aee0a55a08885bd6a6eb21c116f2fc423f8e33a51d79031375b86c1bde79978d"
+      },
+      "registration": {
+        "targetSocketCentroids": [
+          [
+            679.11994353595,
+            938.8112717754499
+          ],
+          [
+            1044.416405609627,
+            912.2929473178868
+          ]
+        ],
+        "modelSocketCentroids": [
+          [
+            371.7008306372002,
+            518.3715268921183
+          ],
+          [
+            571.2352499355295,
+            502.9854604689105
+          ]
+        ],
+        "masterToModel": [
+          0.5464041108199555,
+          0.002453746533567997,
+          -1.6767031544525572,
+          -0.002453746533567997,
+          0.5464041108199555,
+          7.0675769172302125
+        ]
+      },
+      "fit": {
+        "tone": [
+          [
+            -0.8631468176,
+            1.6953952958,
+            0.0467876129,
+            90.9991223029
+          ],
+          [
+            -1.1048456911,
+            1.8260211191,
+            0.3077401796,
+            66.3621368187
+          ],
+          [
+            -1.396292381,
+            1.7603323526,
+            0.8367690853,
+            37.7133759604
+          ]
+        ],
+        "samples": 604850,
+        "rmse": [
+          24.099878093754125,
+          24.47600003387306,
+          23.846757331402358
+        ]
+      }
+    },
+    {
+      "name": "oxblood",
+      "path": "layers/skins/oxblood.png",
+      "bytes": 1025147,
+      "sha256": "b2126cae6021ada11dccab08433fa40c7f02138b3276066dedfa9ce7676ba9b5",
+      "modelSource": {
+        "width": 1121,
+        "height": 1403,
+        "sha256": "ba7cea2907641f3a6d00f5c469aaf1c2c796e862d5478a5e615904320dfad499"
+      },
+      "registration": {
+        "targetSocketCentroids": [
+          [
+            679.11994353595,
+            938.8112717754499
+          ],
+          [
+            1044.416405609627,
+            912.2929473178868
+          ]
+        ],
+        "modelSocketCentroids": [
+          [
+            369.9991066782112,
+            517.3662503125752
+          ],
+          [
+            570.4499550556936,
+            503.52606750764596
+          ]
+        ],
+        "masterToModel": [
+          0.5485940892420818,
+          -0.0019370930807177764,
+          -0.7435154133711761,
+          0.0019370930807177764,
+          0.5485940892420818,
+          1.0244171591208442
+        ]
+      },
+      "fit": {
+        "tone": [
+          [
+            0.4642409828,
+            0.5268554349,
+            0.0427395699,
+            14.4203019238
+          ],
+          [
+            0.6962835055,
+            -0.2043301705,
+            0.4362649667,
+            2.0243214727
+          ],
+          [
+            0.1194576619,
+            0.0458946898,
+            0.5475542512,
+            0.4154542864
+          ]
+        ],
+        "samples": 604850,
+        "rmse": [
+          20.739197479901406,
+          17.67119859033177,
+          13.363195526261999
+        ]
+      }
+    }
+  ],
+  "delivered": [
+    {
+      "path": "layers/skins/lichen.png",
+      "bytes": 1122603,
+      "sha256": "cb1ec4d19b7d4ac274774577f938afa67a9b2bd8a8ea1b72f53847b97bac79ee"
+    },
+    {
+      "path": "catalog/skin-lichen.json",
+      "bytes": 556,
+      "sha256": "a172a68c15a1bc44604ec87a8633f883beb4cb20cabfe2a10a300c2c9e6d45d2"
+    },
+    {
+      "path": "layers/skins/peat.png",
+      "bytes": 1020072,
+      "sha256": "bd4429607f2bfbdd4d65d659d78d2eff94bd574b6c87794efc9d8dc5967c2774"
+    },
+    {
+      "path": "catalog/skin-peat.json",
+      "bytes": 549,
+      "sha256": "39539f71ff7759dbefd4a55ac75f5668502014859d5b3effda9b375912497fe5"
+    },
+    {
+      "path": "layers/skins/slate.png",
+      "bytes": 991718,
+      "sha256": "430208e92451048d788dd3b9832689e9e0c66927ae122ee2dea6608b900dc07f"
+    },
+    {
+      "path": "catalog/skin-slate.json",
+      "bytes": 555,
+      "sha256": "05483cad544df27c03d894ba082d3a4036189847b442e3773298796c0d442527"
+    },
+    {
+      "path": "layers/skins/ivory.png",
+      "bytes": 1072072,
+      "sha256": "1f25e177b1d87a473054f19beea4cb6093d5aaba70209f600ed614c32595b30d"
+    },
+    {
+      "path": "catalog/skin-ivory.json",
+      "bytes": 554,
+      "sha256": "7004380d967a7b68e6991cee1c70bcdda3fbe840722cddcb9d9ddb40531465b8"
+    },
+    {
+      "path": "layers/skins/oxblood.png",
+      "bytes": 1025147,
+      "sha256": "b2126cae6021ada11dccab08433fa40c7f02138b3276066dedfa9ce7676ba9b5"
+    },
+    {
+      "path": "catalog/skin-oxblood.json",
+      "bytes": 555,
+      "sha256": "3dab5a66f623368c045680c3c79d7760a3502169130d758af22a16362ebebe6e"
+    }
+  ],
+  "review": {
+    "input": "sample-inputs/01.json",
+    "method": "Rendered with the repository compositor, changing only genetics.skin for each of moss, lichen, peat, slate, ivory and oxblood. Inspected each transparent skin preview and the six full composites together at 512x640 per portrait.",
+    "renderHashes": [
+      {
+        "skin": "skin.moss",
+        "pngSha256": "320be02f46627c72685243d29b2094640604b478bb3301a9bbc31ae09503cf0f"
+      },
+      {
+        "skin": "skin.lichen",
+        "pngSha256": "e892013f7175b2d8d2b6a8204afac799ee442530bd833bfea88869a0f64b6070"
+      },
+      {
+        "skin": "skin.peat",
+        "pngSha256": "2c08da538c5d113022198f4d62e7e3954a13fe22a3f4034c3cff9d83136a71b0"
+      },
+      {
+        "skin": "skin.slate",
+        "pngSha256": "26597d5a071873254a3f952a834e8a3a73c0287408dc0c7a752dab49feab440f"
+      },
+      {
+        "skin": "skin.ivory",
+        "pngSha256": "445d503f45d7195bea3c43cd4ca1d36bd7301d457fd7bea87de9e9b41bb6acfb"
+      },
+      {
+        "skin": "skin.oxblood",
+        "pngSha256": "888a8be31bb0ccc82db901fd0241c22af8f5f0fe0379fb5dbbcc8ad483d581e7"
+      }
+    ],
+    "seen": "The five faces remain readable beside moss: lichen is pale sage-grey, peat is dark olive-brown with lit cheek and muzzle planes, slate has cool blue-grey planes, ivory has cream highlights with warm shadow modelling, and oxblood has red-brown glazes and a deep burgundy shadow side. Upper-left highlights and the thin lipless mouth remain readable. Socket beds, eyes and spectacles stay aligned. Cut-out edges show no painted ground. Ivory retains shadows rather than washing out; peat retains the muzzle rather than disappearing. Model brush texture is somewhat stronger than the soft master. The inherited master is a small, narrow frog bust: its arms and chest show above the old scholar collar and its shoulders sit inside the broad attire. This same inherited fit issue is visible in the moss control.",
+    "previews": "Review PNGs, records and contact sheet are scratch-only, not deliverables for this target."
+  },
+  "undone": [
+    "No skin-target output left unfinished.",
+    "Numeric low-strength and seed settings could not be specified because the tool exposes neither; minimal edit strength was requested in the prompt.",
+    "Inherited master silhouette/attire mismatch and remaining code-drawn eyes, expressions or costume elements belong to other targets. The five variants preserve the landed master rather than changing its anatomy.",
+    "A tone matrix cannot reproduce all spatially varying model glazes exactly; paired expression layers should be visually reviewed in the final integration."
+  ],
+  "removed": []
+}
