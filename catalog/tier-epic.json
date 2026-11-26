@@ -5,13 +5,15 @@
       "id": "headwear.epic",
       "slot": "headwear",
       "path": "layers/headwear/epic.png",
-      "tier": "epic"
+      "tier": "epic",
+      "description": "Epic headwear: black velvet Tudor bonnet with a jewelled band and white plume, oil-painted by an image model, cut out on the crown seat."
     },
     {
       "id": "regalia.epic",
       "slot": "regalia",
       "path": "layers/regalia/epic.png",
-      "tier": "epic"
+      "tier": "epic",
+      "description": "Epic regalia: broad gold collar of linked links set with rubies and pearls, oil-painted by an image model, cut out across the shoulders."
     }
   ]
 }

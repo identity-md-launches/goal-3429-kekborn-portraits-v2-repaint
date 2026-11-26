@@ -1,0 +1,77 @@
+{
+  "target": "tier-epic",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "Pollinations image API, free tier (image.pollinations.ai)",
+    "name": "sana",
+    "requested": {
+      "width": 1024,
+      "height": 1280
+    },
+    "returned": {
+      "width": 686,
+      "height": 858,
+      "format": "JPEG"
+    },
+    "params": {
+      "nologo": true,
+      "private": true,
+      "enhance": false,
+      "negative_prompt": "style-guide negative prompt, verbatim"
+    },
+    "notExposed": "guidance, steps, sampler and model revision are not exposed; the negative prompt is passed but not confirmed honoured; the free tier rate-limits to one image per 45 s; it offers no inpainting or image editing, so nothing was painted onto template/master-reference.png"
+  },
+  "prompt": {
+    "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+    "order": "layer suffix placed BEFORE the locked prompt, which was kept intact (the model truncates a trailing suffix, as recorded in provenance/master.json)"
+  },
+  "generations": [
+    {
+      "layer": "layers/headwear/epic.png",
+      "seed": 7102,
+      "source_sha256": "3629f64cbeccb67b8d7e939be470b24579fce3d00e5b97a988929508232ed283",
+      "suffix": "Still life oil painting of a single Tudor black velvet flat cap hat alone, no person, with gold aglets, a jewelled gold band of rubies and pearls, and a tall white ostrich plume, centered, isolated on a plain flat pale grey background, light from upper left.",
+      "note": "the model painted a human sitter wearing the hat; only the hat was cut out"
+    },
+    {
+      "layer": "layers/regalia/epic.png",
+      "seed": 7101,
+      "source_sha256": "f587c75667dceb7c6d8885b17c2c603de2e27e934b97cfcaab2faf8983ed52d6",
+      "suffix": "Still life oil painting of a single broad Tudor gold collar of linked SS esses set with rubies and pearls, laid flat as a U-shaped necklace, no person, centered, isolated on a plain flat pale grey background, light from upper left.",
+      "note": "the model painted a sitter wearing a jewelled gold collar and pendant; only gold, ruby and pearl pixels were kept"
+    },
+    {
+      "layer": "layers/frames/epic.png",
+      "seed": 7101,
+      "source_sha256": "4b6f780270573c618e7968b52fbd781fb0dc9de5fffe1fffd3c76008007cc100",
+      "suffix": "Straight-on frontal view of an empty ornate gilded gold picture frame, burnished gold on the high points with red bole showing in the hollows, carved acanthus moulding, wide rails, plain black empty centre, filling the whole image edge to edge."
+    }
+  ],
+  "rejected": "seeds 7102 (collar on a red dress, poor separation), 7102 (frame, a door panel inside it) and 7112 (collar prompt on a black doublet, weak gold) were generated and not used",
+  "editReference": "template/master-reference.png was used for placement and preview only; the free endpoint cannot inpaint",
+  "cutout": [
+    "headwear: hand-traced 13-point lasso round the hat, minus low-saturation grey background (sat<0.16, lum>105) with whites kept (lum>222), 1 px box-blur feather; scaled 2.0x with the brim-bottom centre (400,280) placed at (1000,760) under the crown seat (969,680); right edge about x 1400, clear of banner arms (1500,340)-(1740,628) plus 24 px; no skin",
+    "regalia: 13-point lasso round the collar, keep gold (warm, saturated, B/G<0.62), ruby and pearl pixels; skin is dropped; 1 px feather; scaled 2.0x with source (365,440) placed at (1030,1290)",
+    "frame: piecewise-linear resample of the painted frame, source outer (55,62)-(655,795) and opening (168,138)-(578,700) mapped to the canvas edge and to the aperture (144,144)-(1904,2368); aperture alpha 0, rails alpha 255; the rail-arms clear space (962,2392)-(1086,2536) is filled with the same painted bottom rail 420 px to its left, so it has no carving",
+    "bilinear resampling throughout; no pixel was drawn by code"
+  ],
+  "delivered": [
+    {
+      "path": "layers/headwear/epic.png",
+      "bytes": 164353,
+      "sha256": "94723ef671eafa9015cdda8787af1b9e3d0e7fb552f4eb5ae71e62d51164d0b2"
+    },
+    {
+      "path": "layers/regalia/epic.png",
+      "bytes": 316237,
+      "sha256": "dee985192fb8ffd3fa54df924cab37060a3f2ac76ac8325d9bec022bdea88d00"
+    },
+    {
+      "path": "layers/frames/epic.png",
+      "bytes": 916443,
+      "sha256": "89c0f53d6431d396e4abc374176363a92d9783df9225fbb7442c3cf656ae6b30"
+    }
+  ],
+  "seen": "512x640 stack over template/master-reference.png. The hat reads as a soft black velvet bonnet with a brim, sitting on the crown and lit from the upper left; the plume survived only as a thin quill and no gold aglets show. The collar is weak: a thin coppery chain with a red jewelled pendant, closer to a chain than a broad SS collar, with ragged keyed edges. The gilded frame is convincing straight-on gold with carved corner and mid-rail ornaments; its long rails are stretched, a strip of red wall shows down the outer side rails, and the patched clear space leaves a faint vertical seam on the bottom rail. Lighting is roughly upper-left on all three. No skin from the reference is carried."
+}
