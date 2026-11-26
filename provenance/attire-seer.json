@@ -1,0 +1,75 @@
+{
+  "target": "attire-seer",
+  "model": "OpenAI ImageGen built-in reference edit",
+  "settings": {
+    "transparent_background": false,
+    "generatedWidth": 1121,
+    "generatedHeight": 1403,
+    "seed": null,
+    "editStrength": null,
+    "note": "Exact model version, seed, sampler, strength and pixel-mask controls were not exposed."
+  },
+  "editReference": {
+    "path": "template/master-reference.png",
+    "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+  },
+  "prompts": {
+    "shared": "style-guide.md, verbatim Locked prompt and Negative prompt for both edits.",
+    "edits": [
+      {
+        "description": "Edit the attached master reference in place. Keep exact camera scale and position of frog eyes and head, and full-canvas composition with much empty space above. Paint three separable items on it: a midnight forest-green velvet robe with small warm gold eight-point embroidered stars which closes around the low pleated throat, from under chin to the lower frame opening, covering all green shoulders and arms; a deep matching raised hood BEHIND the head, with a large open face opening leaving every bit of the frog head unobstructed, arch rising gently above dome, darker inner velvet with a very fine old-gold seam, continuing down to both shoulders; and at lower viewer's left, a small translucent clear glass orb with a soft upper-left window reflection held from underneath in an antique sculpted gold mount by a distinct brown leather gloved hand and cuff. Orb and glove entirely below chin and wholly visible over robe, separate clean contour. Preserve exact head scale and position, head occupies approx x32–71%, y27–48% of full canvas. As the only exception to the scenic prompt above, use a uniform muted dusty plum background for easy cutout and omit heraldry and frame. Surface texture in the painted materials, no global lacquer or cracked overlay.",
+        "usedFor": [
+          "prop-front.seer-orb"
+        ]
+      },
+      {
+        "description": "Perform a local cleanup edit of the FIRST attached painting, guided by the fixed bust scale and lighting of the second. The ONLY area being edited is the lower-left orb, its mount, the gloved hand and embroidered cuff. Remove those completely, inpaint with continuous dark midnight forest green velvet folds and restrained gold-thread stars, matching the surrounding robe exactly. Keep the head, hood, collar, center jewels, existing shoulders, full width, exact composition, unframed plum matte, and brushwork as in the first image. No global lacquer or crack network.",
+        "usedFor": [
+          "attire-back.seer-hood",
+          "attire-front.seer-robe"
+        ]
+      }
+    ]
+  },
+  "cutout": "Hand-traced silhouettes and openings with feathered alpha, plum matte suppression, and bilinear registration on the 2048 × 2560 grid. Adjusted collar and shoulder registration and extended sampled dark hood lining at the skull overlap. Used the first edit for the complete orb, gold mount and gloved hand with cuff, and the second edit for the hood and uninterrupted velvet robe. All exported colour samples originate in the model paintings.",
+  "exports": {
+    "width": 2048,
+    "height": 2560,
+    "format": "straight RGBA8 PNG",
+    "assets": [
+      {
+        "id": "attire-back.seer-hood",
+        "path": "layers/attire/seer/seer-hood.png",
+        "slot": "attire-back",
+        "bytes": 817058,
+        "sha256": "86771c6336ca2678d51266f25a58a3fcaa1f793b7f0cb28f88239770d29d8e30"
+      },
+      {
+        "id": "attire-front.seer-robe",
+        "path": "layers/attire/seer/seer-robe.png",
+        "slot": "attire-front",
+        "bytes": 2229051,
+        "sha256": "5df6dac18ad5a36847d65519989c155f31e49bff99cfa07bb1c4bc3ce6c1b78d"
+      },
+      {
+        "id": "prop-front.seer-orb",
+        "path": "layers/attire/seer/seer-orb.png",
+        "slot": "prop-front",
+        "bytes": 502934,
+        "sha256": "cc1f77e3302fde63988dd4d080293bd9eee2251009117566572852150bf26fc7"
+      }
+    ]
+  },
+  "review": {
+    "inputs": [
+      "sample-inputs/05.json",
+      "sample-inputs/11.json"
+    ],
+    "skins": [
+      "skin.ivory",
+      "skin.slate"
+    ],
+    "observations": "Both compositor records selected the three seer layers. In the final 512 × 640 inspections the hood lined the crown and framed the face, the gold-trimmed collar left the throat visible, the robe covered the shoulders, and the gloved mount sat on the lower-left sleeve. The gold stars and window reflection held up at preview scale. The cuff continues under the frame edge.",
+    "files": "Local scratch renders and previews."
+  }
+}
