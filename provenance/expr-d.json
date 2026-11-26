@@ -1,0 +1,70 @@
+{
+  "target": "expr-d",
+  "model": "OpenAI ImageGen",
+  "settings": {
+    "mode": "reference-guided edit",
+    "transparentBackground": false,
+    "generatedWidth": 2172,
+    "generatedHeight": 724,
+    "seed": null,
+    "seedNote": "The tool did not expose a seed, model version, or edit strength."
+  },
+  "editReference": {
+    "path": "template/master-reference.png",
+    "sha256": "3f195e93afa156beb33a51b76062fa2fbd9c0854f2214b3e62660bde488a065f"
+  },
+  "generatedSourceSha256": "565b31ebb03b8b7987da85702e31b8e5645a34e063e41381aab23ec396572031",
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "promptSuffix": "Edit the provided master frog painting. Produce a horizontal triptych of three tight, equal-sized head crops of the SAME frog with exact geometry, all facing left in three quarter view, each crop containing whole head from crown to chin. No costume; useful as production source patches, preserve proportions and lighting and eye and mouth-corner anchors. Left: regal, level brows with lids lowered in composure, amber eyes visible, closed wide firm full muted oxblood lips and subtly raised chin. Center: sly, far eye narrowed almost shut, near eye half lidded, long closed smile curling sharply up at right corner, muted-red lips. Right: weeping, brows crumpled upward in grief, swollen moss-green eyelids with readable amber irises, wide open mouth pulled down with full muted-red lips, exactly two thin painted tears trickling across cheeks. Moss skin on all three. Preserve crown and silhouettes, no text, only the three same-sized faces side by side.",
+  "cutout": "Bilinear registration of model-painted eyelid, brow, muzzle, lip and tear patches. Feathered hand-traced masks remove the source iris paint, isolate the lip and tear colors, and clip transparent edges to the registered skin and eye coverage. Mouth follows the painted reference corners, which differ from the earlier SVG grid. No composited clothing, ground, or full-head paint is carried in these files. Fine surface marks inherent in the generated paint are retained; no finish was added during extraction.",
+  "files": [
+    {
+      "path": "layers/expressions/regal.png",
+      "bytes": 71966,
+      "sha256": "58d0edd925955005d3f7d8ca699a73f29a8c2b2327e73d7eec0972c06dd2b6f9",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "path": "layers/expressions/regal.skin.png",
+      "bytes": 233558,
+      "sha256": "a948f10b2634bc9e3fbc9f4baf0115782a6082fe4b6f6eb440342ff925513bd6",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "path": "layers/expressions/sly.png",
+      "bytes": 83480,
+      "sha256": "3adce24f5fcb5239e8c056364338bd7aee96b3484eb5a98b66df51a6fd9805c2",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "path": "layers/expressions/sly.skin.png",
+      "bytes": 241130,
+      "sha256": "5f684f01f283d5b86375085d7c3412c56b76a7795776d265f7002520a9998377",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "path": "layers/expressions/weeping.png",
+      "bytes": 125130,
+      "sha256": "7a0ed8a4dd6706490898cb5eec6b8ab3e35b8c029605ec88c8b8909966b6b9b5",
+      "width": 2048,
+      "height": 2560
+    },
+    {
+      "path": "layers/expressions/weeping.skin.png",
+      "bytes": 265408,
+      "sha256": "5dbf795a26aad1c908d403e09707416ab2c6de41a949281d05f5e5066e435a87",
+      "width": 2048,
+      "height": 2560
+    }
+  ],
+  "review": {
+    "shot": "Sample 01 with explicit scratch-only expression entries carrying skinPaint, amber eyes and the scholar stack. Inspected 1024 × 1280 previews.",
+    "moss": "Regal has a level, firm mouth and lowered lids. Sly has an asymmetric squint and a long smile with a raised near corner. Weeping has pinched brows, an open mouth and two visible tears, of which the far tear is darker. The eye paint remains visible through the lid apertures.",
+    "alternate": "All three were rendered on a scratch slate-toned copy of the registered moss master and on the checked-in slate skin, with the same test tone matrix in both scratch entries. On the registered slate repaint simulation the skin overlays picked up the blue-grey cast while the lips and tears kept their paint colors. On the checked-in slate skin the older mouth crease remains visible below and left of the new lips in all three expressions. The alternate skin needs to share the master mouth registration and omit its baked-in lip line."
+  }
+}
