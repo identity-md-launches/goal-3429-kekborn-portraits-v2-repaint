@@ -1,0 +1,133 @@
+{
+  "schema": "kekborn-integration@1",
+  "target": "integrate",
+  "repositoryCommit": "25abdbd",
+  "painting": "none: this target paints nothing and changes no layer",
+  "method": {
+    "render": "node bin/render.cjs sample-inputs/NN.json test/scratch/r/NN.png for NN 01..12 (plain composite with the shared finish; no harmonisation, which needs an image model and is owned by the preview targets)",
+    "viewed": "each 2048x2560 render downscaled to 640x800, plus a 4x3 tile of 1100x1100 face crops, a tile of the lower bodies and frames, and 900x700 chest crops of 01, 02, 04, 06, 08 and the legendary frame rail of 10",
+    "measured": "alpha>32 bounding boxes of every expression, headwear and regalia PNG against template/master-reference.json (mouth corners far [680,1148], near [1200,1104]; crown seat [969,680])",
+    "test": "node --test test/library/library.test.cjs: 20/20 pass; node --test test/*/*.test.cjs: all pass"
+  },
+  "library": {
+    "layerPNGs": 90,
+    "allDecodeAt": "2048x2560",
+    "largestCommittedFile": "layers/attire/antiquary/attire-front.antiquary-doublet.png, 3342318 bytes",
+    "baselinePNGs": "76 of the 80 PNGs listed in provenance/baseline.json are still present, and every one differs from its imported sha256. The four gone (layers/expressions/{amused,dubious,resolute,wistful}.png) were removed by the catalog target, and those IDs are explicit-only aliases of sly, weeping, regal and melancholy",
+    "registered": "6 skins (ivory, oxblood rare), 10 named expressions + 4 explicit-only aliases, 8 eyes, 5 backdrops, 3 banners, 5 frames (one per tier), headwear and regalia for every tier"
+  },
+  "misregistered": [
+    {
+      "path": "layers/expressions/smug.png",
+      "problem": "The lip paint's alpha bounding box is x 495-1059, y 1165-1324, while the template mouth runs x 680-1200, y 1104-1148. The lips land about 180 px left of and 60-170 px below the painted mouth, as a red streak across the chin and neck. Seen in samples 01 and 12."
+    },
+    {
+      "path": "layers/expressions/serene.png",
+      "problem": "Same bounding box as smug.png (x 495-1059, y 1165-1324), so the lips hang below the chin as a detached red streak. Seen in 03 and 11."
+    },
+    {
+      "path": "layers/expressions/melancholy.png",
+      "problem": "Same bounding box as smug.png. Full red lips float on the chin and throat below the real mouth. Seen in 09, which uses the explicit-only alias expression.wistful."
+    },
+    {
+      "path": "layers/headwear/rare.png",
+      "problem": "The red velvet cap sits high, and its pearl-studded band floats over the forehead. A brown smear, a remnant of the reference bust, shows between cap and skull in 03, 08 and 11."
+    },
+    {
+      "path": "layers/headwear/epic.png",
+      "problem": "The black beret floats above the skull. A pale pink strip under the brim, a reference remnant, shows in 04, 09 and 12."
+    },
+    {
+      "path": "layers/attire/council/attire-front.council-coat.png",
+      "problem": "An opaque flat white ruff and shirt panel with a hard vertical seam covers the neck opening. The moss and oxblood bust shoulders bulge out beside it. The cuffs and hands at the bottom read as red blobs rather than gloved hands. Seen in 06 and 12."
+    }
+  ],
+  "notConvincinglyPainted": [
+    {
+      "path": "layers/regalia/epic.png",
+      "problem": "This reads as a rust-brown smeared stain over the collar and ruff, with a brown drip under the mouth in 04, rather than a painted chain. It looks like a failed cut-out, not jewellery. Seen in 04, 09 and 12."
+    },
+    {
+      "path": "layers/regalia/rare.png",
+      "problem": "A thin grey scribbled chain with glyph-like 'M' marks on the throat. It looks drawn, not painted, with no impasto or lighting. Seen in 03, 08 and 11."
+    },
+    {
+      "path": "layers/regalia/common.png",
+      "problem": "Not discernible in 01 or 06, even in a 900x700 chest crop: no chain reads on the scholar robe or the council coat."
+    },
+    {
+      "path": "layers/frames/rare.png",
+      "problem": "The silver frame reads as flat grey plastic beside the gilded and carved-wood frames, with little metallic light from the upper left."
+    },
+    {
+      "path": "layers/skins/moss.png",
+      "problem": "The bust's green neck folds and shoulders show beside the head above attire that does not cover them (01, 06). The saturated green reads more digital than the other skins."
+    },
+    {
+      "paths": ["src/heraldry (procedural banner and rail arms)"],
+      "problem": "The arms on every banner and frame rail are flat vector-like shields. They are procedural by design, not a layer, but they are the most digital-looking element of every portrait."
+    }
+  ],
+  "samples": {
+    "01": {
+      "reads": "Scholar on the umber hall: fur-collared robe, gold spectacles, a felt cap that sits well, and the plain wood frame. The face is lively and the eyes are clear.",
+      "doesNot": "The smug lips hang as a red streak across the chin. The moss skin's green shoulder folds bulge either side of the neck. The common regalia is not visible."
+    },
+    "02": {
+      "reads": "The strongest study. The antiquary's brocade doublet with slashed oxblood sleeves, the gloved hand with a scroll, the monocle on its ribbon, the plumed green cap, the paranoid side-eye and the carved oak frame all read as one painting.",
+      "doesNot": "The lichen skin is pale enough to read grey-white. The procedural shield is flat."
+    },
+    "03": {
+      "reads": "The knight's armour and gauntlet are well painted, and the slate skin with hazel eyes and the silver frame suit it.",
+      "doesNot": "The serene lips float below the chin. The rare regalia is a scribbled grey chain with marks on the throat. The rare cap's pearls float on the forehead with a brown remnant under the brim."
+    },
+    "04": {
+      "reads": "The artisan's apron, brushes and green slashed sleeves, the stone apse and the gilded epic frame. The scowl reads as a sullen pout.",
+      "doesNot": "The epic regalia is a rust-brown smear over the collar with a drip under the mouth. The beret floats with a pink strip beneath it."
+    },
+    "05": {
+      "reads": "The seer in a star-scattered green hood and robe, with a crystal orb in a gloved hand, a gem-and-pearl legendary chain, a crown and the jewelled frame. A rich, coherent picture.",
+      "doesNot": "The dim grin's open mouth and teeth are cartoonish beside the rest. The ivory skin is very white."
+    },
+    "06": {
+      "reads": "The regal expression and the felt cap on the moss skin read well. Umber hall, plain wood frame.",
+      "doesNot": "The council coat has a flat white ruff and shirt block with a seam where the neck should be. The green skin bulges at the shoulders. The hands are red blobs. The common regalia is not visible."
+    },
+    "07": {
+      "reads": "The weeping painting, here as the dubious alias, works: a tear, a sagging mouth, spectacles and the plumed cap on the peat skin over the scholar robe with a thin gold chain. Carved oak frame.",
+      "doesNot": "Nothing major. The uncommon chain is very slight."
+    },
+    "08": {
+      "reads": "The startled open mouth and the monocle on the oxblood skin are expressive, with the antiquary doublet and scroll.",
+      "doesNot": "The rare regalia is a scribbled grey chain. The rare cap's pearls float on the forehead."
+    },
+    "09": {
+      "reads": "The knight in armour on the lichen skin, with the stone apse.",
+      "doesNot": "The melancholy lips (wistful alias) are a large red mouth floating on the throat. The epic regalia is a rust smear across the gorget. The beret floats with a pink strip."
+    },
+    "10": {
+      "reads": "The sly painting (amused alias) on ivory skin, under a crown, with the artisan apron, the legendary gem-and-pearl chain and the jewelled frame with its plaque. Coherent and the most finished-looking after 02 and 05.",
+      "doesNot": "The ivory skin is near white and slightly flat in the shadows."
+    },
+    "11": {
+      "reads": "The seer hood, robe and orb on slate skin, in the silver frame.",
+      "doesNot": "The serene lips float below the chin. The rare regalia is a scribbled chain. The rare cap's pearls and the brown remnant show."
+    },
+    "12": {
+      "reads": "The council coat's oxblood sash and the oxblood skin give a strong colour scheme on the green arras.",
+      "doesNot": "The smug lips are a streak under the chin. The epic regalia smears rust over the white ruff. The beret floats with a pink strip. The council hands are red blobs."
+    }
+  },
+  "toRepaint": [
+    "layers/expressions/smug.png",
+    "layers/expressions/serene.png",
+    "layers/expressions/melancholy.png",
+    "layers/regalia/epic.png",
+    "layers/regalia/rare.png",
+    "layers/regalia/common.png",
+    "layers/headwear/rare.png",
+    "layers/headwear/epic.png",
+    "layers/attire/council/attire-front.council-coat.png",
+    "layers/frames/rare.png"
+  ]
+}
