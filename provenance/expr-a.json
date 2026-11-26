@@ -1,0 +1,61 @@
+{
+  "target": "expr-a",
+  "model": {
+    "provider": "OpenAI image generation tool",
+    "model": "not exposed by tool",
+    "settings": {
+      "reference": "template/master-reference.png",
+      "transparent_background": true,
+      "output": "RGBA PNG; model outputs ranged from 1122x1402 to 1402x1122 and were normalized to 2048x2560",
+      "seed": "not exposed",
+      "guidance": "not exposed"
+    },
+    "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting."
+  },
+  "prompt": {
+    "locked": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+    "suffixes": {
+      "melancholy": "Melancholy, lids low, inner brows lifted, downcast gaze, full downturned muted-red lips.",
+      "smug": "One eyelid lower, arched brow, chin raised, closed lopsided smirk.",
+      "serene": "Half-closed lids, relaxed cheeks, soft closed smile."
+    },
+    "method": "Each suffix was sent with the locked prompt and negative prompt against the master reference. Model returned head cutouts for the skin prompts and isolated lip cutouts for mouth prompts. The head cutouts were registered via image resampling; skin overlays were reduced to softly feathered eye/brow regions to avoid carrying the generated head. Lip cutouts were placed over the registered mouth area. No drawing or artwork copied."
+  },
+  "delivered": [
+    {
+      "path": "layers/expressions/melancholy.png",
+      "bytes": 193403,
+      "sha256": "91d57c6ae3652be5b8b98edbcf74ac4cec17aa98c652c6b37b86953de74487ee"
+    },
+    {
+      "path": "layers/expressions/melancholy.skin.png",
+      "bytes": 191999,
+      "sha256": "ad621db855cd367bdd7258ca39cf0847e9d794503a24bb836abdb01f58fb9b05"
+    },
+    {
+      "path": "layers/expressions/smug.png",
+      "bytes": 127088,
+      "sha256": "11621cebf659cbc8050b16285e887ae2810ab56f29f75f1defe24f2cea7d654d"
+    },
+    {
+      "path": "layers/expressions/smug.skin.png",
+      "bytes": 240839,
+      "sha256": "d73c60662775997d550ab0965fef0e27b7eabc24939a8782911904fcf5a305b0"
+    },
+    {
+      "path": "layers/expressions/serene.png",
+      "bytes": 135354,
+      "sha256": "2bd787ffcd70c6d82296e91b88432f7f43ece237a6803b46690b7f8a580ccd89"
+    },
+    {
+      "path": "layers/expressions/serene.skin.png",
+      "bytes": 243634,
+      "sha256": "8a2768fc828fb906790d1ef15779e934d11f0dcde33d83a9fd8578f13a47636b"
+    }
+  ],
+  "seen": "Rendered all three on moss and lichen with temporary catalog entries and skinPaint. In the first render, the full-head model output produced oversized duplicated face regions; cut it down to feathered eye/brow patches. Final moss preview showed the distinct lowered melancholy lids and brows, the wide red lips, and readable amber irises through glasses; the original painted bust and garments remain visible. The fitting is imperfect: lip placement appears slightly detached from the muzzle in the sample, so manual review/refinement is still needed. Lichen variants rendered successfully but were not separately visually inspected.",
+  "undone": [
+    "Refine lip placement and local integration after visual review.",
+    "Inspect final six moss/lichen variants at 100% and tune feather masks if needed."
+  ]
+}
