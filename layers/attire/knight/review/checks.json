@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "checks": "catalog, RGBA8, CRCs, aperture, both shield clear spaces, sightlines, anchors, straight alpha, gauntlet support",
+  "gauntletSupport": 1,
+  "assets": [
+    {
+      "id": "attire-front.knight-armour",
+      "bboxExclusive": [
+        145,
+        1553,
+        1887,
+        2368
+      ],
+      "paintedPixels": 1213445,
+      "partialAlphaPixels": 3226,
+      "sha256": "c28364ac6eb0bdfe1577ac1c0aa41ce267c54f42a546bf3b814ab287ff195fc4"
+    },
+    {
+      "id": "prop-front.knight-gauntlet",
+      "bboxExclusive": [
+        794,
+        2076,
+        1867,
+        2368
+      ],
+      "paintedPixels": 194092,
+      "partialAlphaPixels": 3516,
+      "sha256": "e400dd7ff9086baa29e60ef2f9133ed500138d57d35102393e518db114320c86"
+    }
+  ]
+}
