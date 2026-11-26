@@ -20,9 +20,13 @@ before(() => {
   plain.data.fill(Buffer.from([10, 20, 30, 255]));
   model.data.fill(Buffer.from([210, 220, 230, 255]));
   model.data[(500 * model.width + 500) * 4 + 3] = 0;
+  model.data[(500 * model.width + 501) * 4 + 3] = 128;
+  plain.data[(500 * plain.width + 501) * 4 + 3] = 97;
+  plain.data[(500 * plain.width + 502) * 4 + 3] = 0;
   fs.writeFileSync(path.join(work, 'plain.png'), encodePNG(plain));
   fs.writeFileSync(path.join(work, 'model.png'), encodePNG(model));
   fs.writeFileSync(path.join(work, 'tiny.png'), encodePNG(createImage(2, 2)));
+  fs.writeFileSync(path.join(work, 'broken.png'), Buffer.from('invalid PNG fixture'));
 });
 
 after(() => {
@@ -78,6 +82,15 @@ test('apply feathers inward, preserves all rail pixels and produces deterministi
   assert.deepEqual(pixel(600, 2335), [32, 42, 52, 255]);
   assert.deepEqual(pixel(208, 600), [54, 64, 74, 255]);
   assert.deepEqual(pixel(500, 500), [10, 20, 30, 255]);
+  assert.deepEqual(pixel(501, 500), [32, 42, 52, 97]);
+  assert.deepEqual(pixel(502, 500), [10, 20, 30, 0]);
+});
+
+test('apply identifies malformed model PNGs before writing output', () => {
+  const result = run('apply', 'plain.png', 'broken.png', 'invalid-model.png');
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /^Model PNG could not be decoded:/);
+  assert.equal(fs.existsSync(path.join(work, 'invalid-model.png')), false);
 });
 
 test('both commands reject off-size input before writing output', () => {

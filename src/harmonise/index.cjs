@@ -9,6 +9,10 @@ const MAX_STRENGTH = 0.30;
 const SEED = 1536;
 const FEATHER_PIXELS = 64;
 
+if (!Number.isFinite(STRENGTH) || STRENGTH <= 0 || STRENGTH > MAX_STRENGTH) {
+  throw new RangeError(`Harmonisation strength must be above zero and at most ${MAX_STRENGTH}`);
+}
+
 function promptSection(guide, heading) {
   const section = guide.match(new RegExp(
     `^## ${heading}[ \\t]*\\r?\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm',
@@ -19,7 +23,12 @@ function promptSection(guide, heading) {
 }
 
 function decodeMaster(bytes, label) {
-  const image = decodePNG(bytes);
+  let image;
+  try {
+    image = decodePNG(bytes);
+  } catch (error) {
+    throw new Error(`${label} could not be decoded: ${error.message}`, { cause: error });
+  }
   if (image.width !== MASTER_WIDTH || image.height !== MASTER_HEIGHT) {
     throw new Error(`${label} must be ${MASTER_WIDTH}x${MASTER_HEIGHT}`);
   }
@@ -27,9 +36,6 @@ function decodeMaster(bytes, label) {
 }
 
 function createRequest(input, plainBytes, guide) {
-  if (!Number.isFinite(STRENGTH) || STRENGTH <= 0 || STRENGTH > MAX_STRENGTH) {
-    throw new RangeError(`Harmonisation strength must be above zero and at most ${MAX_STRENGTH}`);
-  }
   decodeMaster(plainBytes, 'Plain PNG');
   return {
     input,

@@ -15,7 +15,9 @@ Choose a model that exposes these controls. Strength must never exceed 0.30.
 Keep the full **2048 × 2560** canvas aligned with the input. If the model
 supports masking, use the `aperture` rectangle as the editable area on the
 full canvas. Its origin is the top left, and the right and bottom bounds are
-exclusive. Export the result as an sRGB PNG. Reproducing the model step also
+exclusive. Map the request fields to the model's controls and use the PNG at
+`input` as the starting image. Export an sRGB PNG at the requested dimensions.
+Reproducing the model step also
 requires recording the model, version and any other generation settings.
 
 ```sh
@@ -26,7 +28,8 @@ Use the same plain PNG as for the request. Both inputs must be 2048 × 2560.
 The apply step runs offline. It mixes up to 22% of the model RGB into the
 plain RGB, scaled by model opacity. The mix ramps smoothly from zero at
 the aperture boundary to its full weight 64 pixels inward. The plain alpha
-channel stays intact. All four decoded pixel bytes on the frame rails,
+channel stays intact, and fully transparent pixels retain their stored RGB.
+All four decoded pixel bytes on the frame rails,
 including the plaque and rail arms, stay identical to the plain PNG.
 The output is re-encoded as a PNG and is byte-reproducible from the same
 inputs with the same Node and zlib versions.
