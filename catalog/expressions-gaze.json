@@ -4,28 +4,33 @@
     {
       "id": "expression.smug",
       "slot": "expression",
-      "path": "layers/expressions/smug.png"
+      "path": "layers/expressions/smug.png",
+      "skinPaint": "layers/expressions/smug.skin.png"
     },
     {
       "id": "expression.paranoid-side-eye",
       "slot": "expression",
       "path": "layers/expressions/paranoid-side-eye.png",
+      "skinPaint": "layers/expressions/paranoid-side-eye.skin.png",
       "requiresEyes": "eyes.side-eye"
-    },
-    {
-      "id": "expression.serene",
-      "slot": "expression",
-      "path": "layers/expressions/serene.png"
-    },
-    {
-      "id": "expression.scowl",
-      "slot": "expression",
-      "path": "layers/expressions/scowl.png"
     },
     {
       "id": "expression.dim-grin",
       "slot": "expression",
-      "path": "layers/expressions/dim-grin.png"
+      "path": "layers/expressions/dim-grin.png",
+      "skinPaint": "layers/expressions/dim-grin.skin.png"
+    },
+    {
+      "id": "expression.scowl",
+      "slot": "expression",
+      "path": "layers/expressions/scowl.png",
+      "skinPaint": "layers/expressions/scowl.skin.png"
+    },
+    {
+      "id": "expression.serene",
+      "slot": "expression",
+      "path": "layers/expressions/serene.png",
+      "skinPaint": "layers/expressions/serene.skin.png"
     }
   ]
 }

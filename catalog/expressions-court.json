@@ -2,34 +2,62 @@
   "schema": "kekborn-assets@1",
   "assets": [
     {
-      "id": "expression.resolute",
+      "id": "expression.melancholy",
       "slot": "expression",
-      "path": "layers/expressions/resolute.png",
-      "selectors": {"expression": "resolute"}
-    },
-    {
-      "id": "expression.dubious",
-      "slot": "expression",
-      "path": "layers/expressions/dubious.png",
-      "selectors": {"expression": "dubious"}
+      "path": "layers/expressions/melancholy.png",
+      "skinPaint": "layers/expressions/melancholy.skin.png"
     },
     {
       "id": "expression.startled",
       "slot": "expression",
       "path": "layers/expressions/startled.png",
-      "selectors": {"expression": "startled"}
+      "skinPaint": "layers/expressions/startled.skin.png"
+    },
+    {
+      "id": "expression.regal",
+      "slot": "expression",
+      "path": "layers/expressions/regal.png",
+      "skinPaint": "layers/expressions/regal.skin.png"
+    },
+    {
+      "id": "expression.sly",
+      "slot": "expression",
+      "path": "layers/expressions/sly.png",
+      "skinPaint": "layers/expressions/sly.skin.png"
+    },
+    {
+      "id": "expression.weeping",
+      "slot": "expression",
+      "path": "layers/expressions/weeping.png",
+      "skinPaint": "layers/expressions/weeping.skin.png"
     },
     {
       "id": "expression.wistful",
       "slot": "expression",
-      "path": "layers/expressions/wistful.png",
-      "selectors": {"expression": "wistful"}
+      "path": "layers/expressions/melancholy.png",
+      "skinPaint": "layers/expressions/melancholy.skin.png",
+      "explicitOnly": true
+    },
+    {
+      "id": "expression.resolute",
+      "slot": "expression",
+      "path": "layers/expressions/regal.png",
+      "skinPaint": "layers/expressions/regal.skin.png",
+      "explicitOnly": true
     },
     {
       "id": "expression.amused",
       "slot": "expression",
-      "path": "layers/expressions/amused.png",
-      "selectors": {"expression": "amused"}
+      "path": "layers/expressions/sly.png",
+      "skinPaint": "layers/expressions/sly.skin.png",
+      "explicitOnly": true
+    },
+    {
+      "id": "expression.dubious",
+      "slot": "expression",
+      "path": "layers/expressions/weeping.png",
+      "skinPaint": "layers/expressions/weeping.skin.png",
+      "explicitOnly": true
     }
   ]
 }

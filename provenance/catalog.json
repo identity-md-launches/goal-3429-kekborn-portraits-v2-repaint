@@ -1,0 +1,578 @@
+{
+  "schema": "kekborn-catalog-review@1",
+  "target": "catalog",
+  "scope": "Register and inspect existing image-model paintings; no painting performed.",
+  "model": null,
+  "settings": null,
+  "modelNote": "No image model called and no generation seed or settings used by this target. Existing painter provenance is referenced below; original model settings are not claimed as new work.",
+  "sourceProvenance": [
+    "provenance/expr-a.json",
+    "provenance/expr-b.json",
+    "provenance/expr-c.json",
+    "provenance/expr-d.json",
+    "provenance/eyes.json",
+    "provenance/skins.json"
+  ],
+  "sourceModels": [
+    {
+      "expressions": [
+        "melancholy",
+        "smug",
+        "serene",
+        "paranoid-side-eye",
+        "startled",
+        "regal",
+        "sly",
+        "weeping"
+      ],
+      "model": "OpenAI image generation/ImageGen, according to painter provenance",
+      "settings": "Reference edits against template/master-reference.png; exact model version, seed and edit strength not exposed. expr-a requested transparency; expr-b and expr-d used opaque source edits."
+    },
+    {
+      "expressions": [
+        "dim-grin",
+        "scowl"
+      ],
+      "model": "Pollinations sana, according to provenance/expr-c.json",
+      "settings": "Text-to-image 686x858 JPEG; selected seeds 502/505 for dim-grin, 804/701 for scowl. Registered and split by the painter."
+    }
+  ],
+  "registration": {
+    "schema": "kekborn-assets@1",
+    "canonicalExpressions": [
+      "expression.melancholy",
+      "expression.startled",
+      "expression.regal",
+      "expression.sly",
+      "expression.weeping",
+      "expression.smug",
+      "expression.paranoid-side-eye",
+      "expression.dim-grin",
+      "expression.scowl",
+      "expression.serene"
+    ],
+    "aliases": {
+      "wistful": "melancholy",
+      "resolute": "regal",
+      "amused": "sly",
+      "dubious": "weeping"
+    },
+    "aliasPolicy": "All four legacy IDs are explicitOnly and share both PNG paths with their canonical expression.",
+    "requiresEyes": {
+      "expression.paranoid-side-eye": "eyes.side-eye"
+    },
+    "rarity": "No overrides: existing default/common weight applies."
+  },
+  "written": [
+    "catalog/expressions-court.json",
+    "catalog/expressions-gaze.json",
+    "provenance/catalog.json"
+  ],
+  "removed": [
+    "layers/expressions/wistful.png",
+    "layers/expressions/resolute.png",
+    "layers/expressions/amused.png",
+    "layers/expressions/dubious.png"
+  ],
+  "catalogFiles": [
+    {
+      "path": "catalog/expressions-court.json",
+      "bytes": 1773,
+      "sha256": "ac3f8ccb4d3d185151ce7ffed7512023426d73a0b2604a4750b1693299a968bd"
+    },
+    {
+      "path": "catalog/expressions-gaze.json",
+      "bytes": 1007,
+      "sha256": "c46bcc44cf3d1d7018db2c52fa8e9742b4fc6323715f28ebd9c5a60ad72f9b37"
+    }
+  ],
+  "registeredLayers": [
+    {
+      "path": "layers/expressions/melancholy.png",
+      "bytes": 193403,
+      "sha256": "91d57c6ae3652be5b8b98edbcf74ac4cec17aa98c652c6b37b86953de74487ee"
+    },
+    {
+      "path": "layers/expressions/melancholy.skin.png",
+      "bytes": 191999,
+      "sha256": "ad621db855cd367bdd7258ca39cf0847e9d794503a24bb836abdb01f58fb9b05"
+    },
+    {
+      "path": "layers/expressions/startled.png",
+      "bytes": 104514,
+      "sha256": "a03442734c3b03b8c062640b716eb5d91cf83b90fec17b4d668d5e48a6efec18"
+    },
+    {
+      "path": "layers/expressions/startled.skin.png",
+      "bytes": 375768,
+      "sha256": "5415674869d4c04fa721337c06ac2c70f05fa47022c28e3b82907b737965331b"
+    },
+    {
+      "path": "layers/expressions/regal.png",
+      "bytes": 71966,
+      "sha256": "58d0edd925955005d3f7d8ca699a73f29a8c2b2327e73d7eec0972c06dd2b6f9"
+    },
+    {
+      "path": "layers/expressions/regal.skin.png",
+      "bytes": 233558,
+      "sha256": "a948f10b2634bc9e3fbc9f4baf0115782a6082fe4b6f6eb440342ff925513bd6"
+    },
+    {
+      "path": "layers/expressions/sly.png",
+      "bytes": 83480,
+      "sha256": "3adce24f5fcb5239e8c056364338bd7aee96b3484eb5a98b66df51a6fd9805c2"
+    },
+    {
+      "path": "layers/expressions/sly.skin.png",
+      "bytes": 241130,
+      "sha256": "5f684f01f283d5b86375085d7c3412c56b76a7795776d265f7002520a9998377"
+    },
+    {
+      "path": "layers/expressions/weeping.png",
+      "bytes": 125130,
+      "sha256": "7a0ed8a4dd6706490898cb5eec6b8ab3e35b8c029605ec88c8b8909966b6b9b5"
+    },
+    {
+      "path": "layers/expressions/weeping.skin.png",
+      "bytes": 265408,
+      "sha256": "5dbf795a26aad1c908d403e09707416ab2c6de41a949281d05f5e5066e435a87"
+    },
+    {
+      "path": "layers/expressions/smug.png",
+      "bytes": 127088,
+      "sha256": "11621cebf659cbc8050b16285e887ae2810ab56f29f75f1defe24f2cea7d654d"
+    },
+    {
+      "path": "layers/expressions/smug.skin.png",
+      "bytes": 240839,
+      "sha256": "d73c60662775997d550ab0965fef0e27b7eabc24939a8782911904fcf5a305b0"
+    },
+    {
+      "path": "layers/expressions/paranoid-side-eye.png",
+      "bytes": 49074,
+      "sha256": "c2a7a83a01a5100b52086b66710eb7346d6fe9e668a0ebcec2c0480df331dff7"
+    },
+    {
+      "path": "layers/expressions/paranoid-side-eye.skin.png",
+      "bytes": 370465,
+      "sha256": "3cc9eae54b4e0f976d20310eb771f3f504034ee09cdc06fa9752c5e46d2e6822"
+    },
+    {
+      "path": "layers/expressions/dim-grin.png",
+      "bytes": 192106,
+      "sha256": "3fcae593996701ff8f3b01219aa64eb470ec9d7bc15677a7e4d821c83aabb66d"
+    },
+    {
+      "path": "layers/expressions/dim-grin.skin.png",
+      "bytes": 179881,
+      "sha256": "4592c061fac53f4440a9f65ee9811e5b1b00e8c6877e546536ddf5d522e1686c"
+    },
+    {
+      "path": "layers/expressions/scowl.png",
+      "bytes": 110472,
+      "sha256": "538f4e48222db34b686f6aedd5ed279bf79bd1ac63d65f54399a2250ee5d117d"
+    },
+    {
+      "path": "layers/expressions/scowl.skin.png",
+      "bytes": 235767,
+      "sha256": "006134e4b63735e599ddc78655c4147f8eba6f09bb57b1bb37279a61acba16a8"
+    },
+    {
+      "path": "layers/expressions/serene.png",
+      "bytes": 135354,
+      "sha256": "2bd787ffcd70c6d82296e91b88432f7f43ece237a6803b46690b7f8a580ccd89"
+    },
+    {
+      "path": "layers/expressions/serene.skin.png",
+      "bytes": 243634,
+      "sha256": "8a2768fc828fb906790d1ef15779e934d11f0dcde33d83a9fd8578f13a47636b"
+    }
+  ],
+  "review": {
+    "method": "Rendered all twelve unmodified sample inputs with renderPortrait at 2048x2560 using the real catalog and existing deterministic finish. Saved PNGs and sidecars in test/scratch/catalog-review/. Visually inspected each face crop, master region x=360,y=620,width=1000,height=820 displayed at 500x410. No image-to-image harmonisation. Scratch files are not submitted.",
+    "summary": "All ten expressions are visually distinguishable by lid and mouth shape; all twelve show readable iris/pupil paint. Underlays take the selected skin colour, but local colour/texture matches are imperfect. This is not visual approval: three expressions have severely detached mouths, and additional integration repairs are listed by path.",
+    "samples": [
+      {
+        "sample": "sample-inputs/01.json",
+        "requested": "expression.smug",
+        "resolvedPainting": "smug",
+        "skin": "layers/skins/moss.png",
+        "seen": "Asymmetric low lids and lifted lip corner distinguish smug. Amber irises remain readable through spectacles. Lids are green; the red lips float well below and left of the intact neutral mouth, outside the face silhouette.",
+        "pngSha256": "7060c5e2e14eccefd109b82c8974e1e97fa9cf496dd453f069a5ccd2ff16d993",
+        "seed": "53677e6d611cf2401c3a73dfaa6d346ee7c9b1160ce1b285666308a90c48fdcf",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/smug.skin.png",
+            "kind": "skinPaint",
+            "sha256": "d73c60662775997d550ab0965fef0e27b7eabc24939a8782911904fcf5a305b0"
+          },
+          {
+            "path": "layers/expressions/smug.png",
+            "kind": "catalog",
+            "sha256": "11621cebf659cbc8050b16285e887ae2810ab56f29f75f1defe24f2cea7d654d"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/02.json",
+        "requested": "expression.paranoid-side-eye",
+        "resolvedPainting": "paranoid-side-eye",
+        "skin": "layers/skins/lichen.png",
+        "seen": "Tense narrow lids, lateral pupils and a compressed mouth read as wary. Lids take the pale lichen colour. Both irises are visible, although the far eye projects left and the broad side-eye iris paint looks comparatively flat. Mouth is seated on the muzzle.",
+        "pngSha256": "dd58d482e96fee95eb2b824d2336ac3f8483f784aac49f7da746e90aed7b1dfe",
+        "seed": "873de6e39ede32e6ccae84773161ef24f955feac6b807cf5e21d27e513cacfd3",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/paranoid-side-eye.skin.png",
+            "kind": "skinPaint",
+            "sha256": "3cc9eae54b4e0f976d20310eb771f3f504034ee09cdc06fa9752c5e46d2e6822"
+          },
+          {
+            "path": "layers/expressions/paranoid-side-eye.png",
+            "kind": "catalog",
+            "sha256": "c2a7a83a01a5100b52086b66710eb7346d6fe9e668a0ebcec2c0480df331dff7"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/03.json",
+        "requested": "expression.serene",
+        "resolvedPainting": "serene",
+        "skin": "layers/skins/slate.png",
+        "seen": "Relaxed rounded lids and open irises read calmer than smug. Lids are blue-grey. Red lips float under the original neutral seam, with the chain crossing the detached lips. Rare cap has an irregular transparent-looking gap at the forehead.",
+        "pngSha256": "088c6567dc17329f40eecb58f27f25e318d6e41141e7fa574907fdd811b4907a",
+        "seed": "93921fab53a5eb19ef1e003d8b976e10fc1835ba08f6c89eb9abdc25c0720c7b",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/serene.skin.png",
+            "kind": "skinPaint",
+            "sha256": "8a2768fc828fb906790d1ef15779e934d11f0dcde33d83a9fd8578f13a47636b"
+          },
+          {
+            "path": "layers/expressions/serene.png",
+            "kind": "catalog",
+            "sha256": "2bd787ffcd70c6d82296e91b88432f7f43ece237a6803b46690b7f8a580ccd89"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/04.json",
+        "requested": "expression.scowl",
+        "resolvedPainting": "scowl",
+        "skin": "layers/skins/peat.png",
+        "seen": "Down-slanting heavy lids and exaggerated downturned mouth clearly read as a scowl. Irises remain visible in shadow and lids are brown-olive. A large smooth muzzle patch has abrupt side edges and a sheen/texture mismatch against the rougher skin.",
+        "pngSha256": "0da77a488c0b1c5de64bae21b10c3e947aa27b38e87d4fbc6d5495c7626eec8a",
+        "seed": "52bd40793a69f1de0f82efccaf4cabc1b056023a099216080913f41979f270a6",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/scowl.skin.png",
+            "kind": "skinPaint",
+            "sha256": "006134e4b63735e599ddc78655c4147f8eba6f09bb57b1bb37279a61acba16a8"
+          },
+          {
+            "path": "layers/expressions/scowl.png",
+            "kind": "catalog",
+            "sha256": "538f4e48222db34b686f6aedd5ed279bf79bd1ac63d65f54399a2250ee5d117d"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/05.json",
+        "requested": "expression.dim-grin",
+        "resolvedPainting": "dim-grin",
+        "skin": "layers/skins/ivory.png",
+        "seen": "Uneven sleepy lids and a wide open toothy grin read as dopey. Both irises are visible and lids are cream-toned. Mouth placement is substantially better than expr-a; teeth are pointed rather than the requested blunt teeth. Seer hood is still a visibly geometric green arc in this checkout.",
+        "pngSha256": "d5b91232cb50b3b17df0914243ba51d370d922684129bd543ab43cb8d4bee534",
+        "seed": "146a651261da891bf852e253c04068f48ba033289817e05dffc13bb6c846e053",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/dim-grin.skin.png",
+            "kind": "skinPaint",
+            "sha256": "4592c061fac53f4440a9f65ee9811e5b1b00e8c6877e546536ddf5d522e1686c"
+          },
+          {
+            "path": "layers/expressions/dim-grin.png",
+            "kind": "catalog",
+            "sha256": "3fcae593996701ff8f3b01219aa64eb470ec9d7bc15677a7e4d821c83aabb66d"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/06.json",
+        "requested": "expression.resolute",
+        "resolvedPainting": "regal",
+        "skin": "layers/skins/moss.png",
+        "seen": "Resolute alias selects regal. Level lowered lids and a firm closed mouth read composed. Irises remain visible and lids are green; lips follow the muzzle, although brow patches are smoother than the base.",
+        "pngSha256": "3ebac66566d10a335623ba0efec516cbd67969fac396df7267f58405d10b5e66",
+        "seed": "65e512cb594962bef177a87f067e70577dbc166c915e8d65b5a2c4c27f4701b5",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/regal.skin.png",
+            "kind": "skinPaint",
+            "sha256": "a948f10b2634bc9e3fbc9f4baf0115782a6082fe4b6f6eb440342ff925513bd6"
+          },
+          {
+            "path": "layers/expressions/regal.png",
+            "kind": "catalog",
+            "sha256": "58d0edd925955005d3f7d8ca699a73f29a8c2b2327e73d7eec0972c06dd2b6f9"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/07.json",
+        "requested": "expression.dubious",
+        "resolvedPainting": "weeping",
+        "skin": "layers/skins/peat.png",
+        "seen": "Dubious alias selects weeping. Raised pinched brows, an open downturned mouth and two tears distinguish grief; near tear is bright, far tear dark. Irises are readable through spectacles and lids take the brown-olive tone.",
+        "pngSha256": "303d752ae653d53b89c2bf4a5bf07a76fd08ab660fba9a93f0390710a6071746",
+        "seed": "61955c926f2b34fa93edf7c0cdd5abe8a7a45e88230e52296c5848b49126cd6b",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/weeping.skin.png",
+            "kind": "skinPaint",
+            "sha256": "5dbf795a26aad1c908d403e09707416ab2c6de41a949281d05f5e5066e435a87"
+          },
+          {
+            "path": "layers/expressions/weeping.png",
+            "kind": "catalog",
+            "sha256": "7a0ed8a4dd6706490898cb5eec6b8ab3e35b8c029605ec88c8b8909966b6b9b5"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/08.json",
+        "requested": "expression.startled",
+        "resolvedPainting": "startled",
+        "skin": "layers/skins/oxblood.png",
+        "seen": "High brows, wide eyes and a dark rounded O mouth clearly read as surprise. Lids are reddish-brown and both irises remain readable through the monocle. Thin green edging survives around the O mouth on red skin. Rare cap has the same forehead gap as sample 03.",
+        "pngSha256": "9c2e852979457bd7725a5fafea9c294241713a9dcd8e1fef4d687618be32141b",
+        "seed": "0f581183441f9ac68f81513bd07b1399fd73553c621059c7dd749e298995907b",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/startled.skin.png",
+            "kind": "skinPaint",
+            "sha256": "5415674869d4c04fa721337c06ac2c70f05fa47022c28e3b82907b737965331b"
+          },
+          {
+            "path": "layers/expressions/startled.png",
+            "kind": "catalog",
+            "sha256": "a03442734c3b03b8c062640b716eb5d91cf83b90fec17b4d668d5e48a6efec18"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/09.json",
+        "requested": "expression.wistful",
+        "resolvedPainting": "melancholy",
+        "skin": "layers/skins/lichen.png",
+        "seen": "Wistful alias selects melancholy. Lifted inner brows, narrowed sad eyes and a pronounced downturned mouth differ from scowl. Lids recolour pale grey-green and irises remain visible. Lips are detached below the original neutral mouth and extend off the muzzle.",
+        "pngSha256": "4d4e229f1e3417b4c03d1bf2cd880997fa8f3d183d9e4d6534ea04336341019e",
+        "seed": "527ca30b1bab27d41cf4650d96707d5a7fce2586d48b642f771b93e5db9799ba",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/melancholy.skin.png",
+            "kind": "skinPaint",
+            "sha256": "ad621db855cd367bdd7258ca39cf0847e9d794503a24bb836abdb01f58fb9b05"
+          },
+          {
+            "path": "layers/expressions/melancholy.png",
+            "kind": "catalog",
+            "sha256": "91d57c6ae3652be5b8b98edbcf74ac4cec17aa98c652c6b37b86953de74487ee"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/10.json",
+        "requested": "expression.amused",
+        "resolvedPainting": "sly",
+        "skin": "layers/skins/ivory.png",
+        "seen": "Amused alias selects sly. An asymmetric squint and long upturned closed smile are distinct from regal and dim-grin. Both pupils remain visible, far eye narrowly so. Lids recolour cream, but green edging remains along the upper mouth on ivory.",
+        "pngSha256": "ae57f85707f80d39cb52d819109b4adec65dae3fa170985906029984e257cb5a",
+        "seed": "1fa4e104f8f4f820eb68d1d3b0ec8efd03f08add274a9e1f8be4d30d025a6065",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/sly.skin.png",
+            "kind": "skinPaint",
+            "sha256": "5f684f01f283d5b86375085d7c3412c56b76a7795776d265f7002520a9998377"
+          },
+          {
+            "path": "layers/expressions/sly.png",
+            "kind": "catalog",
+            "sha256": "3adce24f5fcb5239e8c056364338bd7aee96b3484eb5a98b66df51a6fd9805c2"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/11.json",
+        "requested": "expression.serene",
+        "resolvedPainting": "serene",
+        "skin": "layers/skins/slate.png",
+        "seen": "Same calm blue-grey lids and readable hazel irises as 03. Detached red lips and intact neutral mouth persist, with the necklace crossing the lips. Geometric seer hood and rare-cap forehead gap also remain visible.",
+        "pngSha256": "389e5cfb5d47d84a8effbf2a9afb275a472fc1d5b8d97fb832186b1f724dac31",
+        "seed": "1071b129caeb8463d2dd659e94a4ffd0ef05be7a7318dbcea087b93886ec2bcc",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/serene.skin.png",
+            "kind": "skinPaint",
+            "sha256": "8a2768fc828fb906790d1ef15779e934d11f0dcde33d83a9fd8578f13a47636b"
+          },
+          {
+            "path": "layers/expressions/serene.png",
+            "kind": "catalog",
+            "sha256": "2bd787ffcd70c6d82296e91b88432f7f43ece237a6803b46690b7f8a580ccd89"
+          }
+        ]
+      },
+      {
+        "sample": "sample-inputs/12.json",
+        "requested": "expression.smug",
+        "resolvedPainting": "smug",
+        "skin": "layers/skins/oxblood.png",
+        "seen": "The asymmetric lids take a reddish-brown tone, and olive irises are clear. The smirk remains detached below the original mouth, as in 01; the expression mouth does not fit the skin.",
+        "pngSha256": "c92623e8e321f9e9147965c7cb1fe20e1537719ac87fbaf8c6e338613c73b13c",
+        "seed": "b2b4e23715a579ec3975fcb96ed7638aac17a5a96963b20ad752796e4a1978cf",
+        "expressionLayers": [
+          {
+            "path": "layers/expressions/smug.skin.png",
+            "kind": "skinPaint",
+            "sha256": "d73c60662775997d550ab0965fef0e27b7eabc24939a8782911904fcf5a305b0"
+          },
+          {
+            "path": "layers/expressions/smug.png",
+            "kind": "catalog",
+            "sha256": "11621cebf659cbc8050b16285e887ae2810ab56f29f75f1defe24f2cea7d654d"
+          }
+        ]
+      }
+    ],
+    "needsRepainting": [
+      {
+        "path": "layers/expressions/smug.png",
+        "samples": [
+          "01",
+          "12"
+        ],
+        "reason": "Lips float below/left of the original mouth and partly outside the face. Fit lip paint to the measured painted-master muzzle, not the older SVG mouth coordinates.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/smug.skin.png",
+        "samples": [
+          "01",
+          "12"
+        ],
+        "reason": "Paired overlay needs muzzle coverage to replace the neutral mouth seam when the displaced lips are refitted; current brow-only coverage leaves two mouths.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/serene.png",
+        "samples": [
+          "03",
+          "11"
+        ],
+        "reason": "Lips float below/left of the original mouth and partly outside the face. Fit lip paint to the measured painted-master muzzle, not the older SVG mouth coordinates.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/serene.skin.png",
+        "samples": [
+          "03",
+          "11"
+        ],
+        "reason": "Paired overlay needs muzzle coverage to replace the neutral mouth seam when the displaced lips are refitted; current brow-only coverage leaves two mouths.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/melancholy.png",
+        "samples": [
+          "09"
+        ],
+        "reason": "Lips float below/left of the original mouth and partly outside the face. Fit lip paint to the measured painted-master muzzle, not the older SVG mouth coordinates.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/melancholy.skin.png",
+        "samples": [
+          "09"
+        ],
+        "reason": "Paired overlay needs muzzle coverage to replace the neutral mouth seam when the displaced lips are refitted; current brow-only coverage leaves two mouths.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/scowl.skin.png",
+        "samples": [
+          "04"
+        ],
+        "reason": "Abrupt broad muzzle-patch edges and smooth sheen do not blend into peat skin; refit/feather the paired muzzle patch while retaining the downturned shape.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/startled.png",
+        "samples": [
+          "08"
+        ],
+        "reason": "Green fringe around the open mouth remains on oxblood. Move skin-coloured edge paint into the recolourable underlay or remove it from the lip extraction.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/sly.png",
+        "samples": [
+          "10"
+        ],
+        "reason": "Green upper-mouth edging remains on ivory; separate skin paint from invariant lip pigment.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/expressions/dim-grin.png",
+        "samples": [
+          "05"
+        ],
+        "reason": "Tooth shapes are pointed, contrary to the intended blunt-toothed dim grin; lower priority than detached mouths.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/headwear/rare.png",
+        "samples": [
+          "03",
+          "08",
+          "11"
+        ],
+        "reason": "Irregular holes/gap below the cap reveal the forehead through the brim area; re-extract the cap edge and seat it continuously against the cranium.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      },
+      {
+        "path": "layers/attire/seer/seer-hood.png",
+        "samples": [
+          "05",
+          "11"
+        ],
+        "reason": "Hood remains a geometric green arc beside the painted face in this snapshot. Board lists attire-seer as working; its incoming repaint may resolve this.",
+        "action": "Repaint or re-extract with an image-model source on the registered bust; inspect with the paired layer and alternate skins.",
+        "inScope": false
+      }
+    ],
+    "limitations": "Review covers the twelve supplied combinations, not all skin/eye/expression permutations. Full portraits were rendered; detailed visual inspection concentrated on faces. Existing paintings were left unchanged because their paths belong to other targets."
+  },
+  "checks": {
+    "catalogAssertions": "Passed: ten implicit candidates, four explicitOnly aliases sharing both paths, side-eye requirement, all four obsolete PNGs absent.",
+    "tests": {
+      "command": "node --test test/*/*.test.cjs",
+      "exitCode": 0,
+      "passed": 77,
+      "failed": 0
+    },
+    "samplesRendered": 12
+  },
+  "undone": "Painting repairs above belong to the layer owners. Final harmonised previews, owner approval and global manifest belong to later targets. No deployment, minting or spend."
+}
