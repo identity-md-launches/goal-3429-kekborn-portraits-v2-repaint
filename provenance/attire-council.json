@@ -1,0 +1,66 @@
+{
+  "target": "attire-council",
+  "batch": "kekborn-v2-build",
+  "model": {
+    "service": "Pollinations image API, free tier (image.pollinations.ai)",
+    "name": "sana (the only model the free endpoint lists)",
+    "requested": {
+      "width": 1024,
+      "height": 1280
+    },
+    "returned": {
+      "width": 686,
+      "height": 858,
+      "format": "JPEG"
+    },
+    "params": {
+      "nologo": true,
+      "private": true,
+      "enhance": false,
+      "model": "sana",
+      "negative_prompt": "style-guide.md Negative prompt, verbatim"
+    },
+    "notExposed": "No inpainting or image-edit endpoint, so the garments could not be inpainted on template/master-reference.png. Guidance, steps and sampler are not exposed. The service does not confirm that negative_prompt is honoured. The free tier allows 1 image per 45 s."
+  },
+  "prompt": {
+    "locked": "style-guide.md Locked prompt, verbatim",
+    "negative": "style-guide.md Negative prompt, verbatim",
+    "order": "Layer text placed before the locked prompt, as master did (sana ignores text appended after the long locked prompt). Both shared prompts were sent intact.",
+    "coat": {
+      "seed": 5503,
+      "layerSuffix": "Oil painting of a councillor's black velvet coat with very broad brown sable fur lapels, puffed oxblood red slashed sleeves, white ruff, plain dark umber background, cropped at the chest, no hands."
+    },
+    "sash": {
+      "seed": 5404,
+      "layerSuffix": "Close-up oil painting detail of the chest and shoulders only, cropped below the chin, no hands: black velvet coat crossed diagonally by a broad oxblood red silk sash with gold fringe, from the left shoulder to the right hip."
+    }
+  },
+  "candidates": "19 generations (seeds 5101, 5202-5203, 5301-5304, 5401-5404, 5501, 5503, plus rate-limited retries). Every one painted a human sitter, because the locked prompt dominates. Only the garment is used, and no skin is kept.",
+  "editReference": "template/master-reference.png, used only for registration and stacked previews. The model could not take it as an edit input.",
+  "cutOut": [
+    "Coat: similarity map of coatH-5503 (scale 2.9, no rotation): source ruff centre (340,440) goes to master (978,1540), so the ruff closes over the neck under the jaw and the coat covers the master frog's arms and chest. Bilinear resampling. The mask is a hand-traced 27-point polygon of the painted garment in source pixels (ruff top cut below the sitter's chin, sleeve edges traced on a 50 px grid), smoothed with Catmull-Rom, then feathered with a 13 px box blur. The rest of the canvas and everything outside the aperture is transparent. The source watermark (y>825) maps below y 2368 and is cut away.",
+    "Sash: a diagonal band polygon from the near shoulder (1500,1660) to the far hip (400,2420), half-width about 94-148 px, feathered with an 11 px box blur. It is filled by a rotated, scaled (about 4.5x) sampling of the painted oxblood drape of sashG-5404 (source x about 490-590, y 525-825), with the painted gold embroidery of that drape along the band's lower edge.",
+    "No pixel was drawn by code: every RGB value is a bilinear sample of the model's paintings. Masks only set alpha. No varnish, craquelure, vignette or frame shadow was added."
+  ],
+  "delivered": [
+    {
+      "path": "layers/attire/council/attire-front.council-coat.png",
+      "bytes": 648341,
+      "sha256": "f74e3fb415e77b63d7d47821d4ac9c6ba84301e99defd5f6ef73026ebbab95ed"
+    },
+    {
+      "path": "layers/attire/council/accessory.council-sash.png",
+      "bytes": 256719,
+      "sha256": "c7278c6d3aa043b8f470c2c6f6cac9781e0a508bcef7fb18fff6209332bb5bbc"
+    }
+  ],
+  "removed": [
+    "layers/attire/council/paint.cjs (old code-drawing script)"
+  ],
+  "seen": "Rendered sample-inputs/06.json (moss skin, common) and 12.json (oxblood skin, epic) with bin/render.cjs and viewed them at 512x640. The coat reads as a black velvet doublet coat with puffed black sleeves, a red front with buttons, slashed red cuffs at the lower corners and a wide white lace ruff. The ruff sits under the jaw and hides the master's arms, and the head stays free. The light falls from the upper left, close to the master. The edges are soft, with no reference bust and no human skin left. The sash is a broad oxblood band from the near shoulder to the far hip with painted gold embroidery, which reads more like a gold-trimmed band than a fringe. The regalia chains sit over the ruff and sash plausibly. Faults: on the oxblood skin, the skin body shows beside the far shoulder of the coat (that skin's silhouette is wider than the moss master). There are no broad sable fur lapels (the model painted the ruff instead), and the source is 686x858, so the coat is soft at 2048x2560. A faint grey sliver of the source background may remain at the outermost sleeve edges.",
+  "undone": [
+    "Inpaint on the master with an image-edit model when one is available, so edges and light match exactly.",
+    "Repaint with broad sable fur lapels and a true gold fringe on the sash.",
+    "Higher-resolution source; widen the coat's far shoulder to cover wider skins such as oxblood."
+  ]
+}
