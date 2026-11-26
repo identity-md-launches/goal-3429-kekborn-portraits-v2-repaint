@@ -1,0 +1,98 @@
+{
+  "model": "OpenAI ImageGen",
+  "modelVersion": null,
+  "settings": {
+    "mode": "text-to-image",
+    "transparentBackground": false,
+    "requestedAspectRatio": "4:5",
+    "seed": null,
+    "quality": null,
+    "guidance": null,
+    "editReference": null,
+    "note": "The tool did not expose a model revision, seed, quality or guidance controls. The negative prompt was supplied as text in the prompt."
+  },
+  "lockedPrompt": "Hand-painted 16th-century Tudor court oil portrait on oak panel of an anthropomorphic frog noble, half-length, three-quarter view facing left, 4:5. Own character design: large heavy-lidded eyes with clear irises, wide mouth with full muted-red lips, smooth green skin, very expressive. Visible brushstrokes, impasto on jewels and gold thread, glazed shadows, soft light from upper left, warm varnish, fine craquelure. Brocade and damask doublets, slashed sleeves, fur trim, pearl and gem chains, velvet hats. Deep greens, oxblood, black, ochre, cream, gold leaf. Dark damask backdrop with a heraldic banner.",
+  "negativePrompt": "photograph, 3D render, vector art, flat digital colour, cel shading, cartoon outline, anime, pixel art, airbrush, neon colour, modern dress, text, signature, watermark, human face, extra eyes or limbs, facing right, front view, any existing frog meme character, any recognisable existing painting.",
+  "export": {
+    "width": 2048,
+    "height": 2560,
+    "format": "opaque straight RGBA8 PNG",
+    "method": "Bilinear full-canvas resampling with the repository raster compositor. Flat umber #32251F under the frame rails, leaving eight pixels of source-paint bleed outside the aperture. No cutout. To fit the combined upload limit, the 1776 × 2240 painted area including bleed was box-averaged to 222 × 280, then bilinearly resampled back in place with clamped edges. The surrounding flat rails and opaque alpha were preserved. Encoded with the repository RGBA8 PNG encoder."
+  },
+  "assets": [
+    {
+      "id": "background.umber-hall",
+      "path": "layers/backgrounds/umber-hall.png",
+      "bytes": 1170261,
+      "sha256": "b9aab749d446a1de5b5e5be49160eb0f868c17980b3c1b81d4da257a5ea10b3a",
+      "source": {
+        "width": 1122,
+        "height": 1402,
+        "sha256": "765819d4a3a1429033a68b57f3e910fd90b4c00cc4134bd1c1069624a283078b"
+      },
+      "promptSuffix": "Layer isolation: paint ONLY the wall or textile behind the sitter as a standalone opaque full-bleed 4:5 vertical oil painting. The preceding portrait description defines the style and implied scene only. This background needs no sitter, figure, frog, face, silhouette, portrait, banner, coat of arms, furniture, floor, window, border, frame, rails, hardware, or text anywhere. Soft light from upper left, dark quiet low contrast so a separate sitter can stand out, with subdued large brushwork and restrained warm glazed shadows. Keep upper right (72–87% across, 12–26% down) plain and low contrast for a separate banner layer. No applied varnish, crack network or frame shadow, which the compositor provides. Warm umber lime-plastered wall with broad subdued painterly mottling, gentle warm upper-left illumination, and deep umber in the corners. Plain uninterrupted plaster edge to edge, no dado. Exclusive single material: dark warm brown lime plaster in burnt umber, nearly neutral brown. Dark and quiet throughout. Feathered gentle soft upper-left light raising values only slightly, darkest corners including upper left, shade the centre with fine muted mottling. No bright gold effect, orange, mustard, or amber highlights, target midtones around #32251F and soft highlights around #493629."
+    },
+    {
+      "id": "background.green-arras",
+      "path": "layers/backgrounds/green-arras.png",
+      "bytes": 1995010,
+      "sha256": "32b42540bd3339f46b6508174cf56f225df04ca9af3d23f4e16191f94ce67232",
+      "source": {
+        "width": 1122,
+        "height": 1402,
+        "sha256": "585982c532e05c8ebbb04f67d8ec3fff7d27203342d345970fee3634dd2d13b5"
+      },
+      "promptSuffix": "Layer isolation: paint ONLY the wall or textile behind the sitter as a standalone opaque full-bleed 4:5 vertical oil painting. The preceding portrait description defines the style and implied scene only. This background needs no sitter, figure, frog, face, silhouette, portrait, banner, coat of arms, furniture, floor, window, border, frame, rails, hardware, or text anywhere. Soft light from upper left, dark quiet low contrast so a separate sitter can stand out, with subdued large brushwork and restrained warm glazed shadows. Keep upper right (72–87% across, 12–26% down) plain and low contrast for a separate banner layer. No applied varnish, crack network or frame shadow, which the compositor provides. Deep forest-green woven arras, large dark-on-dark Tudor damask pomegranate repeat, with mottled threadbare weave, softly lit from upper left. Let the repeat fade into almost plain deep vert at upper right."
+    },
+    {
+      "id": "background.oxblood-chamber",
+      "path": "layers/backgrounds/oxblood-chamber.png",
+      "bytes": 1371459,
+      "sha256": "e61658dc316904d4d70d3d36ff35965fefdcac359a7a6cfcfb9828d6f67285ba",
+      "source": {
+        "width": 1122,
+        "height": 1402,
+        "sha256": "677ea659109d2adddb5f4b78eb6586cd5ac7ed516a8876cd20f1346dcc112879"
+      },
+      "promptSuffix": "Layer isolation: paint ONLY the wall or textile behind the sitter as a standalone opaque full-bleed 4:5 vertical oil painting. The preceding portrait description defines the style and implied scene only. This background needs no sitter, figure, frog, face, silhouette, portrait, banner, coat of arms, furniture, floor, window, border, frame, rails, hardware, or text anywhere. Soft light from upper left, dark quiet low contrast so a separate sitter can stand out, with subdued large brushwork and restrained warm glazed shadows. Keep upper right (72–87% across, 12–26% down) plain and low contrast for a separate banner layer. No applied varnish, crack network or frame shadow, which the compositor provides. Dark desaturated oxblood damask hangings, very faint integral woven repeat and one heaped heavy vertical fold along the left side. The right side is still, quiet dark oxblood wool with broad soft shadows."
+    },
+    {
+      "id": "background.stone-apse",
+      "path": "layers/backgrounds/stone-apse.png",
+      "bytes": 1635069,
+      "sha256": "ca6a61ba433d5a2b178313077d2c7f9dec698b0cbff8ba89ba2179ca5de7195a",
+      "source": {
+        "width": 1122,
+        "height": 1402,
+        "sha256": "0384576e62e4c1735afbcc86b4f2498df30306678c611226ddf5ccb4c8fa237e"
+      },
+      "promptSuffix": "Layer isolation: paint ONLY the wall or textile behind the sitter as a standalone opaque full-bleed 4:5 vertical oil painting. The preceding portrait description defines the style and implied scene only. This background needs no sitter, figure, frog, face, silhouette, portrait, banner, coat of arms, furniture, floor, window, border, frame, rails, hardware, or text anywhere. Soft light from upper left, dark quiet low contrast so a separate sitter can stand out, with subdued large brushwork and restrained warm glazed shadows. Keep upper right (72–87% across, 12–26% down) plain and low contrast for a separate banner layer. No applied varnish, crack network or frame shadow, which the compositor provides. Shadowed grey-umber stone niche with a softly carved round arch, concentrated left of centre, atmospheric soot-dark recess, close-cropped wall filling the canvas. Keep the outer stone surface at upper right quiet and unornamented. Every square inch in the image is grey masonry including inside the arch. The rounded niche is empty and backed with plain dark rough grey limewashed ashlar. The simple carved arch is dark desaturated charcoal-grey with a slight neutral warm edge-light from upper left. Low value and contrast; no gold, no amber, no curtain, damask, floral shape, textile, or decorative motifs in the recess."
+    },
+    {
+      "id": "background.oak-gallery",
+      "path": "layers/backgrounds/oak-gallery.png",
+      "bytes": 1550214,
+      "sha256": "f495a6a316091a5ed5606d641f3b4d6096530e5b07111c73677eda0e143e3427",
+      "source": {
+        "width": 1122,
+        "height": 1402,
+        "sha256": "67c2888de895702b41e26ddbb821ae0eeecc6feb1151a2e25fa95d72d6ae55d7"
+      },
+      "promptSuffix": "Layer isolation: paint ONLY the wall or textile behind the sitter as a standalone opaque full-bleed 4:5 vertical oil painting. The preceding portrait description defines the style and implied scene only. This background needs no sitter, figure, frog, face, silhouette, portrait, banner, coat of arms, furniture, floor, window, border, frame, rails, hardware, or text anywhere. Soft light from upper left, dark quiet low contrast so a separate sitter can stand out, with subdued large brushwork and restrained warm glazed shadows. Keep upper right (72–87% across, 12–26% down) plain and low contrast for a separate banner layer. No applied varnish, crack network or frame shadow, which the compositor provides. Dark old oak linenfold panelling, subtle vertical carved folds and softened brown grain, very subdued relief, upper-left bevels catching soft warm light. Keep a broad quiet flat dark bay in the upper right. Render exclusively oak from edge to edge. The cropped portrait-background detail is entirely a Tudor walnut-brown oak interior wall, tight front-on view of three broad vertical oak linenfold carved panels. It is uniform dark desaturated oak brown. Linenfold is a carving in solid wood. No plant motifs, damask, leaves, fabric or floral carving. Understated relief only. Flat wooden last panel on right."
+    }
+  ],
+  "previewReview": [
+    {
+      "input": "sample-inputs/02.json",
+      "backdrop": "background.green-arras",
+      "previewSize": "768×960",
+      "observations": "In the re-exported proof, the softened pomegranate repeat still reads on the left and recedes into dark green beneath the banner. The frame hides the rail transition."
+    },
+    {
+      "input": "sample-inputs/04.json",
+      "backdrop": "background.stone-apse",
+      "previewSize": "768×960",
+      "observations": "In the re-exported proof, the softly lit arch stays distinct behind the crown and the upper-right masonry stays quiet beneath the banner. The frame hides the rail transition."
+    }
+  ]
+}

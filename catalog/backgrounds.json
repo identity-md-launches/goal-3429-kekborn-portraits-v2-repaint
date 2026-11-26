@@ -15,8 +15,8 @@
         "x1": 1904,
         "y1": 2368
       },
-      "sha256": "da3ff55cb0480e91a691c40bc1360e350b679eaee08690247c46b626654cf59f",
-      "description": "A dim great hall of lime plaster over umber: mottled, damp-stained plaster in umber and backdrop-warm, a faint ochre wash where the light falls, and a dark timber dado with a worn cap rail low behind the shoulders."
+      "sha256": "b9aab749d446a1de5b5e5be49160eb0f868c17980b3c1b81d4da257a5ea10b3a",
+      "description": "Warm umber plaster with soft mottling, gentle upper-left light and dark corners."
     },
     {
       "id": "background.green-arras",
@@ -32,8 +32,8 @@
         "x1": 1904,
         "y1": 2368
       },
-      "sha256": "5545a659026d231d941c4da331973fc0fe1fd5fd35b3c5a920b205ada5b03e65",
-      "description": "A worn verdure tapestry (arras) of forest and deep vert hung in heavy vertical folds, with faded millefleur sprigs in moss, ochre and oxblood, threadbare patches showing the warp, and a faded oxblood-and-ochre border along the top."
+      "sha256": "32b42540bd3339f46b6508174cf56f225df04ca9af3d23f4e16191f94ce67232",
+      "description": "Deep forest-green woven arras with a large pomegranate damask repeat that fades into shadow at upper right."
     },
     {
       "id": "background.oxblood-chamber",
@@ -49,8 +49,8 @@
         "x1": 1904,
         "y1": 2368
       },
-      "sha256": "3a0576c2e28706578df696fda150c60f9f4b6a8b79d19df93f731ceb2822b0b8",
-      "description": "A close privy chamber hung with oxblood wool-velvet damask: a faint ogee pomegranate repeat, vertical panel seams, pile rubbed thin and brownish where it has worn, sinking into umber at the edges."
+      "sha256": "e61658dc316904d4d70d3d36ff35965fefdcac359a7a6cfcfb9828d6f67285ba",
+      "description": "Oxblood damask hanging with a heavy dark fold along the left and a faint woven repeat."
     },
     {
       "id": "background.stone-apse",
@@ -66,8 +66,8 @@
         "x1": 1904,
         "y1": 2368
       },
-      "sha256": "41f70698d294b3fb71e9bbcba167693dec6165d2635b95121fb742eea4d91d9e",
-      "description": "A chapel apse of cool grey-umber ashlar: a round-headed niche behind the head with radial voussoirs, coursed blocks each a slightly different stone, dark worn mortar joints, and the concave inner wall catching the light on its right side."
+      "sha256": "ca6a61ba433d5a2b178313077d2c7f9dec698b0cbff8ba89ba2179ca5de7195a",
+      "description": "Shadowed grey ashlar niche with a round carved arch and quiet masonry at upper right."
     },
     {
       "id": "background.oak-gallery",
@@ -83,8 +83,8 @@
         "x1": 1904,
         "y1": 2368
       },
-      "sha256": "53e74a15803706db0bb812179b2d086b87a871336b7c8643f35d97e29534308f",
-      "description": "A long gallery wainscoted in dark oak: raised-and-fielded panels framed by stiles and rails, upper-left bevels catching light and lower-right bevels in shadow, long vertical grain in the stiles and panels, and a heavy cornice in shadow along the top."
+      "sha256": "f495a6a316091a5ed5606d641f3b4d6096530e5b07111c73677eda0e143e3427",
+      "description": "Dark oak linenfold panelling with softly lit carved folds and a plain shadowed bay at upper right."
     }
   ]
 }
